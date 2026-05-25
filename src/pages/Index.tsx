@@ -169,29 +169,35 @@ export const Index: React.FC = () => {
 
         {/* Inner wrapper */}
         <div className="relative h-full w-full max-w-[1320px] mx-auto px-4 select-none">
-          {/* Massive hero-title words */}
-          <h1 className="hero-title absolute text-white font-medium text-[14vw] md:text-[10vw] uppercase left-4 sm:left-6 md:left-12 top-[20%] sm:top-[18%] select-none">
-            SIM
-          </h1>
-          <h1 className="hero-title absolute text-white font-medium text-[14vw] md:text-[10vw] uppercase right-4 sm:right-6 md:right-12 top-[58%] sm:top-[56%] bg-gradient-to-r from-white via-white to-white/75 bg-clip-text text-transparent select-none">
-            GAMEPAD
-          </h1>
+          {/* Stacked left-aligned Hero content using original font styles */}
+          <div className="absolute left-4 sm:left-6 md:left-12 bottom-[8%] sm:bottom-[10%] md:bottom-[12%] max-w-3xl select-none flex flex-col justify-end gap-1">
+            <h1 className="hero-title text-white font-medium text-[14vw] md:text-[10vw] uppercase leading-[0.85] tracking-tighter">
+              SIM
+            </h1>
+            <h1 className="hero-title text-white font-medium text-[14vw] md:text-[10vw] uppercase leading-[0.85] tracking-tighter bg-gradient-to-r from-white via-white to-white/75 bg-clip-text text-transparent">
+              GAMEPAD
+            </h1>
 
-          {/* Paragraph & Download Buttons */}
-          <div className="absolute left-4 sm:left-6 md:left-12 top-[40%] sm:top-[38%] max-w-[280px] sm:max-w-[360px] space-y-5 select-none">
-            <p className="text-[13px] sm:text-[18px] leading-relaxed text-white/90 font-light">
-              we are holding each file with supreme care, granting user with safety in all place
-            </p>
+            <div className="space-y-1.5 select-text pt-4 pb-2">
+              <p className="text-[13px] sm:text-[18px] leading-relaxed text-white/90 font-light">
+                Turn your phone into a powerful PC controller.
+              </p>
+              <p className="text-[13px] sm:text-[18px] leading-relaxed text-white font-medium">
+                Zero latency. Fully customizable.
+              </p>
+            </div>
             
-            <div className="flex flex-wrap gap-2.5 pt-1">
+            <div className="flex flex-wrap gap-4 pt-3 select-none">
               <a href="#" className="cursor-pointer">
                 <GlassButton
-                  size="sm"
+                  size="lg"
                   glassColor="rgba(255, 255, 255, 0.05)"
                   className="hover:scale-105 transition-transform"
                 >
-                  <svg className="w-3.5 h-3.5 fill-current text-white/70" viewBox="0 0 24 24">
-                    <path d="M0 3.449L9.75 2.1v9.451H0V3.449zM0 12.45h9.75v9.451L0 20.551V12.45zM11.25 1.899L24 0v11.55H11.25V1.899zM11.25 12.45H24v11.55l-12.75-1.9V12.45z" />
+                  <svg className="w-5 h-5 fill-none stroke-current stroke-2 text-white/90" viewBox="0 0 24 24">
+                    <rect x="2" y="3" width="20" height="12" rx="2" ry="2" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                    <line x1="12" y1="17" x2="12" y2="21" />
                   </svg>
                   <span className="font-light">Download Desktop</span>
                 </GlassButton>
@@ -199,13 +205,13 @@ export const Index: React.FC = () => {
 
               <a href="#" className="cursor-pointer">
                 <GlassButton
-                  size="sm"
+                  size="lg"
                   glassColor="rgba(255, 255, 255, 0.05)"
                   className="hover:scale-105 transition-transform"
                 >
-                  <svg className="w-3.5 h-3.5 fill-none stroke-current stroke-[2] text-white/70" viewBox="0 0 24 24">
-                    <rect x="6" y="2" width="12" height="20" rx="2" ry="2" />
-                    <path d="M12 18h.01" />
+                  <svg className="w-5 h-5 fill-none stroke-current stroke-2 text-white/90" viewBox="0 0 24 24">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                    <line x1="12" y1="18" x2="12.01" y2="18" />
                   </svg>
                   <span className="font-light">Get Mobile App</span>
                 </GlassButton>
