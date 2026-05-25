@@ -159,122 +159,110 @@ export const About: React.FC = () => {
           </div>
         </div>
 
-        {/* SECTION 2: ABOUT / MANIFESTO */}
-        <section className="w-full bg-[#0F0F0F]">
-          <div className="flex flex-col lg:flex-row min-h-[600px] lg:min-h-screen">
-            {/* Left Video Column */}
-            <div className="w-full lg:w-1/2 h-[400px] lg:h-screen lg:sticky lg:top-0 relative">
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover mix-blend-lighten"
-                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_132809_d6ea910f-d700-44f7-afea-27d517487177.mp4"
-              />
+        {/* SECTION 2: MANIFESTO TIMELINE */}
+        <section className="relative bg-[#0F0F0F] w-full py-32 overflow-hidden">
+          {/* Soft background blob */}
+          <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
+          
+          <div className="max-w-[1000px] mx-auto px-5 sm:px-10 relative">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white leading-[1.05] mb-6 uppercase">
+                Our Manifesto
+              </h2>
+              <p className="text-neutral-400 max-w-2xl mx-auto text-lg font-light">
+                We believe utility software deserves the same level of innovation as entertainment platforms and flagship consumer products.
+              </p>
             </div>
-            
-            {/* Right Content Column */}
-            <div className="w-full lg:w-1/2 flex items-center px-8 py-16 md:px-16 lg:px-20 xl:px-28">
-              <div className="max-w-xl w-full py-12 lg:py-24">
-                <span className="text-xs font-medium tracking-[0.3em] text-neutral-500 uppercase block mb-8 md:mb-10">Our Manifesto</span>
-                
-                <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-white leading-[1.05] mb-10 md:mb-12">
-                  OUR<br />MANIFESTO
-                </h2>
-                
-                <div className="space-y-6 text-sm md:text-base text-neutral-400 leading-relaxed font-light mb-10">
-                  <p className="text-white text-lg md:text-xl font-normal leading-relaxed">
-                    We believe utility software deserves the same level of innovation as entertainment platforms and flagship consumer products.
-                  </p>
-                  <p>
-                    We believe responsiveness matters. Milliseconds matter. Design matters. Experience matters.
-                  </p>
-                  <p>
-                    We believe people should feel in control of technology — not constrained by it. The future of interaction is not hidden behind expensive hardware alone. It lives in intelligent software capable of transforming the devices already in our hands into tools with entirely new purposes.
-                  </p>
-                  <ul className="space-y-2 pl-4 border-l border-neutral-700 my-6">
-                    <li>A phone can become a steering wheel.</li>
-                    <li>A screen can become a cockpit.</li>
-                    <li>Motion can become control.</li>
-                    <li>Software can become instinct.</li>
-                  </ul>
-                  <p>
-                    At Branco Venn, we build products that remove the distance between action and response. We are obsessed with fluidity, precision, immersion, and accessibility because those details define whether technology feels mechanical or magical.
-                  </p>
-                  <p>
-                    We do not create bloated systems overloaded with unnecessary complexity. We create focused tools with purpose. Every feature must earn its place. Every interaction must feel intentional. Every millisecond of delay is a problem worth solving.
-                  </p>
-                  <p>
-                    We believe software utilities should empower creators, gamers, professionals, and everyday users alike — giving them faster, smarter, and more immersive ways to interact with digital systems.
-                  </p>
-                  <p className="text-white">
-                    Our products are built for people who expect more from technology:
-                  </p>
-                </div>
 
-                <div className="flex flex-wrap gap-3 mb-10">
-                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300">More responsiveness</span>
-                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300">More flexibility</span>
-                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300">More immersion</span>
-                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300">More freedom</span>
-                </div>
-
-                <div className="space-y-6 text-sm md:text-base text-neutral-400 leading-relaxed font-light mb-20">
-                  <p>
-                    We are driven by experimentation and engineering excellence. We continuously push the limits of wireless communication, real-time interaction, motion systems, interface design, and connected experiences to create products that feel ahead of their time.
-                  </p>
-                  <p>
-                    Branco Venn is not just building applications. We are building interaction systems for the next generation of computing. The line between physical and digital continues to disappear. Our role is to make that transition feel natural.
-                  </p>
-                </div>
-
-                {/* THE FUTURE WE SEE SUB-SECTION */}
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-white leading-tight mb-8">
-                  THE FUTURE<br />WE SEE
-                </h3>
-
-                <div className="space-y-6 text-sm md:text-base text-neutral-400 leading-relaxed font-light">
-                  <p>
-                    We envision a future where software utilities become intelligent layers between humans and machines — adaptive systems capable of understanding movement, context, intent, and responsiveness in real time.
-                  </p>
-                  <p className="text-white pt-4">A future where:</p>
-                  <ul className="space-y-2 pl-4 border-l border-neutral-700 mb-6">
-                    <li>Devices communicate seamlessly</li>
-                    <li>Interfaces react instantly</li>
-                    <li>Control feels natural</li>
-                    <li>Hardware limitations disappear through software innovation</li>
-                  </ul>
-                  <p>
-                    Branco Venn exists to build that future. From gaming and simulation tools to next-generation utility platforms, our work is centered around creating software that enhances capability without adding complexity.
-                  </p>
-                  <p>
-                    We are building technology that empowers people to do more with what they already have.
-                  </p>
-                  <div className="pl-4 border-l border-neutral-700 my-6 space-y-4">
-                    <p>
-                      <span className="line-through decoration-neutral-600 mr-2">Not louder technology.</span> Smarter technology.
-                    </p>
-                    <p>
-                      <span className="line-through decoration-neutral-600 mr-2">Not more complicated systems.</span> More human experiences.
-                    </p>
-                  </div>
-                  <p className="text-white text-lg font-normal pt-4">
-                    That is the vision behind Branco Venn.
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-6 mt-16">
-                  <button className="bg-neutral-800 text-white text-sm font-medium rounded px-7 py-3.5 hover:bg-neutral-700 transition-colors">
-                    Learn More
-                  </button>
-                  <div className="flex items-center gap-3 cursor-pointer group">
-                    <div className="w-10 h-10 rounded-full border border-neutral-700 flex items-center justify-center group-hover:border-neutral-500 transition-colors">
-                      <Play className="w-3.5 h-3.5 text-white fill-current ml-0.5" />
+            <div className="relative w-full">
+              {/* Vertical center line */}
+              <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px bg-white/10" />
+              
+              <div className="space-y-12 md:space-y-24 relative z-10">
+                {[
+                  {
+                    title: "The Standard",
+                    text: "We believe responsiveness matters. Milliseconds matter. Design matters. Experience matters."
+                  },
+                  {
+                    title: "Control",
+                    text: "We believe people should feel in control of technology — not constrained by it. The future of interaction is not hidden behind expensive hardware alone. It lives in intelligent software capable of transforming the devices already in our hands into tools with entirely new purposes."
+                  },
+                  {
+                    title: "Transformation",
+                    text: "A phone can become a steering wheel. A screen can become a cockpit. Motion can become control. Software can become instinct."
+                  },
+                  {
+                    title: "Action & Response",
+                    text: "At Branco Venn, we build products that remove the distance between action and response. We are obsessed with fluidity, precision, immersion, and accessibility because those details define whether technology feels mechanical or magical."
+                  },
+                  {
+                    title: "Focused Tools",
+                    text: "We do not create bloated systems overloaded with unnecessary complexity. We create focused tools with purpose. Every feature must earn its place. Every interaction must feel intentional. Every millisecond of delay is a problem worth solving."
+                  },
+                  {
+                    title: "Empowerment",
+                    text: "We believe software utilities should empower creators, gamers, professionals, and everyday users alike — giving them faster, smarter, and more immersive ways to interact with digital systems."
+                  },
+                  {
+                    title: "Expect More",
+                    text: "Our products are built for people who expect more from technology: More responsiveness. More flexibility. More immersion. More freedom."
+                  },
+                  {
+                    title: "Engineering Excellence",
+                    text: "We are driven by experimentation and engineering excellence. We continuously push the limits of wireless communication, real-time interaction, motion systems, interface design, and connected experiences to create products that feel ahead of their time."
+                  },
+                  {
+                    title: "Next Generation",
+                    text: "Branco Venn is not just building applications. We are building interaction systems for the next generation of computing. The line between physical and digital continues to disappear. Our role is to make that transition feel natural."
+                  },
+                  {
+                    title: "The Future We See",
+                    text: "We envision a future where software utilities become intelligent layers between humans and machines — adaptive systems capable of understanding movement, context, intent, and responsiveness in real time."
+                  },
+                  {
+                    title: "A Future Where",
+                    text: "Devices communicate seamlessly. Interfaces react instantly. Control feels natural. Hardware limitations disappear through software innovation."
+                  },
+                  {
+                    title: "Building That Future",
+                    text: "Branco Venn exists to build that future. From gaming and simulation tools to next-generation utility platforms, our work is centered around creating software that enhances capability without adding complexity. We are building technology that empowers people to do more with what they already have."
+                  },
+                  {
+                    title: "The Vision",
+                    text: "Not louder technology. Smarter technology. Not more complicated systems. More human experiences. That is the vision behind Branco Venn."
+                  }
+                ].map((item, index) => {
+                  const isLeft = index % 2 === 0;
+                  return (
+                    <div
+                      key={index}
+                      className={`flex flex-col md:flex-row items-start md:items-center w-full relative ${
+                        isLeft ? "md:justify-start" : "md:justify-end"
+                      } pl-12 md:pl-0`}
+                    >
+                      {/* Center dot */}
+                      <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 md:top-1/2 md:-translate-y-1/2 w-3 h-3 rounded-full bg-[#FA8453] shadow-md shadow-[#FA8453]/50 z-20" />
+                      
+                      {/* Content Box */}
+                      <div
+                        className={`w-full md:w-[45%] bg-neutral-950/40 backdrop-blur border border-white/5 rounded-2xl p-6 sm:p-8 hover:border-white/10 transition-colors duration-300 ${
+                          isLeft ? "md:text-right" : "md:text-left"
+                        }`}
+                      >
+                        <span className="inline-block bg-white/5 rounded-full px-3 py-1 text-[10px] sm:text-xs text-white/40 mb-3 font-mono">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <h3 className="text-lg sm:text-xl font-light text-white mb-3 uppercase tracking-wide">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm md:text-base text-neutral-400 font-light leading-relaxed">
+                          {item.text}
+                        </p>
+                      </div>
                     </div>
-                    <span className="text-sm font-medium text-white group-hover:text-neutral-300 transition-colors">Watch a Video</span>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             </div>
           </div>
