@@ -5,7 +5,7 @@ import { LogoMark } from "./LogoMark";
 export const Footer: React.FC = () => {
   const links = [
     { label: "products", path: "/product" },
-    { label: "offerings", path: "/product/sim-gamepad" },
+    { label: "Sim Gamepad", path: "/product/sim-gamepad" },
     { label: "mission", path: "/about" },
     { label: "contact", path: "/contact" },
   ];

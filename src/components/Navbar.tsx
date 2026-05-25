@@ -9,7 +9,7 @@ export const Navbar: React.FC = () => {
 
   const centerLinks = [
     { label: "products", path: "/product" },
-    { label: "offerings", path: "/product/sim-gamepad" },
+    { label: "Sim Gamepad", path: "/product/sim-gamepad" },
     { label: "mission", path: "/about" },
     { label: "contact", path: "/contact" },
   ];
