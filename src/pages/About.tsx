@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Search, Menu, Link as LucideLink } from "lucide-react";
+import { Search, Menu } from "lucide-react";
 import { PageTransition } from "@/components/PageTransition";
 
 export const About: React.FC = () => {
