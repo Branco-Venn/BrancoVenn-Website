@@ -444,7 +444,7 @@ export const SimGamepad: React.FC = () => {
 
         {/* Scroll Tilted Grid component representing supported catalog */}
         <div className="mt-8 select-none">
-          <ScrollTiltedGrid loop images={gridImages} />
+          <ScrollTiltedGrid loop={false} images={gridImages} />
         </div>
       </section>
 
