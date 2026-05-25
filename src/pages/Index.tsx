@@ -10,7 +10,7 @@ import type { Frame } from "@/components/ui/dynamic-frame-layout";
 const socialFrames: Frame[] = [
   {
     id: 1,
-    video: "https://static.cdn-luma.com/files/981e483f71aa764b/Company%20Thing%20Exported.mp4",
+    video: "/asset video/social media/Instagram.gif",
     defaultPos: { x: 0, y: 0, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
@@ -25,7 +25,7 @@ const socialFrames: Frame[] = [
   },
   {
     id: 2,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/WebGL%20Exported%20(1).mp4",
+    video: "/asset video/social media/Youtube.gif",
     defaultPos: { x: 4, y: 0, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
@@ -50,7 +50,7 @@ const socialFrames: Frame[] = [
   },
   {
     id: 4,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Exported%20Web%20Video.mp4",
+    video: "/asset video/social media/X twitter.gif",
     defaultPos: { x: 0, y: 4, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
@@ -65,17 +65,22 @@ const socialFrames: Frame[] = [
   },
   {
     id: 5,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Logo%20Exported.mp4",
+    video: "/asset video/social media/Linkedin.gif",
     defaultPos: { x: 4, y: 4, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
-    socialName: "Branco Venn",
-    socialHandle: "Sovereignty Solutions",
-    socialHref: "/about"
+    socialName: "LinkedIn",
+    socialHandle: "Branco Venn",
+    socialHref: "https://linkedin.com/brancovenn",
+    socialIcon: (
+      <svg viewBox="0 0 24 24" className="h-7 w-7 text-white" fill="currentColor">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+    )
   },
   {
     id: 6,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Animation%20Exported%20(4).mp4",
+    video: "/asset video/social media/Discord logo.gif",
     defaultPos: { x: 8, y: 4, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
@@ -100,7 +105,7 @@ const socialFrames: Frame[] = [
   },
   {
     id: 8,
-    video: "https://static.cdn-luma.com/files/58ab7363888153e3/Art%20Direction%20Exported.mp4",
+    video: "/asset video/social media/Tiktok.gif",
     defaultPos: { x: 4, y: 8, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
@@ -491,7 +496,7 @@ export const Index: React.FC = () => {
             <img
               src="/asset image/desktop.png"
               alt="Security Workspace Console"
-              className="mx-auto rounded-2xl object-cover h-full w-full object-left-top select-none pointer-events-none"
+              className="mx-auto rounded-2xl object-contain h-full w-full select-none pointer-events-none"
               draggable={false}
             />
           </ContainerScroll>
@@ -626,9 +631,9 @@ export const Index: React.FC = () => {
               Join Our Network
             </span>
             <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-light leading-tight uppercase tracking-tight font-sans mt-4">
-              Connect <br />
-              <span className="text-4xl sm:text-6xl lg:text-7xl font-semibold bg-gradient-to-r from-[#FA8453] to-[#F8C9B2] bg-clip-text text-transparent block mt-1">
-                With Branco Venn
+              <span className="whitespace-nowrap">Connect with</span> <br />
+              <span className="text-4xl sm:text-6xl lg:text-7xl font-semibold bg-gradient-to-r from-[#FA8453] to-[#F8C9B2] bg-clip-text text-transparent inline-block mt-1 whitespace-nowrap">
+                Branco Venn
               </span>
             </h2>
             <p className="text-neutral-400 text-sm sm:text-base font-light leading-relaxed mt-4">

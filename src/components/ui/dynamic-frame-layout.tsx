@@ -98,15 +98,23 @@ function FrameComponent({
               transition: "transform 0.3s ease-in-out",
             }}
           >
-            <video
-              className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300"
-              src={video}
-              loop
-              muted
-              playsInline
-              ref={videoRef}
-              preload="auto"
-            />
+            {video.toLowerCase().endsWith(".gif") ? (
+              <img
+                className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300"
+                src={video}
+                alt=""
+              />
+            ) : (
+              <video
+                className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300"
+                src={video}
+                loop
+                muted
+                playsInline
+                ref={videoRef}
+                preload="auto"
+              />
+            )}
           </div>
         </div>
 

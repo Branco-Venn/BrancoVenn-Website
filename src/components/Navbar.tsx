@@ -8,13 +8,13 @@ export const Navbar: React.FC = () => {
   const currentPath = location.pathname;
 
   const centerLinks = [
-    { label: "products", path: "/product" },
-    { label: "Sim Gamepad", path: "/product/sim-gamepad" },
-    { label: "mission", path: "/about" },
+    { label: "PRODUCTS", path: "/product" },
+    { label: "SIM GAMEPAD", path: "/product/sim-gamepad" },
+    { label: "MISSION", path: "/about" },
   ];
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 px-3 sm:px-6 md:px-10 pt-4 sm:pt-6 w-full select-none">
+    <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 md:px-10 pt-4 sm:pt-6 w-full select-none">
       <GlassFilter />
       
       <nav className="flex items-center justify-between max-w-[1400px] mx-auto w-full">
@@ -62,8 +62,8 @@ export const Navbar: React.FC = () => {
               ? "bg-white/15 border-white/20 text-white font-medium"
               : "text-neutral-300 hover:text-white hover:border-white/20 font-light"
           }`}>
-            <span className="text-xs sm:text-sm tracking-tight transition-colors duration-300">
-              contact
+            <span className="text-xs sm:text-sm tracking-widest uppercase transition-colors duration-300">
+              CONTACT
             </span>
           </GlassEffect>
         </Link>
