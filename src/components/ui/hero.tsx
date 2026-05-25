@@ -54,13 +54,16 @@ export const Hero = React.forwardRef<HTMLElement, HeroProps>(
         {videoSrc && (
           <div className="absolute inset-0 z-0 overflow-hidden w-full h-full">
             <video
-              src={videoSrc}
               autoPlay
               loop
               muted
               playsInline
+              preload="auto"
               className="w-full h-full object-cover opacity-65"
-            />
+            >
+              <source src={videoSrc} />
+              Your browser does not support the video tag.
+            </video>
             <div className="absolute inset-0 bg-black/45 z-10" />
           </div>
         )}
