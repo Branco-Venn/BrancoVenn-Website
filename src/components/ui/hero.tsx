@@ -59,9 +59,9 @@ export const Hero = React.forwardRef<HTMLElement, HeroProps>(
               loop
               muted
               playsInline
-              className="w-full h-full object-cover opacity-35"
+              className="w-full h-full object-cover opacity-65"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black z-10" />
+            <div className="absolute inset-0 bg-black/45 z-10" />
           </div>
         )}
 
@@ -72,61 +72,65 @@ export const Hero = React.forwardRef<HTMLElement, HeroProps>(
             )}
 
             {/* Main glow */}
-            <div className="absolute inset-auto z-50 h-44 w-[36rem] -translate-y-[-20%] rounded-full bg-orange-500/20 opacity-80 blur-3xl" />
+            <div className="absolute inset-auto z-50 h-44 w-[36rem] -translate-y-[-20%] rounded-full bg-orange-500/15 opacity-70 blur-3xl" />
 
-            {/* Lamp effect */}
-            <motion.div
-              initial={{ width: "10rem" }}
-              viewport={{ once: true }}
-              transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
-              whileInView={{ width: "22rem" }}
-              className="absolute top-0 z-30 h-44 -translate-y-[20%] rounded-full bg-orange-500/30 blur-3xl"
-            />
+            {/* Lamp effect (only without video) */}
+            {!videoSrc && (
+              <>
+                <motion.div
+                  initial={{ width: "10rem" }}
+                  viewport={{ once: true }}
+                  transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
+                  whileInView={{ width: "22rem" }}
+                  className="absolute top-0 z-30 h-44 -translate-y-[20%] rounded-full bg-orange-500/30 blur-3xl"
+                />
 
-            {/* Top line */}
-            <motion.div
-              initial={{ width: "20rem" }}
-              viewport={{ once: true }}
-              transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
-              whileInView={{ width: "40rem" }}
-              className="absolute inset-auto z-50 h-0.5 -translate-y-[-10%] bg-orange-500/40"
-            />
+                {/* Top line */}
+                <motion.div
+                  initial={{ width: "20rem" }}
+                  viewport={{ once: true }}
+                  transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
+                  whileInView={{ width: "40rem" }}
+                  className="absolute inset-auto z-50 h-0.5 -translate-y-[-10%] bg-orange-500/40"
+                />
 
-            {/* Left gradient cone */}
-            <motion.div
-              initial={{ opacity: 0.5, width: "20rem" }}
-              whileInView={{ opacity: 1, width: "40rem" }}
-              transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeInOut",
-              }}
-              style={{
-                backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
-              }}
-              className="absolute inset-auto right-1/2 h-64 overflow-visible w-[40rem] bg-gradient-conic from-orange-500/30 via-transparent to-transparent [--conic-position:from_70deg_at_center_top] [--tw-gradient-from:rgba(249,115,22,0.3)] [--tw-gradient-to:transparent]"
-            >
-              <div className="absolute w-[100%] left-0 bg-black h-48 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
-              <div className="absolute w-48 h-[100%] left-0 bg-black bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
-            </motion.div>
+                {/* Left gradient cone */}
+                <motion.div
+                  initial={{ opacity: 0.5, width: "20rem" }}
+                  whileInView={{ opacity: 1, width: "40rem" }}
+                  transition={{
+                    delay: 0.3,
+                    duration: 0.8,
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
+                  }}
+                  className="absolute inset-auto right-1/2 h-64 overflow-visible w-[40rem] bg-gradient-conic from-orange-500/30 via-transparent to-transparent [--conic-position:from_70deg_at_center_top] [--tw-gradient-from:rgba(249,115,22,0.3)] [--tw-gradient-to:transparent]"
+                >
+                  <div className="absolute w-[100%] left-0 bg-black h-48 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
+                  <div className="absolute w-48 h-[100%] left-0 bg-black bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
+                </motion.div>
 
-            {/* Right gradient cone */}
-            <motion.div
-              initial={{ opacity: 0.5, width: "20rem" }}
-              whileInView={{ opacity: 1, width: "40rem" }}
-              transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeInOut",
-              }}
-              style={{
-                backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
-              }}
-              className="absolute inset-auto left-1/2 h-64 w-[40rem] bg-gradient-conic from-transparent via-transparent to-orange-500/30 [--conic-position:from_290deg_at_center_top] [--tw-gradient-from:transparent] [--tw-gradient-to:rgba(249,115,22,0.3)]"
-            >
-              <div className="absolute w-48 h-[100%] right-0 bg-black bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
-              <div className="absolute w-[100%] right-0 bg-black h-48 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
-            </motion.div>
+                {/* Right gradient cone */}
+                <motion.div
+                  initial={{ opacity: 0.5, width: "20rem" }}
+                  whileInView={{ opacity: 1, width: "40rem" }}
+                  transition={{
+                    delay: 0.3,
+                    duration: 0.8,
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
+                  }}
+                  className="absolute inset-auto left-1/2 h-64 w-[40rem] bg-gradient-conic from-transparent via-transparent to-orange-500/30 [--conic-position:from_290deg_at_center_top] [--tw-gradient-from:transparent] [--tw-gradient-to:rgba(249,115,22,0.3)]"
+                >
+                  <div className="absolute w-48 h-[100%] right-0 bg-black bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
+                  <div className="absolute w-[100%] right-0 bg-black h-48 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
+                </motion.div>
+              </>
+            )}
           </div>
         )}
 

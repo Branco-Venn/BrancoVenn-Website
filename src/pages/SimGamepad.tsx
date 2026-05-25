@@ -249,10 +249,10 @@ export const SimGamepad: React.FC = () => {
         title={
           <span className="leading-tight">
             Turn Your Phone Into a <br />
-            <span className="text-[#FA8453] font-normal font-sans">Precision Racing</span> & Flight Controller
+            <span className="text-[#FA8453] font-normal font-sans">Precision Controller</span>
           </span>
         }
-        subtitle="Low-latency motion controls, customizable layouts, gyro steering, trigger inputs, and advanced connectivity — built for sim racers, flight sim players, and competitive gamers."
+        subtitle="Low-latency motion steering and custom layouts built for serious simulator gaming."
         actions={[
           {
             label: "Download Now",
@@ -279,7 +279,7 @@ export const SimGamepad: React.FC = () => {
               Ultra Responsive
             </span>
             <p className="text-white/60 text-sm sm:text-base font-light leading-relaxed">
-              Sim Gamepad transforms your smartphone into a high-performance controller for PC games and simulators. Experience responsive steering, immersive motion controls, touch buttons, analog triggers, vibration feedback, and seamless connectivity designed for serious gameplay.
+              Transforms your smartphone into a zero-latency virtual simulator wheel and custom touch cockpit for PC games.
             </p>
           </div>
         </div>
