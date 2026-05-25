@@ -8,24 +8,26 @@ export const About: React.FC = () => {
   return (
     <PageTransition>
       <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-        {/* SECTION 1: HERO */}
-        <div className="relative w-full app-hero-wrapper bg-[#FBFDFD]">
+        {/* SECTION 1: HERO / MISSION */}
+        <div className="relative w-full min-h-screen bg-[#FBFDFD]">
           {/* Background Layers */}
           <div className="absolute inset-0 z-0 bg-[#FBFDFD]" />
           
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="absolute right-0 top-0 bottom-0 h-full w-full md:w-[55%] opacity-30 md:opacity-100 object-cover object-top z-[1] video-plus-darker"
-            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131232_feeda0b7-d00d-4bfa-a9d5-5d38648a4214.mp4"
-          />
+          <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              className="absolute right-0 top-0 h-full w-full md:w-[55%] opacity-30 md:opacity-100 object-cover object-top video-plus-darker"
+              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131232_feeda0b7-d00d-4bfa-a9d5-5d38648a4214.mp4"
+            />
+          </div>
 
           {/* Content Layer */}
-          <div className="relative z-10 min-h-screen md:h-screen flex flex-col">
+          <div className="relative z-10 min-h-screen flex flex-col pb-12">
             {/* Navbar */}
-            <nav className="relative z-10 flex flex-row items-center justify-between px-5 py-4 md:px-12 md:py-6">
+            <nav className="relative z-20 flex flex-row items-center justify-between px-5 py-4 md:px-12 md:py-6">
               <div className="flex items-center gap-12">
                 <img src="/image.png" alt="Logo" className="h-7 md:h-8 object-contain" />
                 <div className="hidden md:flex items-center gap-8">
@@ -40,13 +42,13 @@ export const About: React.FC = () => {
                 <input 
                   type="text" 
                   placeholder="I am looking for..." 
-                  className="w-72 rounded-full border border-neutral-300 py-2 pl-4 pr-10 text-sm text-neutral-600 outline-none focus:border-neutral-400"
+                  className="w-72 rounded-full border border-neutral-300 py-2 pl-4 pr-10 text-sm text-neutral-600 outline-none focus:border-neutral-400 bg-white/50 backdrop-blur-sm"
                 />
                 <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               </div>
 
               <button 
-                className="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-neutral-300 text-neutral-600"
+                className="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-neutral-300 text-neutral-600 bg-white"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 <Menu className="w-5 h-5" />
@@ -55,7 +57,7 @@ export const About: React.FC = () => {
 
             {/* Mobile Menu Dropdown */}
             {isMenuOpen && (
-              <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-neutral-200 p-5 z-20 flex flex-col gap-4 shadow-lg">
+              <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-neutral-200 p-5 z-30 flex flex-col gap-4 shadow-lg">
                 <a href="/" className="text-sm text-neutral-600">Home</a>
                 <a href="/about" className="text-sm text-neutral-600">About</a>
                 <a href="/services" className="text-sm text-neutral-600">Services</a>
@@ -71,101 +73,23 @@ export const About: React.FC = () => {
               </div>
             )}
 
-            {/* HeroSection Content */}
-            <div className="relative z-10 flex-1 flex flex-col justify-between px-5 pt-8 pb-20 md:px-12 md:pt-16 md:pb-36">
-              <div>
-                <span className="text-xs font-medium tracking-[0.3em] text-neutral-500 uppercase block">Futuristic</span>
+            {/* HeroSection Content - Mission Text */}
+            <div className="relative z-10 flex-1 flex flex-col px-5 pt-8 pb-32 md:px-12 md:pt-12 md:pb-40">
+              <div className="max-w-2xl w-full">
+                <span className="text-xs font-medium tracking-[0.3em] text-neutral-500 uppercase block mb-6 md:mb-8">About Us</span>
                 
-                <div className="flex flex-row mt-4 md:mt-8 gap-4 md:gap-8">
-                  <span className="text-sm text-neutral-400 mt-2 md:mt-4">05</span>
-                  <h1 className="text-[2.75rem] md:text-[5.5rem] leading-[0.95] font-light tracking-tight text-neutral-900 m-0">
-                    NEW DIGITAL<br />UNIVERSE
-                  </h1>
-                </div>
-
-                <div className="flex items-center gap-6 mt-8 md:mt-12 md:ml-12">
-                  <button className="bg-neutral-900 text-white text-sm font-medium rounded px-6 py-3 md:px-8 md:py-3.5 hover:bg-neutral-800 transition-colors">
-                    Get Started
-                  </button>
-                  <a href="/contact" className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors">
-                    Contact Us
-                  </a>
-                </div>
-              </div>
-
-              <div className="mt-16 md:mt-auto mb-12 md:mb-0 hero-stat-group flex flex-col items-start md:items-center">
-                <span className="text-5xl md:text-7xl font-light text-neutral-900 leading-none">47.2%</span>
-                <span className="text-sm font-medium text-neutral-500 mt-2 uppercase tracking-widest">Reality</span>
-              </div>
-
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mt-10 w-full">
-                <div className="flex items-center gap-4">
-                  <div className="flex flex-col">
-                    <span className="text-xs font-medium text-neutral-500 mb-2 uppercase tracking-wider">Trusted by Clients</span>
-                    <div className="flex items-center">
-                      <div className="flex -space-x-2">
-                        <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Client" className="w-8 h-8 md:w-9 md:h-9 rounded-full border-2 border-[#FBFDFD] object-cover" />
-                        <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Client" className="w-8 h-8 md:w-9 md:h-9 rounded-full border-2 border-[#FBFDFD] object-cover" />
-                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Client" className="w-8 h-8 md:w-9 md:h-9 rounded-full border-2 border-[#FBFDFD] object-cover" />
-                        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Client" className="w-8 h-8 md:w-9 md:h-9 rounded-full border-2 border-[#FBFDFD] object-cover" />
-                      </div>
-                      <span className="text-sm font-medium text-neutral-900 ml-3">20+</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 hero-description-group">
-                  <div className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center rounded-full border border-neutral-300">
-                    <LucideLink className="w-4 h-4 text-neutral-600" />
-                  </div>
-                  <p className="text-xs md:text-sm text-neutral-500 max-w-[200px] md:max-w-sm mt-1">
-                    In this futuristic realm, users can explore hyper-realistic virtual environments, interact with AI-driven avatars.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Diagonal Section Divider */}
-          <div className="absolute bottom-0 left-0 w-full z-[3]">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-[60px] md:h-[120px] block">
-              <polygon points="0,0 0,120 1440,120 1440,80 920,80 680,0" fill="#0F0F0F" />
-            </svg>
-          </div>
-        </div>
-
-        {/* SECTION 2: OUR MISSION */}
-        <section className="w-full bg-[#0F0F0F]">
-          <div className="flex flex-col lg:flex-row relative">
-            {/* Left Video Column */}
-            <div className="w-full lg:w-1/2 h-[400px] lg:h-screen lg:sticky lg:top-0 relative">
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover mix-blend-lighten"
-                src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_132809_d6ea910f-d700-44f7-afea-27d517487177.mp4"
-              />
-            </div>
-            
-            {/* Right Content Column */}
-            <div className="w-full lg:w-1/2 flex flex-col px-8 py-16 md:px-16 lg:px-20 xl:px-28 lg:min-h-[150vh]">
-              <div className="max-w-xl w-full">
-                <span className="text-xs font-medium tracking-[0.3em] text-neutral-500 uppercase block mb-8 md:mb-10">About Us</span>
-                
-                <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-white leading-[1.05] mb-10 md:mb-12">
+                <h1 className="text-[3.5rem] md:text-[5rem] lg:text-[6rem] leading-[0.95] font-light tracking-tight text-neutral-900 m-0 mb-8 md:mb-10">
                   OUR<br />MISSION
-                </h2>
+                </h1>
                 
                 <div className="flex flex-wrap gap-3 mb-10">
-                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300">Human-Centered</span>
-                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300">Responsive</span>
-                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300">Seamless</span>
+                  <span className="px-5 py-2 rounded-full border border-neutral-300 text-sm text-neutral-700 bg-white/50 backdrop-blur-sm">Human-Centered</span>
+                  <span className="px-5 py-2 rounded-full border border-neutral-300 text-sm text-neutral-700 bg-white/50 backdrop-blur-sm">Responsive</span>
+                  <span className="px-5 py-2 rounded-full border border-neutral-300 text-sm text-neutral-700 bg-white/50 backdrop-blur-sm">Seamless</span>
                 </div>
                 
-                <div className="space-y-6 text-sm md:text-base text-neutral-400 leading-relaxed font-light">
-                  <p className="text-white text-lg md:text-xl font-normal leading-relaxed">
+                <div className="space-y-6 text-sm md:text-base text-neutral-600 leading-relaxed font-light">
+                  <p className="text-neutral-900 text-lg md:text-xl font-normal leading-relaxed">
                     Our mission is to redefine how people interact with technology by creating software utilities that are seamless, responsive, and deeply human-centered.
                   </p>
                   <p>
@@ -183,7 +107,7 @@ export const About: React.FC = () => {
                   <p>
                     Our mission goes beyond convenience. We want to democratize powerful digital experiences — making advanced interaction systems accessible to anyone with a smartphone, a computer, and an idea. We believe innovation should not be restricted by expensive hardware or inaccessible ecosystems. Through intelligent software solutions, we aim to unlock new possibilities from devices people already own.
                   </p>
-                  <p className="text-white">
+                  <p className="text-neutral-900 font-medium">
                     Sim Gamepad represents that philosophy.
                   </p>
                   <p>
@@ -196,10 +120,17 @@ export const About: React.FC = () => {
               </div>
             </div>
           </div>
-        </section>
 
-        {/* SECTION 3: OUR MANIFESTO */}
-        <section className="w-full bg-[#0F0F0F] px-8 md:px-16 lg:px-20 xl:px-28 pt-24 pb-20 border-t border-white/5">
+          {/* Diagonal Section Divider */}
+          <div className="absolute bottom-0 left-0 w-full z-[3]">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-[60px] md:h-[120px] block pointer-events-none">
+              <polygon points="0,0 0,120 1440,120 1440,80 920,80 680,0" fill="#0F0F0F" />
+            </svg>
+          </div>
+        </div>
+
+        {/* SECTION 2: OUR MANIFESTO (Dark) */}
+        <section className="w-full bg-[#0F0F0F] px-8 md:px-16 lg:px-20 xl:px-28 pt-24 pb-20">
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-light italic tracking-tight text-white leading-[1.05] max-w-5xl mb-16 md:mb-24">
             OUR MANIFESTO
           </h2>
@@ -266,7 +197,7 @@ export const About: React.FC = () => {
           </div>
         </section>
 
-        {/* SECTION 4: THE FUTURE WE SEE */}
+        {/* SECTION 3: THE FUTURE WE SEE */}
         <section className="w-full bg-[#0F0F0F] px-8 md:px-16 lg:px-20 xl:px-28 py-24 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
             <span className="text-xs font-medium tracking-[0.3em] text-neutral-500 uppercase block mb-6">The Vision</span>
