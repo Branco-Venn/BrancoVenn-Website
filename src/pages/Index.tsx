@@ -188,7 +188,14 @@ export const Index: React.FC = () => {
             </div>
             
             <div className="flex flex-wrap gap-4 pt-3 select-none">
-              <a href="#" className="cursor-pointer">
+              <a
+                href="#desktop-download"
+                className="cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("desktop-download")?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 <GlassButton
                   size="lg"
                   glassColor="rgba(255, 255, 255, 0.05)"
@@ -203,7 +210,14 @@ export const Index: React.FC = () => {
                 </GlassButton>
               </a>
 
-              <a href="#" className="cursor-pointer">
+              <a
+                href="#mobile-download"
+                className="cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("mobile-download")?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 <GlassButton
                   size="lg"
                   glassColor="rgba(255, 255, 255, 0.05)"
@@ -443,7 +457,7 @@ export const Index: React.FC = () => {
       </section>
 
       {/* Integrate the 3D scroll animation for showcase! */}
-      <section className="relative w-full bg-black py-10 overflow-hidden flex flex-col items-center">
+      <section id="desktop-download" className="relative w-full bg-black py-10 overflow-hidden flex flex-col items-center">
         <div className="max-w-[1400px] w-full">
           <ContainerScroll
             titleComponent={
@@ -505,7 +519,7 @@ export const Index: React.FC = () => {
       </section>
 
       {/* Mobile App Split Showcase Section */}
-      <section className="relative w-full bg-black py-20 overflow-hidden flex flex-col items-center border-t border-white/5 select-none">
+      <section id="mobile-download" className="relative w-full bg-black py-20 overflow-hidden flex flex-col items-center border-t border-white/5 select-none">
         {/* Soft color blob background */}
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#FA8453]/5 rounded-full blur-[120px] pointer-events-none" />
 
