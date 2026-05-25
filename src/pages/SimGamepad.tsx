@@ -10,20 +10,36 @@ export const SimGamepad: React.FC = () => {
         {/* Section 1: Who We Are / Introducing Sim Gamepad */}
         <FlowSection 
           aria-label="Who we are" 
-          style={{ backgroundColor: '#FA8453', color: '#fff' }}
+          style={{ backgroundColor: '#070708', color: '#fff' }}
         >
-          <div className="w-full flex items-center justify-between border-b border-white/20 pb-4">
-            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] font-mono">
+          {/* High-Tech Video & Radial Glow Overlays */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+            <video
+              className="absolute inset-0 w-full h-full object-cover opacity-45 transition-opacity duration-1000"
+              autoPlay
+              loop
+              muted
+              playsInline
+              src="/asset video/hud.mp4"
+            />
+            {/* Visual enhancement layers */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
+            <div className="absolute -left-[10%] -top-[10%] w-[55%] h-[55%] rounded-full bg-[#FA8453]/15 blur-[120px] mix-blend-screen" />
+            <div className="absolute -right-[15%] -bottom-[15%] w-[65%] h-[65%] rounded-full bg-[#FA8453]/10 blur-[160px] mix-blend-screen" />
+          </div>
+
+          <div className="w-full flex items-center justify-between border-b border-white/10 pb-4 relative z-10">
+            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] font-mono text-neutral-300">
               01 — Who we are
             </p>
-            <span className="text-[10px] font-mono tracking-widest uppercase opacity-70">
+            <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-400">
               Sim Gamepad
             </span>
           </div>
 
-          <div className="my-[4vw]">
+          <div className="my-[4vw] relative z-10">
             <h1
-              className="text-[clamp(2.5rem,8vw,9rem)] font-light leading-[0.85] uppercase tracking-tight font-sans"
+              className="text-[clamp(2.5rem,8vw,9rem)] font-light leading-[0.85] uppercase tracking-tight font-sans text-neutral-100"
               style={{ letterSpacing: "-0.04em" }}
             >
               Turn
@@ -32,19 +48,19 @@ export const SimGamepad: React.FC = () => {
               <br />
               Into A
               <br />
-              <span className="font-semibold text-black">Precision</span>
+              <span className="font-bold text-[#FA8453] drop-shadow-[0_0_35px_rgba(250,132,83,0.3)]">Precision</span>
               <br />
               Controller
             </h1>
           </div>
 
-          <hr className="border-none border-t border-white/20 my-4" />
+          <hr className="border-none border-t border-white/10 my-4 relative z-10" />
           
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mt-auto">
-            <p className="max-w-[45ch] text-[clamp(0.95rem,1.8vw,1.5rem)] font-light leading-relaxed opacity-90">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mt-auto relative z-10">
+            <p className="max-w-[45ch] text-[clamp(0.95rem,1.8vw,1.5rem)] font-light leading-relaxed text-neutral-200">
               Low-latency motion steering and custom layouts built for serious simulator gaming. Transforms your smartphone into a zero-latency virtual simulator wheel.
             </p>
-            <p className="max-w-[40ch] text-xs sm:text-sm font-mono opacity-70 leading-relaxed border-l border-white/20 pl-4">
+            <p className="max-w-[40ch] text-xs sm:text-sm font-mono text-neutral-400 leading-relaxed border-l border-white/10 pl-4">
               Transforms your smartphone into a zero-latency virtual simulator wheel and custom touch cockpit for PC games. Connect instantly and start playing.
             </p>
           </div>
