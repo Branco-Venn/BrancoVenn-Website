@@ -167,7 +167,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Text hover effect */}
-      <div className="flex h-[15rem] sm:h-[20rem] md:h-[30rem] -mt-10 sm:-mt-20 md:-mt-52 -mb-10 sm:-mb-20 md:-mb-36 pointer-events-auto z-50 relative">
+      <div className="flex h-[10rem] sm:h-[15rem] md:h-[20rem] pointer-events-auto z-50 relative w-full">
         <TextHoverEffect text="BRANCO VENN" className="z-50" />
       </div>
 

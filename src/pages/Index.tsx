@@ -630,10 +630,10 @@ export const Index: React.FC = () => {
             <span className="text-xs uppercase tracking-widest text-[#FA8453] bg-[#FA8453]/10 px-4 py-1.5 rounded-full font-mono">
               Join Our Network
             </span>
-            <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-light leading-tight uppercase tracking-tight font-sans mt-4">
-              <span className="whitespace-nowrap">Connect with</span> <br />
-              <span className="text-4xl sm:text-6xl lg:text-7xl font-semibold bg-gradient-to-r from-[#FA8453] to-[#F8C9B2] bg-clip-text text-transparent inline-block mt-1 whitespace-nowrap">
-                Branco Venn
+            <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-light leading-tight uppercase tracking-tight font-sans mt-4 flex flex-wrap justify-center gap-x-3 sm:gap-x-4 items-baseline">
+              <span className="whitespace-nowrap">Connect with</span>
+              <span className="text-4xl sm:text-6xl lg:text-7xl font-semibold bg-gradient-to-r from-[#FA8453] to-[#F8C9B2] bg-clip-text text-transparent inline-block whitespace-nowrap">
+                us
               </span>
             </h2>
             <p className="text-neutral-400 text-sm sm:text-base font-light leading-relaxed mt-4">
