@@ -7,7 +7,6 @@ export const Footer: React.FC = () => {
     { label: "products", path: "/product" },
     { label: "Sim Gamepad", path: "/product/sim-gamepad" },
     { label: "mission", path: "/about" },
-    { label: "contact", path: "/contact" },
   ];
 
   return (
@@ -39,9 +38,9 @@ export const Footer: React.FC = () => {
           {/* CTA Button */}
           <Link
             to="/contact"
-            className="bg-white text-black text-xs sm:text-sm font-medium rounded-full px-5 sm:px-6 py-2.5 sm:py-3 hover:bg-neutral-200 transition-colors cursor-pointer"
+            className="border border-white/10 text-neutral-300 hover:text-white hover:border-white/20 text-xs sm:text-sm font-light rounded-full px-5 sm:px-6 py-2.5 sm:py-3 transition-all cursor-pointer"
           >
-            start today
+            contact
           </Link>
         </div>
 

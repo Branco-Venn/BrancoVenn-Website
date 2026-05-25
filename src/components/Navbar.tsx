@@ -11,7 +11,6 @@ export const Navbar: React.FC = () => {
     { label: "products", path: "/product" },
     { label: "Sim Gamepad", path: "/product/sim-gamepad" },
     { label: "mission", path: "/about" },
-    { label: "contact", path: "/contact" },
   ];
 
   return (
@@ -58,9 +57,13 @@ export const Navbar: React.FC = () => {
 
         {/* Right Action Button Pill */}
         <Link to="/contact" className="block">
-          <GlassEffect className="rounded-full px-4 sm:px-6 py-2.5 sm:py-3 border border-white/10 hover:border-orange-500/20 bg-white hover:bg-orange-500/10 transition-all cursor-pointer group text-black hover:text-white">
-            <span className="text-xs sm:text-sm font-medium tracking-tight transition-colors duration-300">
-              start today
+          <GlassEffect className={`rounded-full px-5 py-2.5 sm:py-3 border border-white/10 transition-all cursor-pointer group ${
+            currentPath === "/contact"
+              ? "bg-white/15 border-white/20 text-white font-medium"
+              : "text-neutral-300 hover:text-white hover:border-white/20 font-light"
+          }`}>
+            <span className="text-xs sm:text-sm tracking-tight transition-colors duration-300">
+              contact
             </span>
           </GlassEffect>
         </Link>
