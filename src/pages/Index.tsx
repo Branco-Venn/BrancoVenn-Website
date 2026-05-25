@@ -128,7 +128,7 @@ const socialFrames: Frame[] = [
   },
   {
     id: 9,
-    video: "/asset%20video/dashcam.mov",
+    video: "/asset%20video/dashcam.mp4",
     defaultPos: { x: 8, y: 8, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
@@ -162,7 +162,7 @@ export const Index: React.FC = () => {
           muted
           playsInline
           preload="auto"
-          src="/asset%20video/dashcam.mov"
+          src="/asset%20video/dashcam.mp4"
         />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/40 pointer-events-none" />
