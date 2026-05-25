@@ -29,10 +29,8 @@ export const Index: React.FC = () => {
           muted
           playsInline
           preload="auto"
-        >
-          <source src="/asset video/dashcam.mov" type="video/quicktime" />
-          Your browser does not support the video tag.
-        </video>
+          src="/asset%20video/dashcam.mov"
+        />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
@@ -136,10 +134,8 @@ export const Index: React.FC = () => {
           muted
           playsInline
           preload="auto"
-        >
-          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260421_072418_508a7d2e-396d-4f6f-9d42-ec920fcf7755.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260421_072418_508a7d2e-396d-4f6f-9d42-ec920fcf7755.mp4"
+        />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/60 pointer-events-none" />
 
@@ -318,10 +314,8 @@ export const Index: React.FC = () => {
                   muted
                   playsInline
                   preload="auto"
-                >
-                  <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260421_072701_f6a01abb-eb30-4559-9d6e-774362defbc3.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                  src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260421_072701_f6a01abb-eb30-4559-9d6e-774362defbc3.mp4"
+                />
                 <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-neutral-950 to-transparent" />
               </div>
               {/* Under Video */}

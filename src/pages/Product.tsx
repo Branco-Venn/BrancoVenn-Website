@@ -64,10 +64,8 @@ export const Product: React.FC = () => {
           muted
           playsInline
           preload="auto"
-        >
-          <source src="/asset video/f1.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          src="/asset%20video/f1.mp4"
+        />
         <div className="absolute inset-0 bg-black/65 pointer-events-none" />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-4xl pt-20 select-none">

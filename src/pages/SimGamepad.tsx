@@ -21,10 +21,8 @@ export const SimGamepad: React.FC = () => {
               muted
               playsInline
               preload="auto"
-            >
-              <source src="/asset video/hud.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+              src="/asset%20video/hud.mp4"
+            />
             {/* Visual enhancement layers */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
             <div className="absolute -left-[10%] -top-[10%] w-[55%] h-[55%] rounded-full bg-[#FA8453]/15 blur-[120px] mix-blend-screen" />
