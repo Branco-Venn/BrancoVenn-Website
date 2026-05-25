@@ -5,10 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ['"Futura Md BT Medium"', 'system-ui', 'sans-serif'],
-      },
+    fontFamily: {
+      body: ['Barlow', 'sans-serif'],
+      accent: ['Instrument Serif', 'serif'],
     },
   },
   plugins: [],

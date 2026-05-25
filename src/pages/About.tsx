@@ -1,328 +1,344 @@
-import React, { useState } from "react";
-import { Search, Menu } from "lucide-react";
+import React, { useRef, useState, useEffect } from "react";
+import { useScroll, useTransform, motion } from "framer-motion";
 import { PageTransition } from "@/components/PageTransition";
 
+// Word Component for Rules-of-Hooks-friendly scroll reveal
+const Word: React.FC<{ word: string; progress: any; range: [number, number] }> = ({
+  word,
+  progress,
+  range,
+}) => {
+  const opacity = useTransform(progress, range, [0.15, 1]);
+  return (
+    <motion.span style={{ opacity }} className="inline-block mr-[0.25em] select-none">
+      {word}
+    </motion.span>
+  );
+};
+
+// ScrollRevealText component
+const ScrollRevealText: React.FC<{ text: string }> = ({ text }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 0.85", "start 0.35"],
+  });
+
+  const words = text.split(" ");
+
+  return (
+    <div ref={containerRef} className="max-w-4xl mx-auto text-center py-20 px-4">
+      <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-tight leading-relaxed font-body text-white">
+        {words.map((word, i) => {
+          const start = i / words.length;
+          const end = (i + 1) / words.length;
+          return (
+            <Word
+              key={i}
+              word={word}
+              progress={scrollYProgress}
+              range={[start, end]}
+            />
+          );
+        })}
+      </p>
+    </div>
+  );
+};
+
 export const About: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("Innovation");
-
-  const tabs = [
-    {
-      id: "Innovation",
-      title: "How VR is Transforming Our Digital World",
-      description: "Virtual Reality (VR) is no longer a concept of the future...",
-      date: "08 February 2025",
-      author: "Henry Leonardo",
-      image: "/Mask_group.jpg",
-    },
-    {
-      id: "Technology",
-      title: "The Rise of Spatial Computing in Everyday Life",
-      description: "Spatial computing is bridging the gap...",
-      date: "15 March 2025",
-      author: "Sarah Mitchell",
-      image: "/Mask_group-1.jpg",
-    },
-    {
-      id: "Experience",
-      title: "Designing Immersive Worlds That Feel Real",
-      description: "From haptic feedback to photorealistic rendering...",
-      date: "22 April 2025",
-      author: "James Park",
-      image: "/Mask_group-2.jpg",
-    }
+  // Rotating statements inside Hero overlay
+  const rotatingStatements = [
+    "Seamless systems that simply work.",
+    "Respond instantly. Empower people.",
+    "Frictionless, immediate, immersive.",
   ];
+  const [statementIndex, setStatementIndex] = useState(0);
 
-  const currentTab = tabs.find(t => t.id === activeTab) || tabs[0];
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setStatementIndex((prev) => (prev + 1) % rotatingStatements.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <PageTransition>
-      <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-        {/* SECTION 1: HERO */}
-        <div className="relative w-full min-h-screen bg-[#FBFDFD]">
-          {/* Background Layers */}
-          <div className="absolute inset-0 z-0 bg-[#FBFDFD]" />
+      <div className="w-full min-h-screen bg-black text-white font-body selection:bg-white selection:text-black relative overflow-x-hidden pt-24 pb-12">
+        
+        {/* ─── FULL PAGE STICKY BACKGROUND VIDEO ─── */}
+        <div className="fixed inset-0 z-0 pointer-events-none w-full h-full overflow-hidden bg-black">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover mix-blend-lighten opacity-25"
+            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_132809_d6ea910f-d700-44f7-afea-27d517487177.mp4"
+          />
+          {/* Deep dark gradient overlays to blend the video perfectly */}
+          <div className="absolute inset-0 bg-[#000000]/60 pointer-events-none z-[1]" />
+          <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none z-[2]" />
+          <div className="absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-black via-black/40 to-transparent pointer-events-none z-[2]" />
           
-          <div className="absolute inset-0 z-[1] pointer-events-none">
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline
-              className="sticky top-0 h-screen w-full md:w-[55%] md:ml-auto opacity-30 md:opacity-100 object-cover object-top video-plus-darker"
-              src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131232_feeda0b7-d00d-4bfa-a9d5-5d38648a4214.mp4"
-            />
-          </div>
-
-          {/* Content Layer */}
-          <div className="relative z-10 min-h-screen flex flex-col">
-            {/* Navbar */}
-            <nav className="relative z-10 flex flex-row items-center justify-between px-5 py-4 md:px-12 md:py-6">
-              <div className="flex items-center gap-12">
-                <img src="/image.png" alt="Logo" className="h-7 md:h-8 object-contain" />
-                <div className="hidden md:flex items-center gap-8">
-                  <a href="/" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">Home</a>
-                  <a href="/about" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">About</a>
-                  <a href="/services" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">Services</a>
-                  <a href="/contact" className="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">Contact</a>
-                </div>
-              </div>
-
-              <div className="hidden md:block relative">
-                <input 
-                  type="text" 
-                  placeholder="I am looking for..." 
-                  className="w-72 rounded-full border border-neutral-300 py-2 pl-4 pr-10 text-sm text-neutral-600 outline-none focus:border-neutral-400"
-                />
-                <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-              </div>
-
-              <button 
-                className="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-neutral-300 text-neutral-600"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
-                <Menu className="w-5 h-5" />
-              </button>
-            </nav>
-
-            {/* Mobile Menu Dropdown */}
-            {isMenuOpen && (
-              <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-neutral-200 p-5 z-20 flex flex-col gap-4 shadow-lg">
-                <a href="/" className="text-sm text-neutral-600">Home</a>
-                <a href="/about" className="text-sm text-neutral-600">About</a>
-                <a href="/services" className="text-sm text-neutral-600">Services</a>
-                <a href="/contact" className="text-sm text-neutral-600">Contact</a>
-                <div className="relative mt-2">
-                  <input 
-                    type="text" 
-                    placeholder="Search..." 
-                    className="w-full rounded-full border border-neutral-300 py-2 pl-4 pr-10 text-sm text-neutral-600 outline-none"
-                  />
-                  <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                </div>
-              </div>
-            )}
-
-            {/* HeroSection Content - Mission Text */}
-            <div className="relative z-10 flex-1 flex flex-col px-5 pt-8 pb-32 md:px-12 md:pt-12 md:pb-40">
-              <div className="max-w-2xl w-full">
-                <span className="text-xs font-medium tracking-[0.3em] text-neutral-500 uppercase block mb-6 md:mb-8">About Us</span>
-                
-                <h1 className="text-[3.5rem] md:text-[5rem] lg:text-[6rem] leading-[0.95] font-light tracking-tight text-neutral-900 m-0 mb-8 md:mb-10">
-                  OUR<br />MISSION
-                </h1>
-                
-                <div className="flex flex-wrap gap-3 mb-10">
-                  <span className="px-5 py-2 rounded-full border border-neutral-300 text-sm text-neutral-700 bg-white/50 backdrop-blur-sm">Human-Centered</span>
-                  <span className="px-5 py-2 rounded-full border border-neutral-300 text-sm text-neutral-700 bg-white/50 backdrop-blur-sm">Responsive</span>
-                  <span className="px-5 py-2 rounded-full border border-neutral-300 text-sm text-neutral-700 bg-white/50 backdrop-blur-sm">Seamless</span>
-                </div>
-                
-                <div className="space-y-6 text-sm md:text-base text-neutral-600 leading-relaxed font-light">
-                  <p className="text-neutral-900 text-lg md:text-xl font-normal leading-relaxed">
-                    Our mission is to redefine how people interact with technology by creating software utilities that are seamless, responsive, and deeply human-centered.
-                  </p>
-                  <p>
-                    We believe software should adapt to people — not the other way around.
-                  </p>
-                  <p>
-                    Too many digital tools are built with complexity as a default. Features become clutter. Interfaces become overwhelming. Users are expected to learn systems instead of systems learning users. Branco Venn challenges that mindset.
-                  </p>
-                  <p>
-                    We design products that remove barriers between intention and execution.
-                  </p>
-                  <p>
-                    Whether someone is gaming, controlling a simulation, creating content, or interacting with connected systems, our software is engineered to feel immediate and natural. We focus on reducing latency, simplifying workflows, and creating immersive interactions that make technology feel like an extension of the user.
-                  </p>
-                  <p>
-                    Our mission goes beyond convenience. We want to democratize powerful digital experiences — making advanced interaction systems accessible to anyone with a smartphone, a computer, and an idea. We believe innovation should not be restricted by expensive hardware or inaccessible ecosystems. Through intelligent software solutions, we aim to unlock new possibilities from devices people already own.
-                  </p>
-                  <p className="text-neutral-900 font-medium">
-                    Sim Gamepad represents that philosophy.
-                  </p>
-                  <p>
-                    It transforms smartphones into precision gaming and simulation controllers, bridging motion, touch, sensors, and real-time responsiveness into a unified experience. It reflects what Branco Venn stands for: software that expands human capability through intelligent design.
-                  </p>
-                  <p>
-                    But this is only the beginning. Branco Venn is building toward a future where utility software becomes more adaptive, more immersive, and more connected across every digital environment.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Diagonal Section Divider */}
-          <div className="absolute bottom-0 left-0 w-full z-[3]">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-[60px] md:h-[120px] block">
-              <polygon points="0,0 0,120 1440,120 1440,80 920,80 680,0" fill="#0F0F0F" />
-            </svg>
-          </div>
+          {/* Glowing ambient background orbs */}
+          <div
+            className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full pointer-events-none z-[1]"
+            style={{
+              background: "radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 70%)",
+              filter: "blur(80px)",
+            }}
+          />
         </div>
 
-        {/* SECTION 2: MANIFESTO TIMELINE */}
-        <section className="relative bg-[#0F0F0F] w-full py-32 overflow-hidden">
-          {/* Soft background blob */}
-          <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
-          
-          <div className="max-w-[1000px] mx-auto px-5 sm:px-10 relative">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white leading-[1.05] mb-6 uppercase">
-                Our Manifesto
+        {/* ─── HERO INTRO SECTION ─── */}
+        <section className="relative z-10 w-full max-w-5xl mx-auto px-6 pt-16 md:pt-28 pb-12 text-center select-none">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="space-y-6"
+          >
+            <span className="text-[10px] font-mono tracking-[0.6em] text-neutral-400 uppercase block">
+              About Branco Venn
+            </span>
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-[-2px] leading-none text-white">
+              Invisible <span className="font-accent italic font-normal text-white">Technology</span>
+            </h1>
+            
+            {/* Rotating interactive statement */}
+            <div className="h-10 relative flex justify-center items-center">
+              {rotatingStatements.map((text, idx) => (
+                <motion.p
+                  key={idx}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{
+                    opacity: statementIndex === idx ? 1 : 0,
+                    y: statementIndex === idx ? 0 : -10,
+                  }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute text-sm md:text-base text-neutral-400 font-light"
+                >
+                  {text}
+                </motion.p>
+              ))}
+            </div>
+            
+            <div className="w-[100px] h-[1.5px] bg-white/20 mx-auto rounded-full mt-8" />
+          </motion.div>
+        </section>
+
+        {/* ─── SECTION 1: OUR MISSION ─── */}
+        <section className="relative z-10 w-full bg-transparent py-16 px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <span className="text-[10px] font-mono tracking-[0.4em] text-neutral-500 uppercase block mb-3">
+                01 // Mission
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-medium tracking-[-1px] text-white">
+                OUR MISSION
               </h2>
-              <p className="text-neutral-400 max-w-2xl mx-auto text-lg font-light">
-                We believe utility software deserves the same level of innovation as entertainment platforms and flagship consumer products.
+            </div>
+            
+            {/* High-fidelity Scroll Reveal Text animation */}
+            <ScrollRevealText
+              text="At Branco Venn, our mission is to redefine how people interact with technology through software that feels seamless, responsive, and natural. We believe technology should adapt to people — not the other way around. Our products are designed to remove friction between intention and action, creating experiences that feel immediate, immersive, and intuitive."
+            />
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="max-w-2xl mx-auto mt-6"
+            >
+              {/* Premium Quote Card */}
+              <div className="liquid-glass rounded-2xl p-8 border border-white/5 space-y-4">
+                <p className="text-neutral-400 font-light text-base leading-relaxed">
+                  From gaming and simulation to future utility platforms, we focus on building software that transforms everyday devices into powerful interaction systems.
+                </p>
+                <p className="text-neutral-400 font-light text-base leading-relaxed">
+                  With products like <span className="text-white font-medium">Sim Gamepad</span>, we aim to make advanced digital experiences accessible to everyone through intelligent software, not expensive hardware.
+                </p>
+                <p className="text-white font-medium text-base pt-2">
+                  We are building a future where technology feels invisible — fluid systems that simply work, respond instantly, and empower people to do more.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ─── SECTION 2: OUR MANIFESTO ─── */}
+        <section className="relative z-10 w-full bg-transparent py-24 px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <span className="text-[10px] font-mono tracking-[0.4em] text-neutral-500 uppercase block mb-3">
+                02 // Pillars
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-medium tracking-[-1px] text-white">
+                OUR MANIFESTO
+              </h2>
+              <p className="text-neutral-400 text-lg max-w-xl mx-auto font-light mt-4 leading-relaxed">
+                We believe utility software should be as innovative, immersive, and refined as the world’s best consumer technology.
               </p>
             </div>
 
-            <div className="relative w-full">
-              {/* Vertical center line */}
-              <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px bg-white/10" />
-              
-              <div className="space-y-12 md:space-y-24 relative z-10">
-                {[
-                  {
-                    title: "The Standard",
-                    text: "We believe responsiveness matters. Milliseconds matter. Design matters. Experience matters."
-                  },
-                  {
-                    title: "Control",
-                    text: "We believe people should feel in control of technology — not constrained by it. The future of interaction is not hidden behind expensive hardware alone. It lives in intelligent software capable of transforming the devices already in our hands into tools with entirely new purposes."
-                  },
-                  {
-                    title: "Transformation",
-                    text: "A phone can become a steering wheel. A screen can become a cockpit. Motion can become control. Software can become instinct."
-                  },
-                  {
-                    title: "Action & Response",
-                    text: "At Branco Venn, we build products that remove the distance between action and response. We are obsessed with fluidity, precision, immersion, and accessibility because those details define whether technology feels mechanical or magical."
-                  },
-                  {
-                    title: "Focused Tools",
-                    text: "We do not create bloated systems overloaded with unnecessary complexity. We create focused tools with purpose. Every feature must earn its place. Every interaction must feel intentional. Every millisecond of delay is a problem worth solving."
-                  },
-                  {
-                    title: "Empowerment",
-                    text: "We believe software utilities should empower creators, gamers, professionals, and everyday users alike — giving them faster, smarter, and more immersive ways to interact with digital systems."
-                  },
-                  {
-                    title: "Expect More",
-                    text: "Our products are built for people who expect more from technology: More responsiveness. More flexibility. More immersion. More freedom."
-                  },
-                  {
-                    title: "Engineering Excellence",
-                    text: "We are driven by experimentation and engineering excellence. We continuously push the limits of wireless communication, real-time interaction, motion systems, interface design, and connected experiences to create products that feel ahead of their time."
-                  },
-                  {
-                    title: "Next Generation",
-                    text: "Branco Venn is not just building applications. We are building interaction systems for the next generation of computing. The line between physical and digital continues to disappear. Our role is to make that transition feel natural."
-                  },
-                  {
-                    title: "The Future We See",
-                    text: "We envision a future where software utilities become intelligent layers between humans and machines — adaptive systems capable of understanding movement, context, intent, and responsiveness in real time."
-                  },
-                  {
-                    title: "A Future Where",
-                    text: "Devices communicate seamlessly. Interfaces react instantly. Control feels natural. Hardware limitations disappear through software innovation."
-                  },
-                  {
-                    title: "Building That Future",
-                    text: "Branco Venn exists to build that future. From gaming and simulation tools to next-generation utility platforms, our work is centered around creating software that enhances capability without adding complexity. We are building technology that empowers people to do more with what they already have."
-                  },
-                  {
-                    title: "The Vision",
-                    text: "Not louder technology. Smarter technology. Not more complicated systems. More human experiences. That is the vision behind Branco Venn."
-                  }
-                ].map((item, index) => {
-                  const isLeft = index % 2 === 0;
-                  return (
-                    <div
-                      key={index}
-                      className={`flex flex-col md:flex-row items-start md:items-center w-full relative ${
-                        isLeft ? "md:justify-start" : "md:justify-end"
-                      } pl-12 md:pl-0`}
-                    >
-                      {/* Center dot */}
-                      <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-6 md:top-1/2 md:-translate-y-1/2 w-3 h-3 rounded-full bg-[#FA8453] shadow-md shadow-[#FA8453]/50 z-20" />
-                      
-                      {/* Content Box */}
-                      <div
-                        className={`w-full md:w-[45%] bg-neutral-950/40 backdrop-blur border border-white/5 rounded-2xl p-6 sm:p-8 hover:border-white/10 transition-colors duration-300 ${
-                          isLeft ? "md:text-right" : "md:text-left"
-                        }`}
-                      >
-                        <span className="inline-block bg-white/5 rounded-full px-3 py-1 text-[10px] sm:text-xs text-white/40 mb-3 font-mono">
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                        <h3 className="text-lg sm:text-xl font-light text-white mb-3 uppercase tracking-wide">
-                          {item.title}
-                        </h3>
-                        <p className="text-sm md:text-base text-neutral-400 font-light leading-relaxed">
-                          {item.text}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 3: INSIGHTS */}
-        <section className="w-full bg-[#0F0F0F] px-8 md:px-16 lg:px-20 xl:px-28 pt-24 pb-32">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-light italic tracking-tight text-white leading-[1.05] max-w-5xl mb-20 md:mb-28">
-            LIMITLESS POSSIBILITIES WITH NEOVISION
-          </h2>
-
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-20">
-            {/* Tab Buttons */}
-            <div className="flex flex-row lg:flex-col gap-6 overflow-x-auto lg:overflow-visible lg:w-[160px] xl:w-[200px] shrink-0 border-b lg:border-b-0 border-neutral-800 pb-4 lg:pb-0">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`text-lg md:text-xl text-left whitespace-nowrap lg:whitespace-normal transition-colors ${
-                    activeTab === tab.id 
-                      ? "text-white font-medium" 
-                      : "text-neutral-500 hover:text-neutral-300"
-                  }`}
+            {/* Glassmorphic grid showing: Responsiveness, Design, Experience */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+              {[
+                { title: "Responsiveness", desc: "Speed matters. Milliseconds shape how systems respond to human impulse." },
+                { title: "Design", desc: "Aesthetics and layout drive visual satisfaction. Clarity yields precision." },
+                { title: "Experience", desc: "Intuitive systems align technology with human instinct naturally." },
+              ].map((p, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: i * 0.1 }}
+                  className="liquid-glass rounded-2xl p-8 border border-white/5 hover:bg-white/[0.02] hover:border-white/10 transition-all duration-300"
                 >
-                  {tab.id}
-                </button>
+                  <span className="text-xs font-mono text-neutral-500 block mb-4">
+                    02.{i + 1}
+                  </span>
+                  <h3 className="text-xl font-medium text-white mb-2">
+                    {p.title} <span className="font-accent italic font-normal text-white">matters.</span>
+                  </h3>
+                  <p className="text-sm text-neutral-400 font-light leading-relaxed">
+                    {p.desc}
+                  </p>
+                </motion.div>
               ))}
             </div>
 
-            {/* Tab Content */}
-            <div className="flex-1 flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
-              <div className="w-full lg:w-[420px] xl:w-[480px] aspect-[4/3] rounded-2xl overflow-hidden shrink-0">
-                <img 
-                  src={currentTab.image} 
-                  alt={currentTab.title} 
-                  className="w-full h-full object-cover transition-opacity duration-500"
-                />
-              </div>
-              
-              <div className="flex flex-col justify-between py-2 lg:py-6 max-w-lg w-full h-full min-h-[250px]">
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-light text-white leading-snug max-w-sm mb-6">
-                    {currentTab.title}
-                  </h3>
-                  <p className="text-sm md:text-base text-neutral-400 leading-relaxed max-w-sm mb-8">
-                    {currentTab.description}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="space-y-6 flex flex-col justify-center"
+              >
+                <p className="text-neutral-400 font-light text-base leading-relaxed">
+                  At Branco Venn, we create focused software that removes the distance between action and response. Every feature must have purpose. Every interaction must feel intentional.
+                </p>
+                <p className="text-neutral-400 font-light text-base leading-relaxed">
+                  Our obsession with fluidity, low latency, immersion, and accessibility drives everything we create.
+                </p>
+                <p className="text-white font-medium text-lg pt-2 leading-relaxed">
+                  We are not just building applications.<br />
+                  We are building the future of human-machine interaction.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="liquid-glass-strong rounded-2xl p-8 border border-white/10 space-y-6"
+              >
+                <span className="text-[10px] font-mono tracking-widest text-neutral-400 block uppercase">
+                  TRANSFORMATION ENGINE
+                </span>
+                <p className="text-white font-light text-sm">
+                  We build tools that turn devices into experiences:
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    "A phone can become a controller",
+                    "Motion can become precision",
+                    "Software can become instinct",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-center gap-3.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" />
+                      <span className="text-sm text-neutral-300 font-light">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── SECTION 3: THE FUTURE WE SEE ─── */}
+        <section className="relative z-10 w-full bg-transparent py-20 px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <span className="text-[10px] font-mono tracking-[0.4em] text-neutral-500 uppercase block mb-3">
+                03 // Vision
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-medium tracking-[-1px] text-white">
+                THE FUTURE WE SEE
+              </h2>
+            </div>
+
+            <div className="space-y-12">
+              <ScrollRevealText
+                text="We envision a future where software becomes an intelligent bridge between humans and machines — adaptive, immersive, and effortless."
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                {/* Left col: Bullet points */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="liquid-glass rounded-2xl p-8 border border-white/5 space-y-6"
+                >
+                  <p className="text-white text-sm font-medium tracking-wide uppercase font-mono">
+                    A future where:
                   </p>
-                  <a href="#" className="text-sm text-white font-medium underline underline-offset-4 hover:text-neutral-300 transition-colors">
-                    Learn More
-                  </a>
-                </div>
-                
-                <div className="mt-12 pt-6 border-t border-neutral-800 flex justify-between items-center text-xs md:text-sm text-neutral-500 w-full">
-                  <span>{currentTab.date}</span>
-                  <span>{currentTab.author}</span>
-                </div>
+                  <ul className="space-y-4">
+                    {[
+                      "Devices connect seamlessly",
+                      "Interfaces react instantly",
+                      "Technology feels natural",
+                      "Software removes hardware limitations",
+                    ].map((bullet, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0 mt-2" />
+                        <span className="text-neutral-300 font-light text-sm">{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-white font-medium text-base pt-2">
+                    Branco Venn exists to build that future.
+                  </p>
+                </motion.div>
+
+                {/* Right col: Smarter / Human Contrast */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.1 }}
+                  className="flex flex-col justify-between gap-6"
+                >
+                  <div className="liquid-glass rounded-2xl p-6 border border-white/5 flex-1 flex flex-col justify-center text-center">
+                    <span className="text-[10px] font-mono text-neutral-500 line-through mb-1.5">
+                      Not louder technology.
+                    </span>
+                    <span className="text-white text-lg font-medium">
+                      Smarter technology.
+                    </span>
+                  </div>
+
+                  <div className="liquid-glass rounded-2xl p-6 border border-white/5 flex-1 flex flex-col justify-center text-center">
+                    <span className="text-[10px] font-mono text-neutral-500 line-through mb-1.5">
+                      Not more complexity.
+                    </span>
+                    <span className="text-white text-lg font-medium">
+                      More human experiences.
+                    </span>
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
         </section>
+
       </div>
     </PageTransition>
   );
