@@ -299,7 +299,24 @@ export const SimGamepad: React.FC = () => {
           aria-label="Ready to begin" 
           style={{ backgroundColor: '#000', color: '#fff' }}
         >
-          <div className="w-full flex items-center justify-between border-b border-white/10 pb-4">
+          {/* Background Video overlay */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+            <video
+              className="absolute inset-0 w-full h-full object-cover opacity-35 transition-opacity duration-1000"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              src="/asset%20video/getready.mp4"
+            />
+            {/* Visual enhancement layers */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+            <div className="absolute -left-[10%] -top-[10%] w-[55%] h-[55%] rounded-full bg-orange-500/10 blur-[120px] mix-blend-screen animate-pulse" />
+            <div className="absolute -right-[15%] -bottom-[15%] w-[65%] h-[65%] rounded-full bg-orange-500/5 blur-[160px] mix-blend-screen" />
+          </div>
+
+          <div className="w-full flex items-center justify-between border-b border-white/10 pb-4 relative z-10">
             <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] font-mono text-orange-500">
               05 — Ready to begin
             </p>
@@ -308,7 +325,7 @@ export const SimGamepad: React.FC = () => {
             </span>
           </div>
 
-          <div className="my-[4vw]">
+          <div className="my-[4vw] relative z-10">
             <h2
               className="text-[clamp(2.5rem,8vw,8rem)] font-light leading-[0.85] uppercase tracking-tight font-sans text-neutral-100"
               style={{ letterSpacing: "-0.04em" }}
@@ -323,10 +340,10 @@ export const SimGamepad: React.FC = () => {
             </h2>
           </div>
 
-          <hr className="border-none border-t border-white/10 my-4" />
+          <hr className="border-none border-t border-white/10 my-4 relative z-10" />
 
           {/* Interactive CTAs */}
-          <div className="flex flex-wrap items-center gap-4 py-4 select-none">
+          <div className="flex flex-wrap items-center gap-4 py-4 select-none relative z-10">
             <a 
               href="https://play.google.com" 
               target="_blank" 
@@ -351,9 +368,9 @@ export const SimGamepad: React.FC = () => {
             </a>
           </div>
 
-          <hr className="border-none border-t border-white/10 my-4" />
+          <hr className="border-none border-t border-white/10 my-4 relative z-10" />
 
-          <p className="mt-auto max-w-[50ch] text-[clamp(0.95rem,1.8vw,1.4rem)] font-light leading-relaxed text-neutral-400">
+          <p className="mt-auto max-w-[50ch] text-[clamp(0.95rem,1.8vw,1.4rem)] font-light leading-relaxed text-neutral-400 relative z-10">
             Take control of your virtual simulator journey. Set up your mobile touch controller dashboard in seconds and start playing PC games natively.
           </p>
         </FlowSection>
