@@ -193,7 +193,7 @@ export const Index: React.FC = () => {
                   <svg className="w-3.5 h-3.5 fill-current text-white/70" viewBox="0 0 24 24">
                     <path d="M0 3.449L9.75 2.1v9.451H0V3.449zM0 12.45h9.75v9.451L0 20.551V12.45zM11.25 1.899L24 0v11.55H11.25V1.899zM11.25 12.45H24v11.55l-12.75-1.9V12.45z" />
                   </svg>
-                  <span className="font-light">Windows</span>
+                  <span className="font-light">Download Desktop</span>
                 </GlassButton>
               </a>
 
@@ -203,52 +203,13 @@ export const Index: React.FC = () => {
                   glassColor="rgba(255, 255, 255, 0.05)"
                   className="hover:scale-105 transition-transform"
                 >
-                  <svg className="w-3.5 h-3.5 fill-current text-white/70" viewBox="0 0 24 24">
-                    <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.54 9.103 1.51 12.06 1.005 1.45 2.187 3.07 3.766 3.01 1.524-.06 2.098-.98 3.938-.98 1.829 0 2.365.98 3.96.948 1.623-.027 2.666-1.46 3.66-2.898 1.155-1.679 1.625-3.31 1.652-3.4-.06-.027-3.178-1.217-3.21-4.823-.026-3.02 2.478-4.47 2.59-4.54-1.41-2.074-3.597-2.316-4.37-2.37-1.947-.162-3.8.989-4.785.989zM15.983 3.863c.815-.99 1.366-2.37 1.213-3.746-1.183.05-2.616.79-3.461 1.777-.75.864-1.408 2.27-1.229 3.627 1.31.1 2.66-.667 3.477-1.658z" />
+                  <svg className="w-3.5 h-3.5 fill-none stroke-current stroke-[2] text-white/70" viewBox="0 0 24 24">
+                    <rect x="6" y="2" width="12" height="20" rx="2" ry="2" />
+                    <path d="M12 18h.01" />
                   </svg>
-                  <span className="font-light">macOS</span>
+                  <span className="font-light">Get Mobile App</span>
                 </GlassButton>
               </a>
-            </div>
-          </div>
-
-          {/* Stat Blocks */}
-          {/* Bottom-left */}
-          <div className="absolute left-4 sm:left-6 md:left-10 bottom-[8%] sm:bottom-[10%] flex items-center gap-4">
-            <div className="flex flex-col">
-              <span className="text-2xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white">
-                +2.7b
-              </span>
-              <span className="text-[10px] sm:text-xs md:text-sm text-white/70 font-light">
-                mb info was concealed
-              </span>
-            </div>
-            <div className="hidden md:block h-px w-24 bg-white/40 -rotate-[20deg]" />
-          </div>
-
-          {/* Top-right */}
-          <div className="absolute right-4 sm:right-6 md:right-10 top-[18%] sm:top-[20%] flex items-center gap-4">
-            <div className="hidden md:block h-px w-24 bg-white/40 rotate-[20deg]" />
-            <div className="flex flex-col text-right">
-              <span className="text-2xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white">
-                +90k
-              </span>
-              <span className="text-[10px] sm:text-xs md:text-sm text-white/70 font-light">
-                ventures run
-              </span>
-            </div>
-          </div>
-
-          {/* Bottom-right */}
-          <div className="absolute right-4 sm:right-6 md:right-10 bottom-[8%] sm:bottom-[10%] flex items-center gap-4">
-            <div className="hidden md:block h-px w-24 bg-white/40 -rotate-[20deg]" />
-            <div className="flex flex-col text-right">
-              <span className="text-2xl sm:text-4xl md:text-5xl font-medium tracking-tight text-white">
-                +450k
-              </span>
-              <span className="text-[10px] sm:text-xs md:text-sm text-white/70 font-light">
-                transfers
-              </span>
             </div>
           </div>
         </div>
