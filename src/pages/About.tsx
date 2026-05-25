@@ -1,39 +1,9 @@
 import React, { useState } from "react";
-import { Search, Menu, Link as LucideLink, Play } from "lucide-react";
+import { Search, Menu, Link as LucideLink } from "lucide-react";
 import { PageTransition } from "@/components/PageTransition";
 
 export const About: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("Innovation");
-
-  const tabs = [
-    {
-      id: "Innovation",
-      title: "How VR is Transforming Our Digital World",
-      description: "Virtual Reality (VR) is no longer a concept of the future...",
-      date: "08 February 2025",
-      author: "Henry Leonardo",
-      image: "/Mask_group.jpg",
-    },
-    {
-      id: "Technology",
-      title: "The Rise of Spatial Computing in Everyday Life",
-      description: "Spatial computing is bridging the gap...",
-      date: "15 March 2025",
-      author: "Sarah Mitchell",
-      image: "/Mask_group-1.jpg",
-    },
-    {
-      id: "Experience",
-      title: "Designing Immersive Worlds That Feel Real",
-      description: "From haptic feedback to photorealistic rendering...",
-      date: "22 April 2025",
-      author: "James Park",
-      image: "/Mask_group-2.jpg",
-    }
-  ];
-
-  const currentTab = tabs.find(t => t.id === activeTab) || tabs[0];
 
   return (
     <PageTransition>
@@ -164,11 +134,11 @@ export const About: React.FC = () => {
           </div>
         </div>
 
-        {/* SECTION 2: ABOUT */}
+        {/* SECTION 2: OUR MISSION */}
         <section className="w-full bg-[#0F0F0F]">
-          <div className="flex flex-col lg:flex-row min-h-[600px] lg:min-h-[700px]">
+          <div className="flex flex-col lg:flex-row relative">
             {/* Left Video Column */}
-            <div className="w-full lg:w-1/2 h-[400px] lg:h-auto relative">
+            <div className="w-full lg:w-1/2 h-[400px] lg:h-screen lg:sticky lg:top-0 relative">
               <video 
                 autoPlay 
                 loop 
@@ -180,92 +150,168 @@ export const About: React.FC = () => {
             </div>
             
             {/* Right Content Column */}
-            <div className="w-full lg:w-1/2 flex items-center px-8 py-16 md:px-16 lg:px-20 xl:px-28">
-              <div className="max-w-lg w-full">
+            <div className="w-full lg:w-1/2 flex flex-col px-8 py-16 md:px-16 lg:px-20 xl:px-28 lg:min-h-[150vh]">
+              <div className="max-w-xl w-full">
                 <span className="text-xs font-medium tracking-[0.3em] text-neutral-500 uppercase block mb-8 md:mb-10">About Us</span>
                 
                 <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-white leading-[1.05] mb-10 md:mb-12">
-                  THE DIGITAL<br />FRONTIER
+                  OUR<br />MISSION
                 </h2>
                 
-                <div className="flex flex-wrap gap-3 mb-8">
-                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300 hover:border-neutral-500 transition-colors cursor-default">Digital</span>
-                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300 hover:border-neutral-500 transition-colors cursor-default">Reality</span>
-                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300 hover:border-neutral-500 transition-colors cursor-default">Next</span>
+                <div className="flex flex-wrap gap-3 mb-10">
+                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300">Human-Centered</span>
+                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300">Responsive</span>
+                  <span className="px-5 py-2 rounded-full border border-neutral-700 text-sm text-neutral-300">Seamless</span>
                 </div>
                 
-                <p className="text-sm md:text-base text-neutral-400 leading-relaxed max-w-md mb-10">
-                  Step into The Digital Frontier, where the boundaries between reality and virtual innovation disappear. This is the next era of immersive technology.
-                </p>
-                
-                <div className="flex items-center gap-6">
-                  <button className="bg-neutral-800 text-white text-sm font-medium rounded px-7 py-3.5 hover:bg-neutral-700 transition-colors">
-                    Learn More
-                  </button>
-                  <div className="flex items-center gap-3 cursor-pointer group">
-                    <div className="w-10 h-10 rounded-full border border-neutral-700 flex items-center justify-center group-hover:border-neutral-500 transition-colors">
-                      <Play className="w-3.5 h-3.5 text-white fill-current ml-0.5" />
-                    </div>
-                    <span className="text-sm font-medium text-white group-hover:text-neutral-300 transition-colors">Watch a Video</span>
-                  </div>
+                <div className="space-y-6 text-sm md:text-base text-neutral-400 leading-relaxed font-light">
+                  <p className="text-white text-lg md:text-xl font-normal leading-relaxed">
+                    Our mission is to redefine how people interact with technology by creating software utilities that are seamless, responsive, and deeply human-centered.
+                  </p>
+                  <p>
+                    We believe software should adapt to people — not the other way around.
+                  </p>
+                  <p>
+                    Too many digital tools are built with complexity as a default. Features become clutter. Interfaces become overwhelming. Users are expected to learn systems instead of systems learning users. Branco Venn challenges that mindset.
+                  </p>
+                  <p>
+                    We design products that remove barriers between intention and execution.
+                  </p>
+                  <p>
+                    Whether someone is gaming, controlling a simulation, creating content, or interacting with connected systems, our software is engineered to feel immediate and natural. We focus on reducing latency, simplifying workflows, and creating immersive interactions that make technology feel like an extension of the user.
+                  </p>
+                  <p>
+                    Our mission goes beyond convenience. We want to democratize powerful digital experiences — making advanced interaction systems accessible to anyone with a smartphone, a computer, and an idea. We believe innovation should not be restricted by expensive hardware or inaccessible ecosystems. Through intelligent software solutions, we aim to unlock new possibilities from devices people already own.
+                  </p>
+                  <p className="text-white">
+                    Sim Gamepad represents that philosophy.
+                  </p>
+                  <p>
+                    It transforms smartphones into precision gaming and simulation controllers, bridging motion, touch, sensors, and real-time responsiveness into a unified experience. It reflects what Branco Venn stands for: software that expands human capability through intelligent design.
+                  </p>
+                  <p>
+                    But this is only the beginning. Branco Venn is building toward a future where utility software becomes more adaptive, more immersive, and more connected across every digital environment.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 3: INSIGHTS */}
-        <section className="w-full bg-[#0F0F0F] px-8 md:px-16 lg:px-20 xl:px-28 pt-24 pb-32">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-light italic tracking-tight text-white leading-[1.05] max-w-5xl mb-20 md:mb-28">
-            LIMITLESS POSSIBILITIES WITH NEOVISION
+        {/* SECTION 3: OUR MANIFESTO */}
+        <section className="w-full bg-[#0F0F0F] px-8 md:px-16 lg:px-20 xl:px-28 pt-24 pb-20 border-t border-white/5">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-light italic tracking-tight text-white leading-[1.05] max-w-5xl mb-16 md:mb-24">
+            OUR MANIFESTO
           </h2>
 
-          <div className="flex flex-col lg:flex-row gap-16 lg:gap-20">
-            {/* Tab Buttons */}
-            <div className="flex flex-row lg:flex-col gap-6 overflow-x-auto lg:overflow-visible lg:w-[160px] xl:w-[200px] shrink-0 border-b lg:border-b-0 border-neutral-800 pb-4 lg:pb-0">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`text-lg md:text-xl text-left whitespace-nowrap lg:whitespace-normal transition-colors ${
-                    activeTab === tab.id 
-                      ? "text-white font-medium" 
-                      : "text-neutral-500 hover:text-neutral-300"
-                  }`}
-                >
-                  {tab.id}
-                </button>
-              ))}
+          <div className="max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 text-sm md:text-base text-neutral-400 font-light leading-relaxed">
+            <div className="space-y-6">
+              <p className="text-white text-lg">
+                We believe utility software deserves the same level of innovation as entertainment platforms and flagship consumer products.
+              </p>
+              <div className="pl-4 border-l border-white/20 py-2 space-y-1">
+                <p>We believe responsiveness matters.</p>
+                <p>Milliseconds matter.</p>
+                <p>Design matters.</p>
+                <p>Experience matters.</p>
+              </div>
+              <p>
+                We believe people should feel in control of technology — not constrained by it.
+              </p>
+              <p>
+                The future of interaction is not hidden behind expensive hardware alone. It lives in intelligent software capable of transforming the devices already in our hands into tools with entirely new purposes.
+              </p>
+              <ul className="space-y-2 text-white/80 list-none pl-0">
+                <li>&bull; A phone can become a steering wheel.</li>
+                <li>&bull; A screen can become a cockpit.</li>
+                <li>&bull; Motion can become control.</li>
+                <li>&bull; Software can become instinct.</li>
+              </ul>
+              <p>
+                At Branco Venn, we build products that remove the distance between action and response. We are obsessed with fluidity, precision, immersion, and accessibility because those details define whether technology feels mechanical or magical.
+              </p>
             </div>
+            
+            <div className="space-y-6">
+              <p>
+                We do not create bloated systems overloaded with unnecessary complexity. We create focused tools with purpose.
+              </p>
+              <div className="pl-4 border-l border-white/20 py-2 space-y-1">
+                <p>Every feature must earn its place.</p>
+                <p>Every interaction must feel intentional.</p>
+                <p>Every millisecond of delay is a problem worth solving.</p>
+              </div>
+              <p>
+                We believe software utilities should empower creators, gamers, professionals, and everyday users alike — giving them faster, smarter, and more immersive ways to interact with digital systems.
+              </p>
+              <p className="text-white">
+                Our products are built for people who expect more from technology:
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <span className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm">More responsiveness</span>
+                <span className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm">More flexibility</span>
+                <span className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm">More immersion</span>
+                <span className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm">More freedom</span>
+              </div>
+              <p>
+                We are driven by experimentation and engineering excellence. We continuously push the limits of wireless communication, real-time interaction, motion systems, interface design, and connected experiences to create products that feel ahead of their time.
+              </p>
+              <p className="text-white font-medium">
+                Branco Venn is not just building applications. We are building interaction systems for the next generation of computing.
+              </p>
+              <p>
+                The line between physical and digital continues to disappear. Our role is to make that transition feel natural.
+              </p>
+            </div>
+          </div>
+        </section>
 
-            {/* Tab Content */}
-            <div className="flex-1 flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
-              <div className="w-full lg:w-[420px] xl:w-[480px] aspect-[4/3] rounded-2xl overflow-hidden shrink-0">
-                <img 
-                  src={currentTab.image} 
-                  alt={currentTab.title} 
-                  className="w-full h-full object-cover transition-opacity duration-500"
-                />
-              </div>
+        {/* SECTION 4: THE FUTURE WE SEE */}
+        <section className="w-full bg-[#0F0F0F] px-8 md:px-16 lg:px-20 xl:px-28 py-24 border-t border-white/5">
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="text-xs font-medium tracking-[0.3em] text-neutral-500 uppercase block mb-6">The Vision</span>
+            <h2 className="text-3xl md:text-5xl font-light tracking-tight text-white leading-tight mb-12">
+              THE FUTURE WE SEE
+            </h2>
+            
+            <div className="space-y-8 text-sm md:text-base text-neutral-400 font-light leading-relaxed max-w-2xl mx-auto">
+              <p className="text-lg text-white">
+                We envision a future where software utilities become intelligent layers between humans and machines — adaptive systems capable of understanding movement, context, intent, and responsiveness in real time.
+              </p>
               
-              <div className="flex flex-col justify-between py-2 lg:py-6 max-w-lg w-full h-full min-h-[250px]">
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-light text-white leading-snug max-w-sm mb-6">
-                    {currentTab.title}
-                  </h3>
-                  <p className="text-sm md:text-base text-neutral-400 leading-relaxed max-w-sm mb-8">
-                    {currentTab.description}
-                  </p>
-                  <a href="#" className="text-sm text-white font-medium underline underline-offset-4 hover:text-neutral-300 transition-colors">
-                    Learn More
-                  </a>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 my-8 text-left">
+                <p className="text-white mb-4">A future where:</p>
+                <ul className="space-y-4">
+                  <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-white/50" /> Devices communicate seamlessly</li>
+                  <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-white/50" /> Interfaces react instantly</li>
+                  <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-white/50" /> Control feels natural</li>
+                  <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 rounded-full bg-white/50" /> Hardware limitations disappear through software innovation</li>
+                </ul>
+              </div>
+
+              <p>
+                Branco Venn exists to build that future. From gaming and simulation tools to next-generation utility platforms, our work is centered around creating software that enhances capability without adding complexity.
+              </p>
+              
+              <p>
+                We are building technology that empowers people to do more with what they already have.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 py-6 text-white text-lg">
+                <div className="text-center">
+                  <span className="block text-neutral-500 text-sm line-through decoration-white/30 mb-1">Not louder technology.</span>
+                  Smarter technology.
                 </div>
-                
-                <div className="mt-12 pt-6 border-t border-neutral-800 flex justify-between items-center text-xs md:text-sm text-neutral-500 w-full">
-                  <span>{currentTab.date}</span>
-                  <span>{currentTab.author}</span>
+                <div className="w-px h-8 bg-white/10 hidden sm:block" />
+                <div className="text-center">
+                  <span className="block text-neutral-500 text-sm line-through decoration-white/30 mb-1">Not more complicated systems.</span>
+                  More human experiences.
                 </div>
               </div>
+
+              <p className="text-xl font-medium text-white pt-8">
+                That is the vision behind Branco Venn.
+              </p>
             </div>
           </div>
         </section>
