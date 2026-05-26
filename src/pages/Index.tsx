@@ -605,7 +605,7 @@ export const Index: React.FC = () => {
                   className="hover:scale-105 transition-transform"
                 >
                   <svg className="w-5 h-5 fill-current text-white/90" viewBox="0 0 24 24">
-                    <path d="M5 3c-.28 0-.5.22-.5.5v17c0 .28.22.5.5.5h14c.28 0 .5-.22.5-.5v-17c0-.28-.22-.5-.5-.5H5zm1 2h12v12H6V5zm1.5 13.5c-.28 0-.5.22-.5.5s.22.5.5.5h9c.28 0 .5-.22.5-.5s-.22-.5-.5-.5h-9z" />
+                    <path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L13.78 4.7l-1.07 1.063zm-1.07 2.013l1.07 1.063 3.013-3.003-3.259-3.238z" />
                   </svg>
                   <div className="flex flex-col items-start leading-none text-left">
                     <span className="text-[10px] text-white/50 font-light font-sans uppercase">Get it on</span>
