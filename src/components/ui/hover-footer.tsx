@@ -14,9 +14,38 @@ export const TextHoverEffect = ({
   className?: string;
 }) => {
   const svgRef = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
+
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const [isDrawingComplete, setIsDrawingComplete] = useState(false);
+
+  useEffect(() => {
+    if (hasAnimated) {
+      setIsDrawingComplete(true);
+    }
+  }, [hasAnimated]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setIsInView(true);
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasAnimated]);
 
   useEffect(() => {
     if (svgRef.current && cursor.x !== null && cursor.y !== null) {
@@ -31,32 +60,32 @@ export const TextHoverEffect = ({
   }, [cursor]);
 
   return (
-    <svg
-      ref={svgRef}
-      width="100%"
-      height="100%"
-      viewBox="0 0 600 100"
-      xmlns="http://www.w3.org/2000/svg"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
-      className={cn("select-none uppercase cursor-default", className)}
-    >
+    <div ref={containerRef} className="w-full h-full">
+      <svg
+        ref={svgRef}
+        width="100%"
+        height="100%"
+        viewBox="0 0 600 100"
+        xmlns="http://www.w3.org/2000/svg"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
+        className={cn("select-none uppercase cursor-default", className)}
+      >
       <defs>
         <linearGradient
           id="textGradient"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
           gradientUnits="userSpaceOnUse"
-          cx="50%"
-          cy="50%"
-          r="25%"
         >
           {hovered && (
             <>
-              <stop offset="0%" stopColor="#333333" />
-              <stop offset="25%" stopColor="#555555" />
-              <stop offset="50%" stopColor="#777777" />
-              <stop offset="75%" stopColor="#999999" />
-              <stop offset="100%" stopColor="#bbbbbb" />
+              <stop offset="0%" stopColor="#FA8453" />
+              <stop offset="50%" stopColor="#7C3AED" />
+              <stop offset="100%" stopColor="#3B82F6" />
             </>
           )}
         </linearGradient>
@@ -88,7 +117,7 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="fill-transparent stroke-neutral-800 font-[helvetica] text-6xl md:text-7xl font-bold dark:stroke-neutral-800"
+        className="fill-transparent stroke-neutral-800 font-sans text-6xl md:text-7xl font-bold dark:stroke-neutral-800"
         style={{ opacity: hovered ? 0.7 : 0 }}
       >
         {text}
@@ -99,15 +128,33 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="fill-transparent stroke-black font-[helvetica] text-6xl md:text-7xl font-bold dark:stroke-white/10"
-        initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
-        animate={{
-          strokeDashoffset: 0,
-          strokeDasharray: 1000,
-        }}
+        className="fill-transparent font-sans text-6xl md:text-7xl font-bold"
+        initial={
+          hasAnimated
+            ? false
+            : {
+                strokeDashoffset: 1000,
+                strokeDasharray: 1000,
+                stroke: "rgba(255, 255, 255, 0.85)",
+              }
+        }
+        animate={
+          isInView
+            ? {
+                strokeDashoffset: 0,
+                strokeDasharray: 1000,
+                stroke: isDrawingComplete ? "rgba(255, 255, 255, 0.08)" : "rgba(255, 255, 255, 0.85)",
+              }
+            : {}
+        }
         transition={{
-          duration: 4,
-          ease: "easeInOut",
+          strokeDashoffset: { duration: hasAnimated ? 4 : 0, ease: "easeInOut" },
+          stroke: { duration: isDrawingComplete ? 1.5 : 0, ease: "easeOut" },
+        }}
+        onAnimationComplete={() => {
+          if (isInView && !isDrawingComplete) {
+            setIsDrawingComplete(true);
+          }
         }}
       >
         {text}
@@ -120,11 +167,12 @@ export const TextHoverEffect = ({
         stroke="url(#textGradient)"
         strokeWidth="0.3"
         mask="url(#textMask)"
-        className="fill-transparent font-[helvetica] text-6xl md:text-7xl font-bold"
+        className="fill-transparent font-sans text-6xl md:text-7xl font-bold"
       >
         {text}
       </text>
     </svg>
+    </div>
   );
 };
 
