@@ -190,11 +190,11 @@ export const Index: React.FC = () => {
             
             <div className="flex flex-wrap gap-4 pt-3 select-none">
               <a
-                href="#desktop-download"
+                href="#desktop-download-links"
                 className="cursor-pointer"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById("desktop-download")?.scrollIntoView({ behavior: "smooth" });
+                  document.getElementById("desktop-download-links")?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
                 <GlassButton
@@ -484,7 +484,7 @@ export const Index: React.FC = () => {
           </ContainerScroll>
 
           {/* Centered Download Buttons below the 3D scroll container */}
-          <div className="flex flex-col items-center -mt-12 sm:-mt-24 md:-mt-32 pb-16 relative z-10 select-none px-4 w-full">
+          <div id="desktop-download-links" className="flex flex-col items-center -mt-12 sm:-mt-24 md:-mt-32 pb-16 relative z-10 select-none px-4 w-full">
             <h3 className="text-white text-3xl sm:text-5xl font-semibold tracking-tight uppercase text-center mb-2">
               Download Desktop
             </h3>
