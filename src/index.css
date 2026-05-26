@@ -25,6 +25,7 @@
 @theme {
   --font-body: 'Geist Sans', 'Inter', system-ui, sans-serif;
   --font-accent: 'Instrument Serif', serif;
+  --font-intro: 'Cormorant Garamond', 'Georgia', serif;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
