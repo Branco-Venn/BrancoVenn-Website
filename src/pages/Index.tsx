@@ -1,4 +1,5 @@
 import React from "react";
+import { Download } from "lucide-react";
 import { Link } from "react-router-dom";
 import { PageTransition } from "@/components/PageTransition";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
@@ -483,36 +484,67 @@ export const Index: React.FC = () => {
           </ContainerScroll>
 
           {/* Centered Download Buttons below the 3D scroll container */}
-          <div className="flex flex-col items-center gap-4 mt-6 pb-12 relative z-10 select-none">
-            <span className="text-xs uppercase tracking-widest text-white/40 font-mono mb-2">
-              Download the Desktop App
-            </span>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a href="#" className="cursor-pointer">
-                <GlassButton
-                  size="lg"
-                  glassColor="rgba(255, 255, 255, 0.05)"
-                  className="hover:scale-105 transition-transform"
-                >
-                  <svg className="w-5 h-5 fill-current text-white/90" viewBox="0 0 24 24">
+          <div className="flex flex-col items-center mt-12 pb-16 relative z-10 select-none px-4 w-full">
+            <h3 className="text-white text-3xl sm:text-5xl font-semibold tracking-tight uppercase text-center mb-2">
+              Download Desktop
+            </h3>
+            <p className="text-neutral-400 text-sm font-light tracking-wide text-center mb-10">
+              Available for all major platforms
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl w-full">
+              
+              {/* Windows Card */}
+              <div className="liquid-glass rounded-[2rem] p-8 flex flex-col items-center justify-center text-center group hover:border-white/10 hover:scale-[1.02] transition-all duration-300 min-h-[300px]">
+                <div className="flex items-center justify-center w-20 h-20 text-white mb-6">
+                  <svg viewBox="0 0 24 24" className="w-16 h-16 text-white/90" fill="currentColor">
                     <path d="M0 3.449L9.75 2.1v9.451H0V3.449zM0 12.45h9.75v9.451L0 20.551V12.45zM11.25 1.899L24 0v11.55H11.25V1.899zM11.25 12.45H24v11.55l-12.75-1.9V12.45z" />
                   </svg>
-                  <span className="font-light">Windows</span>
-                </GlassButton>
-              </a>
+                </div>
+                <span className="text-xl sm:text-2xl font-semibold text-white tracking-tight">Windows</span>
+                <span className="text-xs text-neutral-400 font-mono mt-1">.exe</span>
+                
+                <a href="#" className="cursor-pointer mt-6 select-none">
+                  <button className="flex items-center justify-center gap-2 bg-[#1a1a1a] hover:bg-neutral-800 border border-white/10 hover:border-white/20 text-white text-xs font-medium rounded-full px-6 py-3 hover:scale-105 active:scale-95 transition-all duration-300">
+                    <Download className="w-4 h-4 text-white/80" /> Download
+                  </button>
+                </a>
+              </div>
 
-              <a href="#" className="cursor-pointer">
-                <GlassButton
-                  size="lg"
-                  glassColor="rgba(255, 255, 255, 0.05)"
-                  className="hover:scale-105 transition-transform"
-                >
-                  <svg className="w-5 h-5 fill-current text-white/90" viewBox="0 0 24 24">
+              {/* macOS Card */}
+              <div className="liquid-glass rounded-[2rem] p-8 flex flex-col items-center justify-center text-center group hover:border-white/10 hover:scale-[1.02] transition-all duration-300 min-h-[300px]">
+                <div className="flex items-center justify-center w-20 h-20 text-white mb-6">
+                  <svg viewBox="0 0 24 24" className="w-16 h-16 text-white/90" fill="currentColor">
                     <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.54 9.103 1.51 12.06 1.005 1.45 2.187 3.07 3.766 3.01 1.524-.06 2.098-.98 3.938-.98 1.829 0 2.365.98 3.96.948 1.623-.027 2.666-1.46 3.66-2.898 1.155-1.679 1.625-3.31 1.652-3.4-.06-.027-3.178-1.217-3.21-4.823-.026-3.02 2.478-4.47 2.59-4.54-1.41-2.074-3.597-2.316-4.37-2.37-1.947-.162-3.8.989-4.785.989zM15.983 3.863c.815-.99 1.366-2.37 1.213-3.746-1.183.05-2.616.79-3.461 1.777-.75.864-1.408 2.27-1.229 3.627 1.31.1 2.66-.667 3.477-1.658z" />
                   </svg>
-                  <span className="font-light">macOS</span>
-                </GlassButton>
-              </a>
+                </div>
+                <span className="text-xl sm:text-2xl font-semibold text-white tracking-tight">macOS</span>
+                <span className="text-xs text-neutral-400 font-mono mt-1">.dmg</span>
+                
+                <a href="#" className="cursor-pointer mt-6 select-none">
+                  <button className="flex items-center justify-center gap-2 bg-[#1a1a1a] hover:bg-neutral-800 border border-white/10 hover:border-white/20 text-white text-xs font-medium rounded-full px-6 py-3 hover:scale-105 active:scale-95 transition-all duration-300">
+                    <Download className="w-4 h-4 text-white/80" /> Download
+                  </button>
+                </a>
+              </div>
+
+              {/* Linux Card */}
+              <div className="liquid-glass rounded-[2rem] p-8 flex flex-col items-center justify-center text-center group hover:border-white/10 hover:scale-[1.02] transition-all duration-300 min-h-[300px]">
+                <div className="flex items-center justify-center w-20 h-20 text-white mb-6">
+                  <svg viewBox="0 0 24 24" className="w-16 h-16 text-white/90" fill="currentColor">
+                    <path d="M12 2c-3.3 0-6 2.7-6 6 0 1.6.6 3.1 1.7 4.2C5.3 13.5 3.5 16 3 19c-.2 1.1.7 2 1.8 2h14.4c1.1 0 2-.9 1.8-2-.5-3-2.3-5.5-4.7-6.8 1.1-1.1 1.7-2.6 1.7-4.2 0-3.3-2.7-6-6-6zm-2 5c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1zm4 0c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1zm-3.5 3.5c1.2.6 2.8.6 4 0-.3.6-.9.9-1.5.9h-1c-.6 0-1.2-.3-1.5-.9z" />
+                  </svg>
+                </div>
+                <span className="text-xl sm:text-2xl font-semibold text-white tracking-tight">Linux</span>
+                <span className="text-xs text-neutral-400 font-mono mt-1">.AppImage</span>
+                
+                <a href="#" className="cursor-pointer mt-6 select-none">
+                  <button className="flex items-center justify-center gap-2 bg-[#1a1a1a] hover:bg-neutral-800 border border-white/10 hover:border-white/20 text-white text-xs font-medium rounded-full px-6 py-3 hover:scale-105 active:scale-95 transition-all duration-300">
+                    <Download className="w-4 h-4 text-white/80" /> Download
+                  </button>
+                </a>
+              </div>
+
             </div>
           </div>
         </div>
