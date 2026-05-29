@@ -198,7 +198,7 @@ export const Terms: React.FC = () => {
       paragraphs: [
         "For questions, support requests, or legal inquiries, please contact:",
         "Sim Gamepad Support",
-        "Email:\nsupport.brancovenn@gmail.com",
+        "Email:\nsupport@brancovenn.com",
         "Website:\nhttps://www.brancovenn.com",
         "By accessing or using Sim Gamepad, you acknowledge that you have read, understood, and agreed to these Terms and Conditions."
       ]
@@ -287,7 +287,7 @@ export const Terms: React.FC = () => {
                         <div>
                           <div className="text-[10px] sm:text-xs text-white/30 uppercase tracking-widest font-mono">Email Support</div>
                           <div className="text-sm sm:text-base text-white/70 group-hover:text-white transition-colors">
-                            support.brancovenn@gmail.com
+                            support@brancovenn.com
                           </div>
                         </div>
                       </a>
