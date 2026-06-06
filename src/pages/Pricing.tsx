@@ -403,7 +403,7 @@ export const Pricing: React.FC = () => {
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.9, y: 20, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-w-xl w-full bg-neutral-950 border border-white/10 rounded-3xl p-8 sm:p-10 shadow-2xl overflow-hidden z-10"
+              className="relative max-w-2xl w-full bg-neutral-950 border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl overflow-hidden z-10"
             >
               {/* Glowing neon accent behind */}
               <div className="absolute -top-[20%] -left-[20%] w-[60%] h-[60%] rounded-full bg-primary/10 blur-[80px] pointer-events-none" />
@@ -418,11 +418,11 @@ export const Pricing: React.FC = () => {
               </button>
 
               {/* Title & Icon */}
-              <div className="flex flex-col items-center text-center mt-2 mb-6 select-none">
-                <div className="w-16 h-16 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center mb-4 overflow-hidden select-none">
-                  <img src="/asset image/BV logo.png" alt="Sim Gamepad Logo" className="w-12 h-12 object-contain" />
+              <div className="flex flex-col items-center text-center mt-2 mb-8 select-none">
+                <div className="w-20 h-20 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center mb-4 overflow-hidden select-none">
+                  <img src="/asset image/sim_gamepad_logo.png" alt="Sim Gamepad Logo" className="w-16 h-16 object-contain" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight uppercase">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight uppercase">
                   Upgrade Sim Gamepad
                 </h3>
                 <p className="text-xs text-white/90 bg-white/5 border border-white/10 rounded-full px-4 py-1 font-mono tracking-widest uppercase mt-2">
@@ -431,15 +431,15 @@ export const Pricing: React.FC = () => {
               </div>
 
               {/* Explanation text */}
-              <div className="text-neutral-300 text-sm sm:text-base font-light leading-relaxed mb-8 space-y-4 select-none">
+              <div className="text-neutral-300 text-sm sm:text-base font-light leading-relaxed mb-8 space-y-5 select-none">
                 <p>
                   Upgrades and transactions are handled <strong className="text-white font-medium">exclusively inside the Sim Gamepad mobile application</strong> using secure App Store and Google Play billing mechanisms.
                 </p>
-                <div className="text-xs text-orange-200/95 bg-orange-500/5 border border-orange-500/15 rounded-xl p-4 flex gap-3 items-start">
-                  <svg className="w-5 h-5 text-orange-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="text-sm text-amber-200/90 bg-amber-500/10 border border-amber-500/20 rounded-2xl p-5 flex gap-4 items-start shadow-inner">
+                  <svg className="w-6 h-6 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                   </svg>
-                  <span>
+                  <span className="leading-relaxed">
                     No sign-in or payment gateways are hosted on this website for your protection and security.
                   </span>
                 </div>
@@ -459,12 +459,7 @@ export const Pricing: React.FC = () => {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 bg-neutral-900 hover:bg-neutral-900/80 border border-white/5 hover:border-primary/20 rounded-xl p-3 transition-all duration-300 group cursor-pointer"
                   >
-                    <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M3.25098 2.052L12.56 11.361L3.25098 20.67C3.06456 20.4735 2.96289 20.2117 2.96289 19.937V2.78499C2.96289 2.51034 3.06456 2.2485 3.25098 2.052Z" fill="#00A1FF"/>
-                      <path d="M16.591 7.33002L12.56 11.361L16.591 15.392L20.655 13.066C21.492 12.583 21.492 11.372 20.655 10.89L16.591 7.33002Z" fill="#FFC72C"/>
-                      <path d="M12.56 11.361L16.591 7.33002L3.25098 2.052C3.54133 1.95462 3.86175 1.98971 4.126 2.148L16.591 7.33002Z" fill="#4CAF50"/>
-                      <path d="M12.56 11.361L16.591 15.392L4.126 20.573C3.86175 20.7313 3.54133 20.7664 3.25098 20.67L12.56 11.361Z" fill="#FF3A44"/>
-                    </svg>
+                    <img src="/asset image/google_play_logo.svg" alt="Google Play Logo" className="w-6 h-6 shrink-0 object-contain" />
                     <div>
                       <div className="text-[8px] text-white/30 uppercase tracking-widest font-mono">Get it on</div>
                       <div className="text-xs font-semibold text-white/80 group-hover:text-white transition-colors">Google Play</div>
@@ -478,7 +473,7 @@ export const Pricing: React.FC = () => {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 bg-neutral-900 hover:bg-neutral-900/80 border border-white/5 hover:border-primary/20 rounded-xl p-3 transition-all duration-300 group cursor-pointer"
                   >
-                    <svg className="w-5 h-5 text-neutral-400 group-hover:text-primary transition-colors fill-current" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-neutral-400 group-hover:text-primary transition-colors fill-current" viewBox="0 0 24 24">
                       <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-.96.04-2.13.64-2.82 1.45-.6.69-1.12 1.83-.98 2.94.12.01.24.02.36.02.9 0 2.01-.54 2.45-1.35z" />
                     </svg>
                     <div>
