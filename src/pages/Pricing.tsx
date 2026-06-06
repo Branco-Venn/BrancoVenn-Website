@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { PageTransition } from "@/components/PageTransition";
-import { Check, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Check, X, Zap, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Plan {
@@ -24,6 +24,13 @@ export const Pricing: React.FC = () => {
   const [currency, setCurrency] = useState<"INR" | "USD">("INR");
   const [hoveredPlan, setHoveredPlan] = useState<string | null>(null);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [selectedPlanName, setSelectedPlanName] = useState("");
+
+  const handlePlanSelection = (planName: string) => {
+    setSelectedPlanName(planName);
+    setShowUpgradeModal(true);
+  };
 
   const plans: Plan[] = [
     {
@@ -47,7 +54,7 @@ export const Pricing: React.FC = () => {
         "Advanced steering telemetry & RPM lights",
         "24/7 Priority developer support"
       ],
-      ctaText: "Download Free App"
+      ctaText: "Get Free App"
     },
     {
       id: "monthly",
@@ -69,7 +76,7 @@ export const Pricing: React.FC = () => {
         "Advanced controller mappings (Pro Racing)",
         "Priority developer discord support"
       ],
-      ctaText: "Go Premium Monthly"
+      ctaText: "Upgrade in App"
     },
     {
       id: "yearly",
@@ -90,7 +97,7 @@ export const Pricing: React.FC = () => {
         "Save 53% compared to monthly tier",
         "Priority developer support channel access"
       ],
-      ctaText: "Unlock Year Pass",
+      ctaText: "Upgrade in App",
       popular: true
     },
     {
@@ -112,12 +119,12 @@ export const Pricing: React.FC = () => {
         "Exclusive dashboard themes and layouts",
         "Advanced custom sensitivity profiles"
       ],
-      ctaText: "Get Pro Racing License"
+      ctaText: "Upgrade in App"
     }
   ];
 
   const comparisonFeatures = [
-    { name: "Time Limit per Session", free: "4 Minutes", monthly: "Unlimited", yearly: "Unlimited", pro: "Unlimited" },
+    { name: "Time Limit per Session", free: "30 Minutes", monthly: "Unlimited", yearly: "Unlimited", pro: "Unlimited" },
     { name: "Ad Interruptions", free: "Yes (Watch for playtime)", monthly: "None", yearly: "None", pro: "None" },
     { name: "Connectivity Channels", free: "Wi-Fi & USB", monthly: "Wi-Fi, USB & BLE", yearly: "Wi-Fi, USB & BLE", pro: "Wi-Fi, USB & BLE" },
     { name: "Custom Layout Builder", free: "Basic (Save locally)", monthly: "Sync to Cloud", yearly: "Sync to Cloud", pro: "Sync to Cloud" },
@@ -130,7 +137,7 @@ export const Pricing: React.FC = () => {
   const faqs = [
     {
       q: "How does the Free Tier playtime limit work?",
-      a: "The Free Tier gives you a 4-minute initial session. If you need more time, you can trigger a 30-second ad video inside the mobile app to gain an additional 30 minutes of play time. Premium plans remove this playtime limit completely."
+      a: "The Free Tier gives you a 30-minute initial session. If you need more time, you can trigger a 30-second ad video inside the mobile app to gain an additional 30 minutes of play time. Premium plans remove this playtime limit completely."
     },
     {
       q: "Are telemetry processing latency rates affected by my network?",
@@ -158,9 +165,7 @@ export const Pricing: React.FC = () => {
           
           {/* Header section with high-end typography */}
           <div className="text-center max-w-3xl mx-auto mb-16 select-none">
-            <span className="inline-block rounded-full border border-white/10 px-4 py-1 text-xs text-neutral-400 font-mono tracking-widest uppercase mb-6 bg-white/5">
-              PLANNING YOUR START GRID
-            </span>
+            
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight uppercase font-sans">
               Choose your speed. <br />
               <span className="font-light text-neutral-400">Flexible pricing tiers.</span>
@@ -272,6 +277,7 @@ export const Pricing: React.FC = () => {
 
                     {/* Action Button */}
                     <button
+                      onClick={() => handlePlanSelection(plan.name)}
                       className="w-full rounded-2xl py-3.5 text-xs font-bold tracking-widest uppercase cursor-pointer select-none transition-all duration-300 shadow-md border hover:scale-[1.02] active:scale-[0.98]"
                       style={{
                         backgroundColor: plan.popular ? plan.accentColor : "transparent",
@@ -377,6 +383,113 @@ export const Pricing: React.FC = () => {
 
         </div>
       </div>
+
+      {/* Interactive Upgrade Modal */}
+      <AnimatePresence>
+        {showUpgradeModal && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            {/* Blur backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowUpgradeModal(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-md cursor-pointer"
+            />
+
+            {/* Modal Card */}
+            <motion.div
+              initial={{ scale: 0.9, y: 20, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.9, y: 20, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-md w-full bg-neutral-950 border border-white/10 rounded-3xl p-8 sm:p-10 shadow-2xl overflow-hidden z-10"
+            >
+              {/* Glowing neon accent behind */}
+              <div className="absolute -top-[20%] -left-[20%] w-[60%] h-[60%] rounded-full bg-primary/10 blur-[60px] pointer-events-none" />
+
+              {/* Close button */}
+              <button
+                onClick={() => setShowUpgradeModal(false)}
+                className="absolute top-6 right-6 text-white/40 hover:text-white cursor-pointer transition-colors"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Title & Icon */}
+              <div className="flex flex-col items-center text-center mt-2 mb-6 select-none">
+                <div className="w-12 h-12 rounded-full border border-primary/20 bg-primary/10 flex items-center justify-center text-primary mb-4 animate-pulse">
+                  <Zap className="w-6 h-6 animate-pulse" />
+                </div>
+                <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight uppercase">
+                  Upgrade Sim Gamepad
+                </h3>
+                <p className="text-xs text-primary/80 font-mono tracking-widest uppercase mt-1">
+                  {selectedPlanName}
+                </p>
+              </div>
+
+              {/* Explanation text */}
+              <div className="text-neutral-400 text-sm font-light leading-relaxed mb-8 space-y-4 select-none">
+                <p>
+                  Upgrades and transactions are handled **exclusively inside the Sim Gamepad mobile application** using secure App Store and Google Play billing mechanisms.
+                </p>
+                <p className="text-xs text-neutral-500 italic bg-white/5 border border-white/5 rounded-xl p-3">
+                  No sign-in or payment gateways are hosted on this website for your protection and security.
+                </p>
+              </div>
+
+              {/* Mobile App Downloads CTA */}
+              <div className="space-y-4">
+                <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-widest block text-center select-none">
+                  Download & Upgrade
+                </span>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Google Play Store Badge Button */}
+                  <a
+                    href="https://play.google.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 bg-neutral-900 hover:bg-neutral-900/80 border border-white/5 hover:border-primary/20 rounded-xl p-3 transition-all duration-300 group cursor-pointer"
+                  >
+                    <svg className="w-5 h-5 text-neutral-400 group-hover:text-primary transition-colors fill-current" viewBox="0 0 24 24">
+                      <path d="M5 3.002a2.002 2.002 0 0 0-1.748 1.002L12 12l8.748-7.996A2.002 2.002 0 0 0 19 3H5zm-2.88 2.016L11 12 2.12 18.982A2.002 2.002 0 0 1 2 18.016V5.986c0-.35.093-.68.256-.968zM12 13l8.748 7.996a2.002 2.002 0 0 0 .252-.98v-12.03a2.002 2.002 0 0 0-.252-.982L12 13zm7 8.002H5c-.385 0-.74-.11-1.04-.3L12 13l8.04 7.702c-.3.19-.655.3-1.04.3z" />
+                    </svg>
+                    <div>
+                      <div className="text-[8px] text-white/30 uppercase tracking-widest font-mono">Get it on</div>
+                      <div className="text-xs font-semibold text-white/80 group-hover:text-white transition-colors">Google Play</div>
+                    </div>
+                  </a>
+
+                  {/* Apple App Store Badge Button */}
+                  <a
+                    href="https://apps.apple.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 bg-neutral-900 hover:bg-neutral-900/80 border border-white/5 hover:border-primary/20 rounded-xl p-3 transition-all duration-300 group cursor-pointer"
+                  >
+                    <svg className="w-5 h-5 text-neutral-400 group-hover:text-primary transition-colors fill-current" viewBox="0 0 24 24">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-.96.04-2.13.64-2.82 1.45-.6.69-1.12 1.83-.98 2.94.12.01.24.02.36.02.9 0 2.01-.54 2.45-1.35z" />
+                    </svg>
+                    <div>
+                      <div className="text-[8px] text-white/30 uppercase tracking-widest font-mono">Download on</div>
+                      <div className="text-xs font-semibold text-white/80 group-hover:text-white transition-colors">App Store</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div className="mt-8 text-center select-none">
+                <span className="text-[10px] text-neutral-500 font-mono italic">
+                  Configure once, play everywhere.
+                </span>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </PageTransition>
   );
 };
