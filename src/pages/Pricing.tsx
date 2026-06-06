@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { PageTransition } from "@/components/PageTransition";
-import { Check, X, Zap, ChevronDown, ChevronUp } from "lucide-react";
+import { Check, X, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Plan {
@@ -394,7 +394,7 @@ export const Pricing: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowUpgradeModal(false)}
-              className="absolute inset-0 bg-black/60 backdrop-blur-md cursor-pointer"
+              className="absolute inset-0 bg-black/75 backdrop-blur-md cursor-pointer"
             />
 
             {/* Modal Card */}
@@ -403,10 +403,10 @@ export const Pricing: React.FC = () => {
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.9, y: 20, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-w-md w-full bg-neutral-950 border border-white/10 rounded-3xl p-8 sm:p-10 shadow-2xl overflow-hidden z-10"
+              className="relative max-w-xl w-full bg-neutral-950 border border-white/10 rounded-3xl p-8 sm:p-10 shadow-2xl overflow-hidden z-10"
             >
               {/* Glowing neon accent behind */}
-              <div className="absolute -top-[20%] -left-[20%] w-[60%] h-[60%] rounded-full bg-primary/10 blur-[60px] pointer-events-none" />
+              <div className="absolute -top-[20%] -left-[20%] w-[60%] h-[60%] rounded-full bg-primary/10 blur-[80px] pointer-events-none" />
 
               {/* Close button */}
               <button
@@ -419,30 +419,35 @@ export const Pricing: React.FC = () => {
 
               {/* Title & Icon */}
               <div className="flex flex-col items-center text-center mt-2 mb-6 select-none">
-                <div className="w-12 h-12 rounded-full border border-primary/20 bg-primary/10 flex items-center justify-center text-primary mb-4 animate-pulse">
-                  <Zap className="w-6 h-6 animate-pulse" />
+                <div className="w-16 h-16 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center mb-4 overflow-hidden select-none">
+                  <img src="/asset image/BV logo.png" alt="Sim Gamepad Logo" className="w-12 h-12 object-contain" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight uppercase">
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight uppercase">
                   Upgrade Sim Gamepad
                 </h3>
-                <p className="text-xs text-primary/80 font-mono tracking-widest uppercase mt-1">
+                <p className="text-xs text-white/90 bg-white/5 border border-white/10 rounded-full px-4 py-1 font-mono tracking-widest uppercase mt-2">
                   {selectedPlanName}
                 </p>
               </div>
 
               {/* Explanation text */}
-              <div className="text-neutral-400 text-sm font-light leading-relaxed mb-8 space-y-4 select-none">
+              <div className="text-neutral-300 text-sm sm:text-base font-light leading-relaxed mb-8 space-y-4 select-none">
                 <p>
-                  Upgrades and transactions are handled **exclusively inside the Sim Gamepad mobile application** using secure App Store and Google Play billing mechanisms.
+                  Upgrades and transactions are handled <strong className="text-white font-medium">exclusively inside the Sim Gamepad mobile application</strong> using secure App Store and Google Play billing mechanisms.
                 </p>
-                <p className="text-xs text-neutral-500 italic bg-white/5 border border-white/5 rounded-xl p-3">
-                  No sign-in or payment gateways are hosted on this website for your protection and security.
-                </p>
+                <div className="text-xs text-orange-200/95 bg-orange-500/5 border border-orange-500/15 rounded-xl p-4 flex gap-3 items-start">
+                  <svg className="w-5 h-5 text-orange-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  <span>
+                    No sign-in or payment gateways are hosted on this website for your protection and security.
+                  </span>
+                </div>
               </div>
 
               {/* Mobile App Downloads CTA */}
               <div className="space-y-4">
-                <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-widest block text-center select-none">
+                <span className="text-[10px] text-neutral-400 font-bold uppercase tracking-widest block text-center select-none">
                   Download & Upgrade
                 </span>
 
@@ -454,8 +459,11 @@ export const Pricing: React.FC = () => {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 bg-neutral-900 hover:bg-neutral-900/80 border border-white/5 hover:border-primary/20 rounded-xl p-3 transition-all duration-300 group cursor-pointer"
                   >
-                    <svg className="w-5 h-5 text-neutral-400 group-hover:text-primary transition-colors fill-current" viewBox="0 0 24 24">
-                      <path d="M5 3.002a2.002 2.002 0 0 0-1.748 1.002L12 12l8.748-7.996A2.002 2.002 0 0 0 19 3H5zm-2.88 2.016L11 12 2.12 18.982A2.002 2.002 0 0 1 2 18.016V5.986c0-.35.093-.68.256-.968zM12 13l8.748 7.996a2.002 2.002 0 0 0 .252-.98v-12.03a2.002 2.002 0 0 0-.252-.982L12 13zm7 8.002H5c-.385 0-.74-.11-1.04-.3L12 13l8.04 7.702c-.3.19-.655.3-1.04.3z" />
+                    <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3.25098 2.052L12.56 11.361L3.25098 20.67C3.06456 20.4735 2.96289 20.2117 2.96289 19.937V2.78499C2.96289 2.51034 3.06456 2.2485 3.25098 2.052Z" fill="#00A1FF"/>
+                      <path d="M16.591 7.33002L12.56 11.361L16.591 15.392L20.655 13.066C21.492 12.583 21.492 11.372 20.655 10.89L16.591 7.33002Z" fill="#FFC72C"/>
+                      <path d="M12.56 11.361L16.591 7.33002L3.25098 2.052C3.54133 1.95462 3.86175 1.98971 4.126 2.148L16.591 7.33002Z" fill="#4CAF50"/>
+                      <path d="M12.56 11.361L16.591 15.392L4.126 20.573C3.86175 20.7313 3.54133 20.7664 3.25098 20.67L12.56 11.361Z" fill="#FF3A44"/>
                     </svg>
                     <div>
                       <div className="text-[8px] text-white/30 uppercase tracking-widest font-mono">Get it on</div>
@@ -482,7 +490,7 @@ export const Pricing: React.FC = () => {
               </div>
 
               <div className="mt-8 text-center select-none">
-                <span className="text-[10px] text-neutral-500 font-mono italic">
+                <span className="text-[10px] text-neutral-400 font-mono italic">
                   Configure once, play everywhere.
                 </span>
               </div>
