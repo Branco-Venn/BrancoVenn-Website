@@ -43,11 +43,12 @@ export const Terms: React.FC = () => {
       id: "accounts",
       title: "4. User Accounts",
       paragraphs: [
-        "Some features may require account registration. You agree to:",
+        "Some features (such as layout syncing and custom preferences) require account registration. You agree to:",
         "Provide accurate and complete information",
         "Maintain the confidentiality of your account credentials",
         "Be responsible for all activities under your account",
         "Notify us immediately of any unauthorized access or security breach",
+        "Account profiles, locale preferences, gyroscope configuration settings, and user-created custom gamepad layouts are synced to our cloud database (via Supabase). You can instantly and permanently delete all your data at any time from within the application (Settings → Account → Delete Account), which triggers an immediate cascading database delete of your profile and configurations.",
         "We reserve the right to suspend or terminate accounts that violate these Terms."
       ]
     },
@@ -65,7 +66,7 @@ export const Terms: React.FC = () => {
       paragraphs: [
         "Sim Gamepad relies on hardware sensors, wireless communication technologies, operating system APIs, and network conditions that may vary between devices. You acknowledge that:",
         "Performance, latency, stability, responsiveness, and compatibility may differ across devices and platforms.",
-        "Wireless communication may be affected by interference, distance, bandwidth, or hardware limitations.",
+        "Wireless communication may be affected by interference, distance, bandwidth, or hardware limitations. Specifically, UDP packet transmission stability depends heavily on your local Wi-Fi router configuration, network congestion, and signal quality; packet drops can lead to momentary gauge latency, stuttering, or disconnects.",
         "Certain sensors may behave differently depending on device manufacturers and operating system implementations.",
         "Not all devices support all features of the Service.",
         "We do not guarantee uninterrupted or error-free operation."
@@ -87,12 +88,12 @@ export const Terms: React.FC = () => {
       id: "privacy",
       title: "8. Privacy",
       paragraphs: [
-        "Your use of the Service is also governed by our Privacy Policy. Sim Gamepad may collect limited technical and diagnostic information including:",
+        "Your use of the Service is also governed by our Privacy Policy. Sim Gamepad processes telemetry data (speed, RPM, gears, fuel) strictly on your local device (in real-time memory), which is never uploaded or saved to any server. We collect only what is necessary to sync profiles, settings, and layout templates, alongside limited technical diagnostics:",
         "Device model and operating system",
         "Application crash logs & performance diagnostics",
         "Connectivity and pairing information",
         "Anonymous usage analytics",
-        "We do not intentionally collect unnecessary personal information beyond what is required to operate and improve the Service."
+        "Please consult our full Privacy Policy for details on our data protection practices."
       ]
     },
     {
@@ -276,7 +277,7 @@ export const Terms: React.FC = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl">
                       {/* Email Card */}
                       <a 
-                        href="mailto:support.brancovenn@gmail.com"
+                        href="mailto:support@brancovenn.com"
                         className="flex items-center gap-4 bg-neutral-900/40 hover:bg-neutral-900/80 border border-white/5 hover:border-orange-500/20 rounded-2xl p-4 sm:p-5 transition-all duration-300 group cursor-pointer"
                       >
                         <div className="h-10 sm:h-12 w-10 sm:w-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-500 group-hover:scale-110 transition-transform duration-300">

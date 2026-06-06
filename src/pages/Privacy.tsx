@@ -13,8 +13,10 @@ export const Privacy: React.FC = () => {
       id: "collect",
       title: "1. Information We Collect",
       paragraphs: [
-        "a. Information from Third-Party Authentication Providers\nWhen you sign in using a third-party authentication provider (such as Google, Apple, or Facebook), we may receive:\n• Your name\n• Email address\n• Profile picture (if permitted)\n\nWe only collect the information necessary to authenticate your account and provide our services.",
-        "b. Automatically Collected Information\nWe may collect:\n• Device information (device type, OS)\n• App usage data (features used, session duration)\n• Log data (IP address, timestamps)"
+        "a. Authenticated Profile Data (Cloud Database)\nWhen you register or sign in via our supported authentication providers (such as Google, Apple, or email sign-up), we securely collect and sync profile information to our cloud database (managed via Supabase), including your display name, registered email address, and OAuth provider profile photo URL. This data is used purely for identity management, secure login operations, and managing configurations.",
+        "b. Device Settings & Custom Layouts (Cloud Sync)\nTo keep your configurations consistent across all your devices, we store and sync user preferences (app locale, haptic feedback toggle, gyroscope steering sensitivity, and range values) and user-created custom gamepad layouts (layout name, timestamps, and button mapping configurations represented in JSONB format) to our cloud database.",
+        "c. Game Telemetry Data (Local-Only, Device Only)\nSim Gamepad receives real-time telemetry from compatible racing games (speed, gear, engine RPM, throttle, brake, clutch, fuel level, laps, flag statuses, and tyre metrics). Crucial Privacy Protection: This telemetry data is received over local networking interfaces (USB, Wi-Fi UDP port 5555, or Bluetooth) and is processed strictly in local device memory on the UI thread. This data is never sent to our database, never stored on our servers, and is immediately discarded.",
+        "d. Automatically Collected Diagnostics\nFor performance monitoring and connectivity diagnostics, we may collect basic device hardware information (device model, operating system type/version) and anonymous app performance log data (network connectivity rates, packet transmission stats, pairing logs, and crash reports)."
       ]
     },
     {
@@ -89,19 +91,19 @@ export const Privacy: React.FC = () => {
       id: "contact",
       title: "11. Contact Us",
       paragraphs: [
-        "If you have any questions about this Privacy Policy, contact us at:\n\nbrancovenn@gmail.com\n\nhttps://brancovenn.com"
+        "If you have any questions about this Privacy Policy, contact us at:\n\nsupport@brancovenn.com\n\nhttps://brancovenn.com"
       ]
     },
     {
       id: "deletion-guide",
       title: "12. Detailed Deletion Guide",
       paragraphs: [
-        "1. Deletion via Application (Recommended)\nIf available, you can delete your account directly within the application by navigating to:\nSettings → Account → Delete Account\n\nOnce initiated:\n• Your account and associated data will be permanently deleted\n• You will be logged out immediately\n• This action is irreversible",
-        "2. Deletion via Request (Alternative Method)\nIf you are unable to access your account or prefer manual deletion, you may request data deletion by:\n1. Sending an email to brancovenn@gmail.com\n2. Using the subject line: \"Data Deletion Request\"\n3. Including:\n• Your full name\n• Email address associated with your account",
+        "1. Deletion via Application (Recommended)\nIf available, you can delete your account directly within the application by navigating to:\nSettings → Account → Delete Account\n\nOnce initiated:\n• Your account and associated data will be permanently and instantly deleted using a database cascade command\n• You will be logged out immediately\n• This action is irreversible",
+        "2. Deletion via Request (Alternative Method)\nIf you are unable to access your account or prefer manual deletion, you may request data deletion by:\n1. Sending an email to support@brancovenn.com\n2. Using the subject line: \"Data Deletion Request\"\n3. Including:\n• Your full name\n• Email address associated with your account",
         "3. Processing Your Request\nWe will verify your identity to protect your data.\nOnce verified, your data will be deleted within 7–14 business days.\nYou will receive confirmation upon completion.",
         "4. What Data is Deleted\nUpon deletion, we remove:\n• Account information\n• Authentication data (e.g., name, email)\n• User-generated data and preferences",
         "5. Data Retention\nCertain minimal data may be retained if required for:\n• Legal compliance\n• Security and fraud prevention\n\nSuch data will not be used for any other purpose.",
-        "6. Contact\nFor any questions regarding data deletion, contact: brancovenn@gmail.com"
+        "6. Contact\nFor any questions regarding data deletion, contact: support@brancovenn.com"
       ]
     }
   ];
@@ -168,7 +170,7 @@ export const Privacy: React.FC = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl">
                       {/* Email Card */}
                       <a 
-                        href="mailto:brancovenn@gmail.com"
+                        href="mailto:support@brancovenn.com"
                         className="flex items-center gap-4 bg-neutral-900/40 hover:bg-neutral-900/80 border border-white/5 hover:border-orange-500/20 rounded-2xl p-4 sm:p-5 transition-all duration-300 group cursor-pointer"
                       >
                         <div className="h-10 sm:h-12 w-10 sm:w-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-500 group-hover:scale-110 transition-transform duration-300">
@@ -179,7 +181,7 @@ export const Privacy: React.FC = () => {
                         <div>
                           <div className="text-[10px] sm:text-xs text-white/30 uppercase tracking-widest font-mono">Email Support</div>
                           <div className="text-sm sm:text-base text-white/70 group-hover:text-white transition-colors">
-                            brancovenn@gmail.com
+                            support@brancovenn.com
                           </div>
                         </div>
                       </a>
