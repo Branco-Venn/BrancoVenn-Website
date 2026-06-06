@@ -16,6 +16,7 @@ import { Contact } from "./pages/Contact";
 import { Privacy } from "./pages/Privacy";
 import { Terms } from "./pages/Terms";
 import { License } from "./pages/License";
+import { Pricing } from "./pages/Pricing";
 import { NotFound } from "./pages/NotFound";
 
 const AnimatedApp: React.FC = () => {
@@ -38,6 +39,7 @@ const AnimatedApp: React.FC = () => {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/license" element={<License />} />
+            <Route path="/product/pricing" element={<Pricing />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
