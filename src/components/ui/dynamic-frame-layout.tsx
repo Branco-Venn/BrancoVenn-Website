@@ -98,7 +98,15 @@ function FrameComponent({
               transition: "transform 0.3s ease-in-out",
             }}
           >
-            {video.toLowerCase().endsWith(".gif") ? (
+            {video.toLowerCase().endsWith(".svg") || video.toLowerCase().endsWith(".png") || video.toLowerCase().endsWith(".jpg") || video.toLowerCase().endsWith(".jpeg") || video.includes("simpleicons.org") || video.includes("cdn.jsdelivr") ? (
+              <div className="w-full h-full flex items-center justify-center p-10">
+                <img
+                  className="w-full h-full object-contain opacity-60 group-hover:opacity-95 transition-opacity duration-300 filter drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] group-hover:drop-shadow-[0_0_35px_rgba(255,255,255,0.35)]"
+                  src={video}
+                  alt=""
+                />
+              </div>
+            ) : video.toLowerCase().endsWith(".gif") ? (
               <img
                 className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300"
                 src={video}
