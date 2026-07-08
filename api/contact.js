@@ -2,7 +2,7 @@
 // Secrets (RESEND_API_KEY, FROM_EMAIL, TO_EMAIL) are stored in
 // Vercel's Environment Variables dashboard, NOT in the repo.
 
-const { Resend } = require('resend');
+import { Resend } from 'resend';
 
 // Simple in-memory rate limit: max 5 requests per IP per 15 minutes.
 // For production scale, swap this with an edge KV store.
@@ -21,7 +21,7 @@ function isRateLimited(ip) {
   return record.count > MAX_REQUESTS;
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   // Only allow POST
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, error: 'Method not allowed' });
