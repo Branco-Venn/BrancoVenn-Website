@@ -18,23 +18,40 @@ export const Contact: React.FC = () => {
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success">("idle");
 
   // Handle Form Submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) return;
 
     setFormStatus("loading");
 
-    // Simulate standard 1.5s network lag for high-end feel
-    setTimeout(() => {
-      setFormStatus("success");
-      // Reset after 4 seconds
-      setTimeout(() => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setFormStatus("success");
+        // Reset after 4 seconds
+        setTimeout(() => {
+          setFormStatus("idle");
+          setName("");
+          setEmail("");
+          setMessage("");
+        }, 4000);
+      } else {
+        console.error("API error:", data.error);
         setFormStatus("idle");
-        setName("");
-        setEmail("");
-        setMessage("");
-      }, 4000);
-    }, 1500);
+        alert(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      console.error("Network error:", err);
+      setFormStatus("idle");
+      alert("Network error. Please check your connection and try again.");
+    }
   };
 
   // Social media platforms for marquee
