@@ -11,7 +11,7 @@ import type { Frame } from "@/components/ui/dynamic-frame-layout";
 const socialFrames: Frame[] = [
   {
     id: 1,
-    video: "/asset video/social media/Instagram.gif",
+    video: "https://cdn.simpleicons.org/instagram/E1306C",
     defaultPos: { x: 0, y: 0, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
@@ -26,7 +26,7 @@ const socialFrames: Frame[] = [
   },
   {
     id: 2,
-    video: "/asset video/social media/Youtube.gif",
+    video: "https://cdn.simpleicons.org/youtube/FF0000",
     defaultPos: { x: 4, y: 0, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
@@ -51,7 +51,7 @@ const socialFrames: Frame[] = [
   },
   {
     id: 4,
-    video: "/asset video/social media/X twitter.gif",
+    video: "https://cdn.simpleicons.org/x/FFFFFF",
     defaultPos: { x: 0, y: 4, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
@@ -66,7 +66,7 @@ const socialFrames: Frame[] = [
   },
   {
     id: 5,
-    video: "/asset video/social media/Linkedin.gif",
+    video: "https://cdn.simpleicons.org/linkedin/FFFFFF",
     defaultPos: { x: 4, y: 4, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
@@ -81,7 +81,7 @@ const socialFrames: Frame[] = [
   },
   {
     id: 6,
-    video: "/asset video/social media/Discord logo.gif",
+    video: "https://cdn.simpleicons.org/discord/5865F2",
     defaultPos: { x: 8, y: 4, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
@@ -106,7 +106,7 @@ const socialFrames: Frame[] = [
   },
   {
     id: 8,
-    video: "/asset video/social media/Tiktok.gif",
+    video: "https://cdn.simpleicons.org/tiktok/FFFFFF",
     defaultPos: { x: 4, y: 8, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
@@ -239,7 +239,7 @@ export const Index: React.FC = () => {
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent to-black" />
       </section>
 
-      {/* B. SecuritySection */}
+      {/* B. TelemetryHUDSection */}
       <section className="relative min-h-[600px] h-screen w-full overflow-hidden bg-black flex items-center justify-center">
         {/* Background Video */}
         <video
@@ -249,7 +249,7 @@ export const Index: React.FC = () => {
           muted
           playsInline
           preload="auto"
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260421_072418_508a7d2e-396d-4f6f-9d42-ec920fcf7755.mp4"
+          src="/asset%20video/hud.mp4"
         />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/60 pointer-events-none" />
@@ -262,7 +262,7 @@ export const Index: React.FC = () => {
           {/* Floating center pill */}
           <div className="absolute top-6 sm:top-10 left-1/2 -translate-x-1/2 z-20 bg-neutral-900/80 backdrop-blur rounded-full p-2 sm:p-3 border border-white/10 flex items-center gap-2">
             <button className="text-white/90 text-xs sm:text-sm px-4 sm:px-7 py-2 sm:py-3 rounded-full hover:text-white transition-colors whitespace-nowrap font-light cursor-pointer">
-              confirm real person
+              Live F1 Telemetry HUD
             </button>
             <Link
               to="/product/sim-gamepad"
@@ -277,12 +277,12 @@ export const Index: React.FC = () => {
 
           {/* Left paragraph */}
           <p className="absolute left-4 sm:left-6 md:left-16 top-[62%] sm:top-[56%] max-w-[280px] sm:max-w-[440px] text-white/80 text-[13px] sm:text-[18px] leading-relaxed font-light">
-            shielding users info with premier tech, granting them with safety in all place
+            Stream live RPM, speed, gears, and track telemetry instantly on your device.
           </p>
 
           {/* Right paragraph */}
           <p className="absolute right-4 sm:right-6 md:right-16 top-[26%] sm:top-[34%] max-w-[280px] sm:max-w-[500px] text-white/95 text-[13px] sm:text-[18px] leading-relaxed font-light">
-            By teaming up with a defender service, a business can dramatically improve the safeguard of its important info. This covers applying strong obfuscation protocols, gateway barriers, and observation engines to shield against unauthorized entries, info escapes, and malicious cyberhacks.
+            Sync seamlessly with major PC racing simulators. Featuring a fully integrated LED shift light indicator, tire heat sensors, and fuel trackers to replicate a professional racing cockpit directly on your mobile screen.
           </p>
         </div>
 
@@ -377,7 +377,7 @@ export const Index: React.FC = () => {
           {/* Below grid CTA */}
           <div className="mt-16 sm:mt-28 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8 md:w-[70%] md:ml-auto">
             <p className="max-w-md text-[13px] sm:text-[18px] leading-relaxed text-white/70 font-light">
-              shielding users info with premier tech, granting them with safety in all place
+              Designed to integrate seamlessly with your PC simulator workspace.
             </p>
             {/* Liquid Glass button for premium feel */}
             <Link to="/product/sim-gamepad" className="cursor-pointer">
@@ -411,10 +411,10 @@ export const Index: React.FC = () => {
               <div className="absolute top-1/2 -translate-y-1/2 -left-[420px] h-[460px] w-[460px] rounded-full bg-[#1e3a8a] blur-3xl opacity-40 group-hover:scale-105 transition-transform duration-700" />
 
               <h3 className="relative z-10 text-xl sm:text-2xl font-light leading-tight text-white max-w-[240px]">
-                Preemptive Risks / Scouting and Reactions
+                Zero-Lag Input Engine
               </h3>
               <p className="relative z-10 text-[13px] sm:text-[14px] leading-relaxed text-white/70 font-light max-w-[280px]">
-                Defense platforms constantly observe bandwidth streams, record files, and machine behaviors to uncover unusual patterns or outliers that could signal a defensive failure.
+                Connect via USB, Wi-Fi, or Bluetooth. Experience ultra-low latency inputs that rival physical controllers, keeping you in complete control.
               </p>
             </div>
 
@@ -429,14 +429,14 @@ export const Index: React.FC = () => {
                   muted
                   playsInline
                   preload="auto"
-                  src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260421_072701_f6a01abb-eb30-4559-9d6e-774362defbc3.mp4"
+                  src="/asset%20video/simsteering.mp4"
                 />
                 <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-neutral-950 to-transparent" />
               </div>
               {/* Under Video */}
               <div className="flex-1 flex items-center justify-start p-6 sm:p-8">
                 <h3 className="text-xl sm:text-2xl font-light leading-tight text-white">
-                  Know-how and Sectoral / Awareness
+                  Custom Cockpit Layouts
                 </h3>
               </div>
             </div>
@@ -447,10 +447,10 @@ export const Index: React.FC = () => {
               <div className="absolute -top-28 -right-28 h-56 w-56 bg-[#1e3a8a] blur-3xl opacity-40 group-hover:scale-105 transition-transform duration-700" />
 
               <h3 className="relative z-10 text-xl sm:text-2xl font-light leading-tight text-white max-w-[240px]">
-                Preemptive Risks / Scouting and Reactions
+                Real-Time Telemetry HUD
               </h3>
               <p className="relative z-10 mt-auto text-[13px] sm:text-[14px] leading-relaxed text-white/70 font-light max-w-[320px]">
-                Defense platforms constantly observe bandwidth streams, record files, and machine behaviors to uncover unusual patterns or outliers that could signal a defensive failure.
+                Sync speed, RPM, gear shifting, tire temps, and fuel levels from top PC racing games directly to your mobile screen.
               </p>
             </div>
           </div>
@@ -464,12 +464,12 @@ export const Index: React.FC = () => {
             titleComponent={
               <div className="flex flex-col items-center text-center px-4 mb-6">
                 <span className="text-xs uppercase tracking-widest text-[#FA8453] mb-3 bg-[#FA8453]/10 px-4 py-1.5 rounded-full">
-                  Unparalleled Integrity
+                  Companion Cockpit
                 </span>
                 <h2 className="text-white text-3xl sm:text-5xl md:text-7xl font-light leading-tight uppercase font-sans tracking-tight">
                   Unleash absolute <br />
                   <span className="text-4xl sm:text-6xl md:text-8xl font-medium mt-2 leading-none bg-gradient-to-r from-[#FA8453] to-[#F8C9B2] bg-clip-text text-transparent block">
-                    Data Sovereignty
+                    Simulator Control
                   </span>
                 </h2>
               </div>
@@ -477,7 +477,7 @@ export const Index: React.FC = () => {
           >
             <img
               src="/asset image/desktop.png"
-              alt="Security Workspace Console"
+              alt="Sim Gamepad Desktop Companion Dashboard"
               className="mx-auto rounded-2xl object-contain h-full w-full select-none pointer-events-none"
               draggable={false}
             />
@@ -586,13 +586,13 @@ export const Index: React.FC = () => {
                 Go Mobile
               </span>
               <h2 className="text-white text-3xl sm:text-5xl font-light leading-tight uppercase tracking-tight font-sans">
-                Unleash security <br />
+                Unleash telemetry <br />
                 <span className="text-4xl sm:text-6xl font-medium bg-gradient-to-r from-[#FA8453] to-[#F8C9B2] bg-clip-text text-transparent block mt-1">
                   On the Go
                 </span>
               </h2>
               <p className="text-neutral-400 text-sm sm:text-base font-light leading-relaxed">
-                Connect your mobile device to your SIM Gamepad workspace instantly. Take control of your encryption keys on the fly, manage zero-trust tunnels, and scan security QR codes to authenticate connections in seconds directly from your pocket.
+                Connect your mobile device to your PC companion app instantly. Customize your dashboard buttons on the fly, toggle motion gyro steering, and scan the connection QR code to authenticate in seconds directly from your pocket.
               </p>
             </div>
 
@@ -653,7 +653,7 @@ export const Index: React.FC = () => {
               </span>
             </h2>
             <p className="text-neutral-400 text-sm sm:text-base font-light leading-relaxed mt-4">
-              Explore zero-latency gameplay telemetry, developer changelogs, live sim racing setups, and security updates across our social channels. Hover over any frame to reveal the channel stream.
+              Explore zero-latency gameplay telemetry, developer changelogs, live sim racing setups, and custom layout showcases across our social channels. Hover over any frame to reveal the channel stream.
             </p>
           </div>
 
