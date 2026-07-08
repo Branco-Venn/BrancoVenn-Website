@@ -310,8 +310,22 @@ export const Contact: React.FC = () => {
                   )}
 
                   {formStatus === "success" && (
-                    <div className="border border-green-500/20 bg-green-500/5 text-green-400 text-sm font-medium rounded-full px-8 py-3.5 text-center font-mono select-none">
-                      ✓ Launch Successful // Message transmitted!
+                    <div className="bg-white text-black text-sm font-semibold rounded-full px-8 py-3.5 flex items-center justify-center gap-2 animate-pulse select-none">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      Launch Successful // Message transmitted!
                     </div>
                   )}
                 </div>
