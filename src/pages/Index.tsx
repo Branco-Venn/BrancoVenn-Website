@@ -463,9 +463,6 @@ export const Index: React.FC = () => {
           <ContainerScroll
             titleComponent={
               <div className="flex flex-col items-center text-center px-4 mb-6">
-                <span className="text-xs uppercase tracking-widest text-[#FA8453] mb-3 bg-[#FA8453]/10 px-4 py-1.5 rounded-full">
-                  Companion Cockpit
-                </span>
                 <h2 className="text-white text-3xl sm:text-5xl md:text-7xl font-light leading-tight uppercase font-sans tracking-tight">
                   Unleash absolute <br />
                   <span className="text-4xl sm:text-6xl md:text-8xl font-medium mt-2 leading-none bg-gradient-to-r from-[#FA8453] to-[#F8C9B2] bg-clip-text text-transparent block">
@@ -582,9 +579,6 @@ export const Index: React.FC = () => {
           {/* Right Side: Copywriting & Play Store + App Store Buttons */}
           <div className="flex-1 space-y-8 text-left max-w-xl select-text">
             <div className="space-y-4">
-              <span className="text-xs uppercase tracking-widest text-[#FA8453] bg-[#FA8453]/10 px-4 py-1.5 rounded-full font-mono">
-                Go Mobile
-              </span>
               <h2 className="text-white text-3xl sm:text-5xl font-light leading-tight uppercase tracking-tight font-sans">
                 Unleash telemetry <br />
                 <span className="text-4xl sm:text-6xl font-medium bg-gradient-to-r from-[#FA8453] to-[#F8C9B2] bg-clip-text text-transparent block mt-1">
@@ -643,9 +637,6 @@ export const Index: React.FC = () => {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-10 relative z-10 flex flex-col items-center">
           
           <div className="text-center mb-16 sm:mb-20 max-w-2xl select-text">
-            <span className="text-xs uppercase tracking-widest text-[#FA8453] bg-[#FA8453]/10 px-4 py-1.5 rounded-full font-mono">
-              Join Our Network
-            </span>
             <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-light leading-tight uppercase tracking-tight font-sans mt-4 flex flex-wrap justify-center gap-x-3 sm:gap-x-4 items-baseline">
               <span className="whitespace-nowrap">Connect with</span>
               <span className="text-4xl sm:text-6xl lg:text-7xl font-semibold bg-gradient-to-r from-[#FA8453] to-[#F8C9B2] bg-clip-text text-transparent inline-block whitespace-nowrap">
