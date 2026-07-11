@@ -507,7 +507,7 @@ export const Index: React.FC = () => {
                 <span className="text-xl sm:text-2xl font-semibold text-white tracking-tight">Windows</span>
                 <span className="text-xs text-neutral-400 font-mono mt-1">.exe</span>
                 
-                <a href="#" className="cursor-pointer mt-6 select-none">
+                <a href="/downloads/Windows/Sim Gamepad.zip" download className="cursor-pointer mt-6 select-none">
                   <button className="flex items-center justify-center gap-2 bg-[#1a1a1a] hover:bg-neutral-800 border border-white/10 hover:border-white/20 text-white text-xs font-medium rounded-full px-6 py-3 hover:scale-105 active:scale-95 transition-all duration-300">
                     <Download className="w-4 h-4 text-white/80" /> Download
                   </button>
