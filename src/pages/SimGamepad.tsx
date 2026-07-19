@@ -361,7 +361,9 @@ export const SimGamepad: React.FC = () => {
               Join Discord
             </a>
             <a 
-              href="#demo"
+              href="https://youtube.com/@brancovenn"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-neutral-900 border border-white/10 hover:border-orange-500/20 text-white px-8 py-3.5 text-xs sm:text-sm font-medium tracking-tight active:scale-95 transition-all cursor-pointer"
             >
               Watch Gameplay Demo
