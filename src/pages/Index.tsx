@@ -66,7 +66,7 @@ const socialFrames: Frame[] = [
   },
   {
     id: 5,
-    video: "https://cdn.simpleicons.org/linkedin/FFFFFF",
+    video: "https://cdn.simpleicons.org/linkedin/0A66C2",
     defaultPos: { x: 4, y: 4, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
