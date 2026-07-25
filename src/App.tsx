@@ -11,7 +11,8 @@ import { LoadingIntro } from "./components/LoadingIntro";
 import { Index } from "./pages/Index";
 import { Product } from "./pages/Product";
 import { SimGamepad } from "./pages/SimGamepad";
-import { About } from "./pages/About";
+import { Mission } from "./pages/Mission";
+import { AboutUs } from "./pages/AboutUs";
 import { Contact } from "./pages/Contact";
 import { Privacy } from "./pages/Privacy";
 import { Terms } from "./pages/Terms";
@@ -34,7 +35,8 @@ const AnimatedApp: React.FC = () => {
             <Route path="/" element={<Index />} />
             <Route path="/product" element={<Product />} />
             <Route path="/product/sim-gamepad" element={<SimGamepad />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/mission" element={<Mission />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />

@@ -46,7 +46,7 @@ const ScrollRevealText: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 
-export const About: React.FC = () => {
+export const Mission: React.FC = () => {
   // Rotating statements inside Hero overlay
   const rotatingStatements = [
     "Seamless systems that simply work.",
@@ -100,7 +100,7 @@ export const About: React.FC = () => {
             className="space-y-6"
           >
             <span className="text-[10px] font-mono tracking-[0.6em] text-neutral-400 uppercase block">
-              About Branco Venn
+              Our Mission
             </span>
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-[-2px] leading-none text-white">
               Invisible <span className="font-accent italic font-normal text-white">Technology</span>
