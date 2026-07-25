@@ -55,18 +55,21 @@ export const AboutUs: React.FC = () => {
     {
       author: "Aayush Kr. Gupta",
       role: "Founder, CEO",
+      email: "aayush@brancovenn.com",
       imageSrc: "/asset-image/aayushkrgupta.jpeg",
       roleGradient: "from-cyan-400 via-blue-500 to-indigo-500",
     },
     {
       author: "Karan Kabdal",
       role: "Founder, CFO",
+      email: "karan@brancovenn.com",
       imageSrc: "",
       roleGradient: "from-emerald-400 via-teal-500 to-cyan-500",
     },
     {
       author: "Shubham Kumar",
       role: "Backend Developer, COO",
+      email: "shubham@brancovenn.com",
       imageSrc: "",
       roleGradient: "from-orange-400 via-red-500 to-pink-500",
     }
