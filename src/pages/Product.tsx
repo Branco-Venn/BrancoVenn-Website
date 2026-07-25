@@ -101,7 +101,7 @@ export const Product: React.FC = () => {
         { key: "Deadzone Adjust", value: "0% - 35%" },
         { key: "Input Lag", value: "< 1.1ms" },
       ],
-      video: "/asset%20video/simsteering.mp4",
+      video: "/asset%20video/getready.mp4",
     },
     {
       tag: "layout customization",
@@ -148,9 +148,12 @@ export const Product: React.FC = () => {
         <div className="absolute inset-0 bg-black/65 pointer-events-none" />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-w-4xl pt-20 select-none">
-          <span className="bg-[#FA8453]/15 backdrop-blur border border-[#FA8453]/35 rounded-full px-5 py-1.5 text-xs text-[#FA8453] mb-6 font-medium uppercase tracking-wider font-mono">
-            Your Phone is Player 1.
-          </span>
+          <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white/[0.04] border border-white/15 backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_10px_30px_rgba(0,0,0,0.5)] mb-6 transition-all duration-300 hover:bg-white/[0.08] hover:border-white/25 group select-none">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399] animate-pulse" />
+            <span className="text-xs font-mono tracking-[0.25em] uppercase text-neutral-200 font-medium group-hover:text-white transition-colors">
+              Your Phone is Player 1
+            </span>
+          </div>
           <h1
             className="hero-title text-5xl sm:text-7xl md:text-8xl font-semibold text-white uppercase"
             style={{ letterSpacing: "-0.04em" }}
