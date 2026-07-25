@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Mail, Copy, Check, ArrowUpRight } from "lucide-react";
+import { Mail, Copy, Check, ArrowUpRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface MemberItem {
@@ -17,8 +17,17 @@ interface MeetOurMembersProps {
 }
 
 export default function MeetOurMembers({ members, className }: MeetOurMembersProps) {
-  const [activeEmailIdx, setActiveEmailIdx] = useState<number | null>(null);
+  // Independent open state for each member card
+  const [openCardIndices, setOpenCardIndices] = useState<Record<number, boolean>>({});
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
+
+  const toggleEmail = (idx: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setOpenCardIndices((prev) => ({
+      ...prev,
+      [idx]: !prev[idx],
+    }));
+  };
 
   const handleCopy = (email: string, idx: number, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -72,7 +81,7 @@ export default function MeetOurMembers({ members, className }: MeetOurMembersPro
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[1400px] mx-auto px-6">
         {members.map((item, idx) => {
-          const isEmailOpen = activeEmailIdx === idx;
+          const isEmailOpen = !!openCardIndices[idx];
           const isCopied = copiedIdx === idx;
 
           return (
@@ -119,14 +128,25 @@ export default function MeetOurMembers({ members, className }: MeetOurMembersPro
                   
                   {item.email && (
                     <button
-                      onClick={() => setActiveEmailIdx(isEmailOpen ? null : idx)}
+                      onClick={(e) => toggleEmail(idx, e)}
                       className={cn(
-                        "liquid-pill text-xs font-medium px-4 py-2 rounded-full flex items-center gap-2 border border-white/10 cursor-pointer select-none text-white",
-                        isEmailOpen && "bg-white text-black border-white hover:bg-neutral-200 shadow-[0_0_20px_rgba(255,255,255,0.4)]"
+                        "text-xs font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-300 border cursor-pointer select-none",
+                        isEmailOpen
+                          ? "bg-red-500 text-black border-red-500 hover:bg-red-600 shadow-[0_0_20px_rgba(239,68,68,0.45)]"
+                          : "liquid-pill text-white border-white/10 hover:border-white/20"
                       )}
                     >
-                      <Mail className={cn("w-3.5 h-3.5", isEmailOpen ? "text-black" : "text-white/80")} />
-                      <span>{isEmailOpen ? "Close" : "Connect"}</span>
+                      {isEmailOpen ? (
+                        <>
+                          <X className="w-3.5 h-3.5 text-black stroke-[2.5]" />
+                          <span>Close</span>
+                        </>
+                      ) : (
+                        <>
+                          <Mail className="w-3.5 h-3.5 text-white/80" />
+                          <span>Connect</span>
+                        </>
+                      )}
                     </button>
                   )}
                 </div>
