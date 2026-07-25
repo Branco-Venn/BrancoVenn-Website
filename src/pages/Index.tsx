@@ -473,7 +473,7 @@ export const Index: React.FC = () => {
             }
           >
             <img
-              src="/asset image/desktop.png"
+              src="/asset-image/desktop.png"
               alt="Sim Gamepad Desktop Companion Dashboard"
               className="mx-auto rounded-2xl object-contain h-full w-full select-none pointer-events-none"
               draggable={false}
@@ -564,7 +564,7 @@ export const Index: React.FC = () => {
             style={{ perspective: "1000px" }}
           >
             <motion.img
-              src="/asset image/phone.png"
+              src="/asset-image/phone.png"
               alt="Branco Venn Mobile App"
               style={{
                 rotateX: phoneRotate,

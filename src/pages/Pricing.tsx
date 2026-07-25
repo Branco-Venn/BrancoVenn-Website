@@ -420,7 +420,7 @@ export const Pricing: React.FC = () => {
               {/* Title & Icon */}
               <div className="flex flex-col items-center text-center mt-2 mb-8 select-none">
                 <div className="w-20 h-20 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center mb-4 overflow-hidden select-none">
-                  <img src="/asset image/sim_gamepad_logo.png" alt="Sim Gamepad Logo" className="w-16 h-16 object-contain" />
+                  <img src="/asset-image/sim_gamepad_logo.png" alt="Sim Gamepad Logo" className="w-16 h-16 object-contain" />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight uppercase">
                   Upgrade Sim Gamepad
@@ -459,7 +459,7 @@ export const Pricing: React.FC = () => {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 bg-neutral-900 hover:bg-neutral-900/80 border border-white/5 hover:border-primary/20 rounded-xl p-3 transition-all duration-300 group cursor-pointer"
                   >
-                    <img src="/asset image/google_play_logo.svg" alt="Google Play Logo" className="w-6 h-6 shrink-0 object-contain" />
+                    <img src="/asset-image/google_play_logo.svg" alt="Google Play Logo" className="w-6 h-6 shrink-0 object-contain" />
                     <div>
                       <div className="text-[8px] text-white/30 uppercase tracking-widest font-mono">Get it on</div>
                       <div className="text-xs font-semibold text-white/80 group-hover:text-white transition-colors">Google Play</div>

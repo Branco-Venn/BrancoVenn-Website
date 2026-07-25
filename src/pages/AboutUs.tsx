@@ -55,7 +55,7 @@ export const AboutUs: React.FC = () => {
     {
       author: "Aayush Kr. Gupta",
       role: "Founder, CEO",
-      imageSrc: "/asset image/aayushkrgupta.jpeg",
+      imageSrc: "/asset-image/aayushkrgupta.jpeg",
       roleGradient: "from-cyan-400 via-blue-500 to-indigo-500",
     },
     {
@@ -88,7 +88,7 @@ export const AboutUs: React.FC = () => {
             navLinks={navLinks}
             mainText="We engineer low-latency, immersive digital systems. By bridging hardware boundaries through software innovation, we create technology that feels entirely invisible."
             readMoreLink="/mission"
-            imageSrc="/asset image/letsrace.png"
+            imageSrc="/asset-image/letsrace.png"
             imageAlt="Let's race - Branco Venn racing theme"
             overlayText={{
               part1: "BUILT FOR",
