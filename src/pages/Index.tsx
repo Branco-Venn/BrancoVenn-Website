@@ -291,7 +291,7 @@ export const Index: React.FC = () => {
       </section>
 
       {/* C. CompaniesSection */}
-      <section className="relative w-full bg-black px-4 sm:px-6 md:px-10 py-12 sm:py-20 flex flex-col items-center">
+      <section className="relative w-full bg-black px-4 sm:px-6 md:px-10 py-8 sm:py-12 flex flex-col items-center">
         <div className="max-w-[1400px] w-full">
           {/* Logo Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
@@ -375,7 +375,7 @@ export const Index: React.FC = () => {
           </div>
 
           {/* Below grid CTA */}
-          <div className="mt-16 sm:mt-28 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8 md:w-[70%] md:ml-auto">
+          <div className="mt-6 sm:mt-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8 md:w-[70%] md:ml-auto">
             <p className="max-w-md text-[13px] sm:text-[18px] leading-relaxed text-white/70 font-light">
               Designed to integrate seamlessly with your PC simulator workspace.
             </p>
@@ -397,7 +397,7 @@ export const Index: React.FC = () => {
 
 
       {/* Integrate the 3D scroll animation for showcase! */}
-      <section id="desktop-download" className="relative w-full bg-black py-10 overflow-hidden flex flex-col items-center">
+      <section id="desktop-download" className="relative w-full bg-black py-0 overflow-hidden flex flex-col items-center">
         <div className="max-w-[1400px] w-full">
           <ContainerScroll
             titleComponent={
