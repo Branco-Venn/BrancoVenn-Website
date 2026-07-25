@@ -57,18 +57,6 @@ export const AboutUs: React.FC = () => {
       role: "Founder, CEO",
       imageSrc: "/asset image/aayushkrgupta.jpeg",
       roleGradient: "from-cyan-400 via-blue-500 to-indigo-500",
-    },
-    {
-      author: "Karan Kabdal",
-      role: "Founder, CFO",
-      imageSrc: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600",
-      roleGradient: "from-emerald-400 via-teal-500 to-cyan-500",
-    },
-    {
-      author: "Shubham Kumar",
-      role: "Backend Developer, COO",
-      imageSrc: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600",
-      roleGradient: "from-orange-400 via-red-500 to-pink-500",
     }
   ];
 
@@ -88,8 +76,8 @@ export const AboutUs: React.FC = () => {
             navLinks={navLinks}
             mainText="We engineer low-latency, immersive digital systems. By bridging hardware boundaries through software innovation, we create technology that feels entirely invisible."
             readMoreLink="/mission"
-            imageSrc="https://ik.imagekit.io/fpxbgsota/image%2013.png?updatedAt=1753531863793"
-            imageAlt="A portrait of a person in a black turtleneck, in profile."
+            imageSrc="/asset image/letsrace.png"
+            imageAlt="Let's race - Branco Venn racing theme"
             overlayText={{
               part1: "BUILT FOR",
               part2: "GAMERS.",
