@@ -57,6 +57,18 @@ export const AboutUs: React.FC = () => {
       role: "Founder, CEO",
       imageSrc: "/asset image/aayushkrgupta.jpeg",
       roleGradient: "from-cyan-400 via-blue-500 to-indigo-500",
+    },
+    {
+      author: "Karan Kabdal",
+      role: "Founder, CFO",
+      imageSrc: "",
+      roleGradient: "from-emerald-400 via-teal-500 to-cyan-500",
+    },
+    {
+      author: "Shubham Kumar",
+      role: "Backend Developer, COO",
+      imageSrc: "",
+      roleGradient: "from-orange-400 via-red-500 to-pink-500",
     }
   ];
 
