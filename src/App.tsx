@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -20,11 +20,21 @@ import { License } from "./pages/License";
 import { Pricing } from "./pages/Pricing";
 import { NotFound } from "./pages/NotFound";
 
+// Scrolls window to top on every route change
+const ScrollToTop: React.FC = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
+  return null;
+};
+
 const AnimatedApp: React.FC = () => {
   const location = useLocation();
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center overflow-x-hidden w-full relative">
+      <ScrollToTop />
       {/* Shared Navbar */}
       <Navbar />
 

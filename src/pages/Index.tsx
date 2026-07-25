@@ -66,7 +66,7 @@ const socialFrames: Frame[] = [
   },
   {
     id: 5,
-    video: "https://cdn.simpleicons.org/linkedin/0A66C2",
+    video: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A66C2'/%3E%3Cpath fill='white' d='M35.5 25c-3.6 0-6.5 2.9-6.5 6.5s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5S39.1 25 35.5 25zm-5.5 17h11v33H30V42zm18 0h10.5v4.5h.1c1.5-2.8 5-5.5 10.4-5.5 11.1 0 13.2 7.3 13.2 16.8V75H71.5V59.3c0-3.8-.1-8.7-5.3-8.7-5.3 0-6.1 4.1-6.1 8.4V75H49V42z'/%3E%3C/svg%3E",
     defaultPos: { x: 4, y: 4, w: 4, h: 4 },
     mediaSize: 1.1,
     isHovered: false,
