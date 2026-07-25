@@ -394,68 +394,7 @@ export const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* D. BenefitsSection */}
-      <section className="relative w-full bg-black px-4 sm:px-6 md:px-10 py-12 sm:py-20 flex flex-col items-center">
-        <div className="max-w-[1400px] w-full">
-          <h2
-            className="text-white text-3xl sm:text-4xl md:text-5xl font-light text-center mb-12 sm:mb-24 uppercase"
-            style={{ letterSpacing: "-0.04em" }}
-          >
-            Key Benefits
-          </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-            {/* Card 1 */}
-            <div className="relative h-[380px] sm:h-[460px] rounded-2xl bg-neutral-950 border border-white/5 overflow-hidden p-6 sm:p-8 flex flex-col justify-between group hover:border-white/10 transition-colors duration-300">
-              {/* Blur blob */}
-              <div className="absolute top-1/2 -translate-y-1/2 -left-[420px] h-[460px] w-[460px] rounded-full bg-[#1e3a8a] blur-3xl opacity-40 group-hover:scale-105 transition-transform duration-700" />
-
-              <h3 className="relative z-10 text-xl sm:text-2xl font-light leading-tight text-white max-w-[240px]">
-                Zero-Lag Input Engine
-              </h3>
-              <p className="relative z-10 text-[13px] sm:text-[14px] leading-relaxed text-white/70 font-light max-w-[280px]">
-                Connect via USB, Wi-Fi, or Bluetooth. Experience ultra-low latency inputs that rival physical controllers, keeping you in complete control.
-              </p>
-            </div>
-
-            {/* Card 2: integrated video */}
-            <div className="relative h-[380px] sm:h-[460px] rounded-2xl bg-neutral-950 border border-white/5 overflow-hidden flex flex-col group hover:border-white/10 transition-colors duration-300">
-              {/* Top Video Region */}
-              <div className="relative w-full h-[75%] overflow-hidden">
-                <video
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  src="/asset%20video/dashcam.mp4"
-                />
-                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-neutral-950 to-transparent" />
-              </div>
-              {/* Under Video */}
-              <div className="flex-1 flex items-center justify-start p-6 sm:p-8">
-                <h3 className="text-xl sm:text-2xl font-light leading-tight text-white">
-                  Custom Cockpit Layouts
-                </h3>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="relative h-[380px] sm:h-[460px] rounded-2xl bg-neutral-950 border border-white/5 overflow-hidden p-6 sm:p-8 flex flex-col group hover:border-white/10 transition-colors duration-300">
-              {/* Blur blob */}
-              <div className="absolute -top-28 -right-28 h-56 w-56 bg-[#1e3a8a] blur-3xl opacity-40 group-hover:scale-105 transition-transform duration-700" />
-
-              <h3 className="relative z-10 text-xl sm:text-2xl font-light leading-tight text-white max-w-[240px]">
-                Real-Time Telemetry HUD
-              </h3>
-              <p className="relative z-10 mt-auto text-[13px] sm:text-[14px] leading-relaxed text-white/70 font-light max-w-[320px]">
-                Sync speed, RPM, gear shifting, tire temps, and fuel levels from top PC racing games directly to your mobile screen.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Integrate the 3D scroll animation for showcase! */}
       <section id="desktop-download" className="relative w-full bg-black py-10 overflow-hidden flex flex-col items-center">
