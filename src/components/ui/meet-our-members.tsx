@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Mail, Copy, Check, Send, Sparkles } from "lucide-react";
+import { Mail, Copy, Check, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface MemberItem {
@@ -28,26 +28,45 @@ export default function MeetOurMembers({ members, className }: MeetOurMembersPro
   };
 
   return (
-    <div className={cn("meet-members-section py-12 w-full", className)}>
+    <div className={cn("meet-members-section py-8 w-full", className)}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap');
         
         .meet-members-section * {
           font-family: 'Poppins', sans-serif;
         }
 
-        .member-card {
-          transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        .liquid-glass-card {
+          background: rgba(15, 15, 18, 0.65);
+          backdrop-filter: blur(24px) saturate(180%);
+          -webkit-backdrop-filter: blur(24px) saturate(180%);
+          box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12), 0 20px 50px rgba(0, 0, 0, 0.6);
+          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .member-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 32px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+        
+        .liquid-glass-card:hover {
+          transform: translateY(-6px);
+          box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.25), 0 30px 60px rgba(0, 0, 0, 0.8);
+          border-color: rgba(255, 255, 255, 0.18) !important;
         }
+
+        .liquid-pill {
+          background: rgba(255, 255, 255, 0.06);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+          transition: all 0.3s ease;
+        }
+        .liquid-pill:hover {
+          background: rgba(255, 255, 255, 0.12);
+          box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
         .member-img {
-          transition: transform 0.6s ease;
+          transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .member-card:hover .member-img {
-          transform: scale(1.04);
+        .liquid-glass-card:hover .member-img {
+          transform: scale(1.05);
         }
       `}</style>
       
@@ -59,100 +78,102 @@ export default function MeetOurMembers({ members, className }: MeetOurMembersPro
           return (
             <div
               key={idx}
-              className="member-card bg-neutral-950/80 border border-white/[0.08] text-white rounded-3xl shadow-2xl overflow-hidden flex flex-col group relative"
+              className="liquid-glass-card border border-white/[0.08] text-white rounded-[2.2rem] overflow-hidden flex flex-col group relative"
             >
-              {/* Image & Gradient Header */}
-              <div className="relative overflow-hidden h-[380px] w-full">
+              {/* Full-bleed Portrait Container */}
+              <div className="relative overflow-hidden h-[410px] w-full bg-neutral-950">
                 <img
                   src={item.imageSrc}
                   alt={item.author}
-                  className="member-img h-full w-full object-cover object-top"
+                  className="member-img h-full w-full object-cover object-top filter brightness-[0.92] group-hover:brightness-100 transition-all duration-500"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.onerror = null;
                     target.src = `https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600`;
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
                 
-                {/* Member Info Floating over Image bottom */}
-                <div className="absolute bottom-4 inset-x-6 z-10 select-none">
-                  <p className="font-semibold text-white text-2xl tracking-tight leading-tight">{item.author}</p>
+                {/* Dynamic Frosted Gradient Shader */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/30 to-transparent" />
+
+                {/* Floating Member Info */}
+                <div className="absolute bottom-5 inset-x-6 z-10 select-none">
+                  <h3 className="font-medium text-white text-2xl sm:text-3xl tracking-tight leading-tight drop-shadow-md">
+                    {item.author}
+                  </h3>
                   <p className={cn(
-                    "text-xs font-semibold bg-gradient-to-r text-transparent bg-clip-text mt-1 tracking-[0.15em] uppercase",
-                    item.roleGradient || "from-[#8B5CF6] via-[#E0724A] to-[#9938CA]"
+                    "text-xs font-semibold bg-gradient-to-r text-transparent bg-clip-text mt-1.5 tracking-[0.18em] uppercase",
+                    item.roleGradient || "from-cyan-400 via-blue-500 to-indigo-500"
                   )}>
                     {item.role}
                   </p>
                 </div>
               </div>
 
-              {/* Modern Interactive "Reach Out" Card Footer */}
-              <div className="p-6 bg-neutral-950/90 border-t border-white/[0.06] flex flex-col gap-3">
+              {/* Apple Liquid Glass Action Area */}
+              <div className="p-6 bg-[#09090b]/90 border-t border-white/[0.08] flex flex-col gap-4 backdrop-blur-2xl">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono tracking-widest text-neutral-400 uppercase flex items-center gap-1.5 select-none">
-                    <Sparkles className="w-3 h-3 text-amber-400/80" /> Direct Contact
+                  <span className="text-[10px] font-mono tracking-[0.25em] text-neutral-400 uppercase select-none">
+                    Reach Out
                   </span>
                   
                   {item.email && (
                     <button
                       onClick={() => setActiveEmailIdx(isEmailOpen ? null : idx)}
                       className={cn(
-                        "text-xs font-medium px-3.5 py-1.5 rounded-full transition-all duration-300 flex items-center gap-1.5 border cursor-pointer select-none",
-                        isEmailOpen
-                          ? "bg-white text-black border-white shadow-[0_0_15px_rgba(255,255,255,0.3)]"
-                          : "bg-white/5 text-neutral-300 border-white/10 hover:bg-white/15 hover:text-white hover:border-white/20"
+                        "liquid-pill text-xs font-medium px-4 py-2 rounded-full flex items-center gap-2 border border-white/10 cursor-pointer select-none text-white",
+                        isEmailOpen && "bg-white text-black border-white hover:bg-neutral-200 shadow-[0_0_20px_rgba(255,255,255,0.4)]"
                       )}
                     >
-                      <Mail className="w-3.5 h-3.5" />
-                      {isEmailOpen ? "Hide Contact" : "Reach Out"}
+                      <Mail className={cn("w-3.5 h-3.5", isEmailOpen ? "text-black" : "text-white/80")} />
+                      <span>{isEmailOpen ? "Close" : "Connect"}</span>
                     </button>
                   )}
                 </div>
 
-                {/* Animated Email Drawer */}
+                {/* Liquid Glass Email Panel */}
                 <AnimatePresence>
                   {isEmailOpen && item.email && (
                     <motion.div
                       initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                      animate={{ opacity: 1, height: "auto", marginTop: 8 }}
+                      animate={{ opacity: 1, height: "auto", marginTop: 4 }}
                       exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
-                      <div className="p-3.5 bg-neutral-900/90 border border-white/10 rounded-2xl flex flex-col gap-3 backdrop-blur-md shadow-inner">
-                        {/* Display Email Address */}
-                        <div className="flex items-center justify-between gap-2 overflow-hidden px-1">
-                          <span className="text-xs font-mono text-neutral-200 truncate select-all">
+                      <div className="p-4 bg-white/[0.03] border border-white/10 rounded-2xl flex flex-col gap-3 backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                        {/* Member Email Text */}
+                        <div className="flex items-center justify-between gap-2 px-1">
+                          <span className="text-xs font-mono text-neutral-200 tracking-wide truncate select-all">
                             {item.email}
                           </span>
                         </div>
 
-                        {/* Action buttons: Copy & Mailto */}
-                        <div className="grid grid-cols-2 gap-2 pt-1 border-t border-white/5">
+                        {/* Liquid Action Buttons */}
+                        <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/[0.06]">
                           <button
                             onClick={(e) => handleCopy(item.email!, idx, e)}
-                            className="flex items-center justify-center gap-1.5 py-2 px-3 bg-white/5 hover:bg-white/10 text-white rounded-xl text-xs font-medium transition-colors border border-white/5 active:scale-95 cursor-pointer"
+                            className="liquid-pill flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-medium text-neutral-200 hover:text-white border border-white/10 cursor-pointer active:scale-95 transition-all"
                           >
                             {isCopied ? (
                               <>
                                 <Check className="w-3.5 h-3.5 text-emerald-400" />
-                                <span className="text-emerald-400 font-semibold">Copied!</span>
+                                <span className="text-emerald-400 font-medium">Copied</span>
                               </>
                             ) : (
                               <>
                                 <Copy className="w-3.5 h-3.5 text-neutral-400" />
-                                <span>Copy Mail</span>
+                                <span>Copy</span>
                               </>
                             )}
                           </button>
 
                           <a
                             href={`mailto:${item.email}`}
-                            className="flex items-center justify-center gap-1.5 py-2 px-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl text-xs font-medium transition-all shadow-md active:scale-95 cursor-pointer select-none"
+                            className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-white text-black hover:bg-neutral-200 rounded-xl text-xs font-semibold shadow-[0_4px_15px_rgba(255,255,255,0.2)] active:scale-95 transition-all cursor-pointer select-none"
                           >
-                            <Send className="w-3.5 h-3.5" />
-                            <span>Send Email</span>
+                            <span>Send Mail</span>
+                            <ArrowUpRight className="w-3.5 h-3.5" />
                           </a>
                         </div>
                       </div>
