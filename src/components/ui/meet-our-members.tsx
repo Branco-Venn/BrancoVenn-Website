@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Mail, Copy, Check, ArrowUpRight, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Copy, Check } from "lucide-react";
 
 interface MemberItem {
   author: string;
@@ -17,17 +16,7 @@ interface MeetOurMembersProps {
 }
 
 export default function MeetOurMembers({ members, className }: MeetOurMembersProps) {
-  // Independent open state for each member card
-  const [openCardIndices, setOpenCardIndices] = useState<Record<number, boolean>>({});
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
-
-  const toggleEmail = (idx: number, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setOpenCardIndices((prev) => ({
-      ...prev,
-      [idx]: !prev[idx],
-    }));
-  };
 
   const handleCopy = (email: string, idx: number, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -81,7 +70,6 @@ export default function MeetOurMembers({ members, className }: MeetOurMembersPro
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[1400px] mx-auto px-6">
         {members.map((item, idx) => {
-          const isEmailOpen = !!openCardIndices[idx];
           const isCopied = copiedIdx === idx;
 
           return (
@@ -128,78 +116,23 @@ export default function MeetOurMembers({ members, className }: MeetOurMembersPro
                   
                   {item.email && (
                     <button
-                      onClick={(e) => toggleEmail(idx, e)}
-                      className={cn(
-                        "text-xs font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-300 border cursor-pointer select-none",
-                        isEmailOpen
-                          ? "bg-red-500 text-black border-red-500 hover:bg-red-600 shadow-[0_0_20px_rgba(239,68,68,0.45)]"
-                          : "liquid-pill text-white border-white/10 hover:border-white/20"
-                      )}
+                      onClick={(e) => handleCopy(item.email, idx, e)}
+                      className="liquid-pill text-xs font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-300 border cursor-pointer select-none text-white border-white/10 hover:border-white/20"
                     >
-                      {isEmailOpen ? (
+                      {isCopied ? (
                         <>
-                          <X className="w-3.5 h-3.5 text-black stroke-[2.5]" />
-                          <span>Close</span>
+                          <Check className="w-3.5 h-3.5 text-emerald-400" />
+                          <span className="text-emerald-400">Copied</span>
                         </>
                       ) : (
                         <>
-                          <Mail className="w-3.5 h-3.5 text-white/80" />
-                          <span>Connect</span>
+                          <Copy className="w-3.5 h-3.5 text-white/80" />
+                          <span>Copy Email</span>
                         </>
                       )}
                     </button>
                   )}
                 </div>
-
-                {/* Liquid Glass Email Panel */}
-                <AnimatePresence>
-                  {isEmailOpen && item.email && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                      animate={{ opacity: 1, height: "auto", marginTop: 4 }}
-                      exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <div className="p-4 bg-white/[0.03] border border-white/10 rounded-2xl flex flex-col gap-3 backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
-                        {/* Member Email Text */}
-                        <div className="flex items-center justify-between gap-2 px-1">
-                          <span className="text-xs font-mono text-neutral-200 tracking-wide truncate select-all">
-                            {item.email}
-                          </span>
-                        </div>
-
-                        {/* Liquid Action Buttons */}
-                        <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/[0.06]">
-                          <button
-                            onClick={(e) => handleCopy(item.email!, idx, e)}
-                            className="liquid-pill flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-medium text-neutral-200 hover:text-white border border-white/10 cursor-pointer active:scale-95 transition-all"
-                          >
-                            {isCopied ? (
-                              <>
-                                <Check className="w-3.5 h-3.5 text-emerald-400" />
-                                <span className="text-emerald-400 font-medium">Copied</span>
-                              </>
-                            ) : (
-                              <>
-                                <Copy className="w-3.5 h-3.5 text-neutral-400" />
-                                <span>Copy</span>
-                              </>
-                            )}
-                          </button>
-
-                          <a
-                            href={`mailto:${item.email}`}
-                            className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-white text-black hover:bg-neutral-200 rounded-xl text-xs font-semibold shadow-[0_4px_15px_rgba(255,255,255,0.2)] active:scale-95 transition-all cursor-pointer select-none"
-                          >
-                            <span>Send Mail</span>
-                            <ArrowUpRight className="w-3.5 h-3.5" />
-                          </a>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </div>
             </div>
           );
