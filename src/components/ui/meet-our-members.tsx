@@ -116,7 +116,7 @@ export default function MeetOurMembers({ members, className }: MeetOurMembersPro
                   
                   {item.email && (
                     <button
-                      onClick={(e) => handleCopy(item.email, idx, e)}
+                      onClick={(e) => handleCopy(item.email!, idx, e)}
                       className="liquid-pill text-xs font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all duration-300 border cursor-pointer select-none text-white border-white/10 hover:border-white/20"
                     >
                       {isCopied ? (
