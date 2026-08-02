@@ -1,7 +1,7 @@
 import React from "react";
 import { PageTransition } from "@/components/PageTransition";
 import { MinimalistHero } from "@/components/ui/minimalist-hero";
-import MeetOurMembers from "@/components/ui/meet-our-members";
+import KineticTeamHybrid from "@/components/ui/kinetic-team-hybrid";
 
 // Lightweight, inline SVG components for standard brand icons
 const FacebookIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -50,35 +50,35 @@ export const AboutUs: React.FC = () => {
     { icon: GithubIcon, href: "https://github.com/brancovenn" },
   ];
 
-  // Configured team member items for Meet Our Members section (photo, name, and role only)
+  // Configured team member items for Kinetic Team section
   const teamMembers = [
     {
-      author: "Aayush Kr. Gupta",
+      id: "01",
+      name: "Aayush Kr. Gupta",
       role: "Founder, CEO",
       email: "aayush@brancovenn.com",
-      imageSrc: "/asset-image/aayushkrgupta.jpeg",
-      roleGradient: "from-cyan-400 via-blue-500 to-indigo-500",
+      image: "/asset-image/aayushkrgupta.jpeg",
     },
     {
-      author: "Karan Kabdal",
+      id: "02",
+      name: "Karan Kabdal",
       role: "Founder, CFO",
       email: "karan@brancovenn.com",
-      imageSrc: "",
-      roleGradient: "from-emerald-400 via-teal-500 to-cyan-500",
+      image: "/asset-image/unknownperson.png",
     },
     {
-      author: "Shubham Kumar",
+      id: "03",
+      name: "Shubham Kumar",
       role: "Backend Developer, COO",
       email: "shubham@brancovenn.com",
-      imageSrc: "",
-      roleGradient: "from-orange-400 via-red-500 to-pink-500",
+      image: "/asset-image/unknownperson.png",
     }
   ];
 
   return (
     <PageTransition>
       <div className="w-full bg-black text-white relative min-h-screen pt-20 pb-20 overflow-hidden">
-        
+
         {/* Subtle Background Glows */}
         <div className="absolute top-0 inset-x-0 h-[500px] pointer-events-none bg-gradient-to-b from-white/[0.02] to-transparent z-0" />
         <div className="absolute -left-48 top-1/3 w-96 h-96 bg-neutral-900/40 rounded-full blur-[120px] pointer-events-none" />
@@ -103,25 +103,14 @@ export const AboutUs: React.FC = () => {
           />
         </div>
 
-        {/* Meet Our Members Divider & Header */}
-        <section className="relative z-10 max-w-[1440px] mx-auto px-6">
-          {/* Smooth vertical fade spacer replacing the thin divider */}
-          <div className="w-full h-32 bg-gradient-to-b from-transparent via-black/40 to-black pointer-events-none mb-12" />
-
-          <div className="text-center mb-12 select-none">
-            <span className="text-[10px] font-mono tracking-[0.4em] text-neutral-500 uppercase block mb-3">
-              Core Team
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-white uppercase">
-              Meet Our Members
-            </h2>
-            <p className="mt-4 max-w-md mx-auto text-sm text-neutral-400 font-light">
-              The engineering and executive leadership driving Branco Venn's low latency digital solutions.
-            </p>
-          </div>
-
-          {/* Core Team Members Section */}
-          <MeetOurMembers members={teamMembers} />
+        {/* Core Team Section */}
+        <section className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 mt-12 mb-12">
+          <KineticTeamHybrid
+            members={teamMembers}
+            title="Meet Our"
+            titleAccent="Members"
+            tagline="Executive Leadership & Engineering"
+          />
         </section>
 
       </div>
