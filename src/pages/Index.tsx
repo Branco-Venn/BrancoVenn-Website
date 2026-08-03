@@ -5,138 +5,135 @@ import { PageTransition } from "@/components/PageTransition";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { useScroll, useTransform, motion } from "framer-motion";
-import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout";
-import type { Frame } from "@/components/ui/dynamic-frame-layout";
+import { RadialScrollGallery } from "@/components/ui/portfolio-and-image-gallery";
+import { Badge } from "@/components/ui/badge";
 
-const socialFrames: Frame[] = [
+interface SocialHandle {
+  id: number;
+  title: string;
+  cat: string;
+  handle: string;
+  iconImg: string;
+  href: string;
+  gradient: string;
+  brandColor: string;
+  icon: React.ReactNode;
+}
+
+const socialHandles: SocialHandle[] = [
   {
     id: 1,
-    video: "https://cdn.simpleicons.org/instagram/E1306C",
-    defaultPos: { x: 0, y: 0, w: 4, h: 4 },
-    mediaSize: 1.1,
-    isHovered: false,
-    socialName: "Instagram",
-    socialHandle: "@brancovenn",
-    socialHref: "https://instagram.com/brancovenn",
-    socialIcon: (
-      <svg viewBox="0 0 24 24" className="h-8 w-8 text-white" fill="currentColor">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+    title: "X (Twitter)",
+    cat: "Updates",
+    handle: "@brancovenn",
+    iconImg: "https://cdn.simpleicons.org/x/FFFFFF",
+    href: "https://x.com/brancovenn",
+    gradient: "from-neutral-900 via-black to-neutral-950",
+    brandColor: "#ffffff",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
       </svg>
-    )
+    ),
   },
   {
     id: 2,
-    video: "https://cdn.simpleicons.org/youtube/FF0000",
-    defaultPos: { x: 4, y: 0, w: 4, h: 4 },
-    mediaSize: 1.1,
-    isHovered: false,
-    socialName: "YouTube",
-    socialHandle: "Branco Venn",
-    socialHref: "https://youtube.com/@brancovenn",
-    socialIcon: (
-      <svg viewBox="0 0 24 24" className="h-8 w-10 text-white" fill="currentColor">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    title: "Instagram",
+    cat: "Showcase",
+    handle: "@brancovenn",
+    iconImg: "https://cdn.simpleicons.org/instagram/E1306C",
+    href: "https://instagram.com/brancovenn",
+    gradient: "from-[#833AB4]/40 via-[#FD1D1D]/20 to-black",
+    brandColor: "#E1306C",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
       </svg>
-    )
+    ),
   },
   {
     id: 3,
-    video: "/asset%20video/hud.mp4",
-    defaultPos: { x: 8, y: 0, w: 4, h: 4 },
-    mediaSize: 1.1,
-    isHovered: false,
-    socialName: "Pro Control",
-    socialHandle: "Sim Gamepad",
-    socialHref: "/product/sim-gamepad"
+    title: "YouTube",
+    cat: "4K Teasers",
+    handle: "@BrancoVenn",
+    iconImg: "https://cdn.simpleicons.org/youtube/FF0000",
+    href: "https://youtube.com/@brancovenn",
+    gradient: "from-[#FF0000]/30 via-neutral-950 to-black",
+    brandColor: "#FF0000",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+      </svg>
+    ),
   },
   {
     id: 4,
-    video: "https://cdn.simpleicons.org/x/FFFFFF",
-    defaultPos: { x: 0, y: 4, w: 4, h: 4 },
-    mediaSize: 1.1,
-    isHovered: false,
-    socialName: "X (Twitter)",
-    socialHandle: "@brancovenn",
-    socialHref: "https://x.com/brancovenn",
-    socialIcon: (
-      <svg viewBox="0 0 24 24" className="h-7 w-7 text-white" fill="currentColor">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    title: "Discord",
+    cat: "Community",
+    handle: "Branco Venn",
+    iconImg: "https://cdn.simpleicons.org/discord/5865F2",
+    href: "https://discord.gg/brancovenn",
+    gradient: "from-[#5865F2]/30 via-[#23272A]/40 to-black",
+    brandColor: "#5865F2",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z" />
       </svg>
-    )
+    ),
   },
   {
     id: 5,
-    video: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A66C2'/%3E%3Cpath fill='white' d='M35.5 25c-3.6 0-6.5 2.9-6.5 6.5s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5S39.1 25 35.5 25zm-5.5 17h11v33H30V42zm18 0h10.5v4.5h.1c1.5-2.8 5-5.5 10.4-5.5 11.1 0 13.2 7.3 13.2 16.8V75H71.5V59.3c0-3.8-.1-8.7-5.3-8.7-5.3 0-6.1 4.1-6.1 8.4V75H49V42z'/%3E%3C/svg%3E",
-    defaultPos: { x: 4, y: 4, w: 4, h: 4 },
-    mediaSize: 1.1,
-    isHovered: false,
-    socialName: "LinkedIn",
-    socialHandle: "Branco Venn",
-    socialHref: "https://linkedin.com/brancovenn",
-    socialIcon: (
-      <svg viewBox="0 0 24 24" className="h-7 w-7 text-white" fill="currentColor">
+    title: "LinkedIn",
+    cat: "Careers",
+    handle: "Branco Venn",
+    iconImg: "https://cdn.simpleicons.org/linkedin/0A66C2",
+    href: "https://linkedin.com/company/brancovenn",
+    gradient: "from-[#0A66C2]/30 via-neutral-950 to-black",
+    brandColor: "#0A66C2",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
       </svg>
-    )
+    ),
   },
   {
     id: 6,
-    video: "https://cdn.simpleicons.org/discord/5865F2",
-    defaultPos: { x: 8, y: 4, w: 4, h: 4 },
-    mediaSize: 1.1,
-    isHovered: false,
-    socialName: "Discord",
-    socialHandle: "Branco Venn",
-    socialHref: "https://discord.gg/brancovenn",
-    socialIcon: (
-      <svg viewBox="0 0 24 24" className="h-7 w-7 text-white" fill="currentColor">
-        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z" />
+    title: "GitHub",
+    cat: "Open Source",
+    handle: "@brancovenn",
+    iconImg: "https://cdn.simpleicons.org/github/FFFFFF",
+    href: "https://github.com/brancovenn",
+    gradient: "from-neutral-800/40 via-neutral-950 to-black",
+    brandColor: "#24292E",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
       </svg>
-    )
+    ),
   },
   {
     id: 7,
-    video: "/asset%20video/f1.mp4",
-    defaultPos: { x: 0, y: 8, w: 4, h: 4 },
-    mediaSize: 1.1,
-    isHovered: false,
-    socialName: "Sim Ecosystem",
-    socialHandle: "Racing Ready",
-    socialHref: "/product/sim-gamepad"
-  },
-  {
-    id: 8,
-    video: "https://cdn.simpleicons.org/tiktok/FFFFFF",
-    defaultPos: { x: 4, y: 8, w: 4, h: 4 },
-    mediaSize: 1.1,
-    isHovered: false,
-    socialName: "TikTok",
-    socialHandle: "@brancovenn",
-    socialHref: "https://tiktok.com/@brancovenn",
-    socialIcon: (
-      <div className="relative h-7 w-7">
-        <svg viewBox="0 0 24 24" className="absolute inset-0 h-full w-full translate-x-[1.5px] translate-y-[0.5px]" fill="#FE2C55">
+    title: "TikTok",
+    cat: "Reels & Motion",
+    handle: "@brancovenn",
+    iconImg: "https://cdn.simpleicons.org/tiktok/FE2C55",
+    href: "https://tiktok.com/@brancovenn",
+    gradient: "from-[#FE2C55]/30 via-neutral-950 to-black",
+    brandColor: "#ff0050",
+    icon: (
+      <div className="relative w-5 h-5">
+        <svg viewBox="0 0 24 24" className="absolute inset-0 w-full h-full translate-x-[1px] translate-y-[0.5px] fill-[#FE2C55]">
           <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.22-1.15 4.39-2.95 5.6-1.8 1.25-4.14 1.55-6.17.83-2.06-.69-3.71-2.42-4.15-4.57-.45-2.09-.07-4.32 1.18-6.13 1.25-1.84 3.42-2.92 5.63-3.13v4.05c-1.43.08-2.73 1.05-3.19 2.44-.47 1.4.05 3.02 1.23 3.84 1.16.85 2.82.9 4.04.14 1.22-.72 1.94-2.04 1.98-3.46.03-3.85.01-7.7.01-11.55-.01-1.61.02-3.21-.01-4.82z" />
         </svg>
-        <svg viewBox="0 0 24 24" className="absolute inset-0 h-full w-full -translate-x-[1.5px] -translate-y-[0.5px]" fill="#25F4EE">
+        <svg viewBox="0 0 24 24" className="absolute inset-0 w-full h-full -translate-x-[1px] -translate-y-[0.5px] fill-[#25F4EE]">
           <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.22-1.15 4.39-2.95 5.6-1.8 1.25-4.14 1.55-6.17.83-2.06-.69-3.71-2.42-4.15-4.57-.45-2.09-.07-4.32 1.18-6.13 1.25-1.84 3.42-2.92 5.63-3.13v4.05c-1.43.08-2.73 1.05-3.19 2.44-.47 1.4.05 3.02 1.23 3.84 1.16.85 2.82.9 4.04.14 1.22-.72 1.94-2.04 1.98-3.46.03-3.85.01-7.7.01-11.55-.01-1.61.02-3.21-.01-4.82z" />
         </svg>
-        <svg viewBox="0 0 24 24" className="absolute inset-0 h-full w-full" fill="white">
+        <svg viewBox="0 0 24 24" className="absolute inset-0 w-full h-full fill-white">
           <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 2.22-1.15 4.39-2.95 5.6-1.8 1.25-4.14 1.55-6.17.83-2.06-.69-3.71-2.42-4.15-4.57-.45-2.09-.07-4.32 1.18-6.13 1.25-1.84 3.42-2.92 5.63-3.13v4.05c-1.43.08-2.73 1.05-3.19 2.44-.47 1.4.05 3.02 1.23 3.84 1.16.85 2.82.9 4.04.14 1.22-.72 1.94-2.04 1.98-3.46.03-3.85.01-7.7.01-11.55-.01-1.61.02-3.21-.01-4.82z" />
         </svg>
       </div>
-    )
+    ),
   },
-  {
-    id: 9,
-    video: "/asset%20video/dashcam.mp4",
-    defaultPos: { x: 8, y: 8, w: 4, h: 4 },
-    mediaSize: 1.1,
-    isHovered: false,
-    socialName: "Zero Lag",
-    socialHandle: "100% Telemetry",
-    socialHref: "/product/sim-gamepad"
-  }
 ];
 
 export const Index: React.FC = () => {
@@ -568,36 +565,103 @@ export const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* E. Social Media Grid Showcase Section */}
-      <section className="relative w-full bg-black py-20 md:py-32 overflow-hidden border-t border-white/5 select-none">
-        {/* Color glow in background */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FA8453]/5 rounded-full blur-[160px] pointer-events-none" />
+      {/* E. Social Media Radial Scroll Showcase Section */}
+      <section className="relative w-full bg-black border-t border-white/5 select-none overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FA8453]/10 rounded-full blur-[160px] pointer-events-none" />
 
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-10 relative z-10 flex flex-col items-center">
-          
-          <div className="text-center mb-16 sm:mb-20 max-w-2xl select-text">
-            <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-light leading-tight uppercase tracking-tight font-sans mt-4 flex flex-wrap justify-center gap-x-3 sm:gap-x-4 items-baseline">
-              <span className="whitespace-nowrap">Connect with</span>
-              <span className="text-4xl sm:text-6xl lg:text-7xl font-semibold bg-gradient-to-r from-[#FA8453] to-[#F8C9B2] bg-clip-text text-transparent inline-block whitespace-nowrap">
-                us
+        <RadialScrollGallery
+          startTrigger="top top"
+          baseRadius={460}
+          mobileRadius={240}
+          scrollDuration={2200}
+          header={
+            <div className="text-center max-w-2xl mx-auto">
+              <span className="text-[11px] font-bold tracking-widest text-[#FA8453] uppercase font-mono">
+                Join Our Community
               </span>
-            </h2>
-            <p className="text-neutral-400 text-sm sm:text-base font-light leading-relaxed mt-4">
-              Explore zero-latency gameplay telemetry, developer changelogs, live sim racing setups, and custom layout showcases across our social channels. Hover over any frame to reveal the channel stream.
-            </p>
-          </div>
+              <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-light leading-tight uppercase tracking-tight font-sans mt-2 flex flex-wrap justify-center gap-x-3 sm:gap-x-4 items-baseline">
+                <span className="whitespace-nowrap">Connect with</span>
+                <span className="text-4xl sm:text-6xl lg:text-7xl font-semibold bg-gradient-to-r from-[#FA8453] to-[#F8C9B2] bg-clip-text text-transparent inline-block whitespace-nowrap">
+                  us
+                </span>
+              </h2>
+              <p className="text-neutral-400 text-xs sm:text-sm font-light leading-relaxed mt-3">
+                Explore live telemetry updates, developer changelogs, sim racing setups, and custom layout showcases across all our official social handles. Scroll down to spin through our channels.
+              </p>
+            </div>
+          }
+          onItemSelect={(index) => {
+            const handle = socialHandles[index];
+            if (handle?.href) {
+              window.open(handle.href, '_blank', 'noopener,noreferrer');
+            }
+          }}
+        >
+          {(hoveredIndex) =>
+            socialHandles.map((social, index) => {
+              const isActive = hoveredIndex === index;
+              return (
+                <a
+                  key={social.id}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative w-[210px] h-[290px] sm:w-[260px] sm:h-[350px] overflow-hidden rounded-3xl bg-neutral-950 border border-white/20 shadow-2xl backdrop-blur-md block transform-gpu transition-all duration-300 ease-out"
+                >
+                  {/* Still Social Media Icon Cover & Brand Gradient Backdrop */}
+                  <div className="absolute inset-0 overflow-hidden bg-neutral-950 flex items-center justify-center">
+                    <div className={`absolute inset-0 bg-gradient-to-b ${social.gradient} opacity-95 transition-opacity duration-500`} />
+                    
+                    {/* Ambient Brand Color Glow */}
+                    <div 
+                      className="absolute w-40 h-40 rounded-full blur-[60px] opacity-30 pointer-events-none transition-transform duration-700"
+                      style={{ backgroundColor: social.brandColor }}
+                    />
 
-          {/* Dynamic Frame Layout Grid */}
-          <div className="w-full max-w-[1000px] aspect-square sm:aspect-[4/3] max-h-[700px] rounded-3xl overflow-hidden border border-white/10 p-2 bg-neutral-950/40 backdrop-blur-md">
-            <DynamicFrameLayout 
-              frames={socialFrames} 
-              className="w-full h-full" 
-              hoverSize={6}
-              gapSize={6}
-            />
-          </div>
+                    {/* Centered Still Social Media Icon Graphic */}
+                    <div className={`relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl flex items-center justify-center p-5 transition-all duration-500 ${isActive ? 'scale-110 border-white/40 shadow-[0_0_40px_rgba(255,255,255,0.2)]' : 'scale-100'}`}>
+                      <img
+                        src={social.iconImg}
+                        alt={social.title}
+                        className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.6)]"
+                      />
+                    </div>
+                    
+                    {/* Background Watermark Icon */}
+                    <div className="absolute -bottom-10 -right-10 w-48 h-48 opacity-10 text-white pointer-events-none transform -rotate-12">
+                      {social.icon}
+                    </div>
+                  </div>
 
-        </div>
+                  {/* Content Container */}
+                  <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-6 z-10 select-none">
+                    {/* Top Header: Badge + Brand Icon Button */}
+                    <div className="flex justify-between items-center">
+                      <Badge variant="secondary" className="text-[10px] px-3 py-1 bg-black/60 text-white backdrop-blur border border-white/20 font-semibold tracking-wider uppercase rounded-full">
+                        {social.cat}
+                      </Badge>
+                      <div className={`w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-500 ${isActive ? 'bg-white text-black scale-110 shadow-lg' : 'text-white'}`}>
+                        {social.icon}
+                      </div>
+                    </div>
+
+                    {/* Bottom Title & Handle */}
+                    <div className={`transition-transform duration-500 ${isActive ? 'translate-y-0' : 'translate-y-1'}`}>
+                      <span className="text-xs text-white/70 font-medium tracking-wide block mb-1 font-mono">
+                        {social.handle}
+                      </span>
+                      <h3 className="text-2xl sm:text-3xl font-extrabold leading-tight text-white tracking-tight">
+                        {social.title}
+                      </h3>
+                      <div className={`h-1 bg-gradient-to-r from-white to-white/20 mt-3 rounded-full transition-all duration-500 ${isActive ? 'w-full opacity-100' : 'w-0 opacity-0'}`} />
+                    </div>
+                  </div>
+                </a>
+              );
+            })
+          }
+        </RadialScrollGallery>
       </section>
     </PageTransition>
   );
