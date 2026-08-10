@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { Link, useLocation } from "react-router-dom"
 import type { LucideIcon } from "lucide-react"
@@ -17,15 +17,47 @@ interface NavBarProps {
 
 export function NavBar({ items, className }: NavBarProps) {
   const location = useLocation()
-  const [activeTab, setActiveTab] = useState(items[0]?.name || "")
+
+  // Initialise from the real starting route so Home (index 0) → "right" by default
+  const initialIndex = Math.max(0, items.findIndex(item => item.url === location.pathname))
+  const [activeTab, setActiveTab] = useState(items[initialIndex]?.name || "")
+  // "right" = moving left→right, "left" = moving right→left
+  const [direction, setDirection] = useState<"right" | "left">("right")
+  const prevIndexRef = useRef<number>(initialIndex)
 
   useEffect(() => {
-    // Update active tab based on current route
-    const currentItem = items.find(item => item.url === location.pathname)
-    if (currentItem) {
-      setActiveTab(currentItem.name)
+    // Sync active tab + direction when route changes (e.g. browser back/forward)
+    const newIndex = items.findIndex(item => item.url === location.pathname)
+    if (newIndex === -1) return
+    const prevIndex = prevIndexRef.current
+    // Home tab (index 0) always gets porsche_right; otherwise derive from direction
+    if (newIndex === 0) {
+      setDirection("right")
+    } else if (newIndex > prevIndex) {
+      setDirection("right")
+    } else if (newIndex < prevIndex) {
+      setDirection("left")
     }
+    prevIndexRef.current = newIndex
+    setActiveTab(items[newIndex].name)
   }, [location.pathname, items])
+
+  const handleTabClick = (name: string) => {
+    const newIndex = items.findIndex(item => item.name === name)
+    const prevIndex = prevIndexRef.current
+    if (newIndex > prevIndex) {
+      setDirection("right")
+    } else if (newIndex < prevIndex) {
+      setDirection("left")
+    }
+    prevIndexRef.current = newIndex
+    setActiveTab(name)
+  }
+
+  const porscheSrc =
+    direction === "right"
+      ? "/asset-image/porsche_right.png"
+      : "/asset-image/porsche_left.png"
 
   return (
     <div
@@ -43,7 +75,7 @@ export function NavBar({ items, className }: NavBarProps) {
             <Link
               key={item.name}
               to={item.url}
-              onClick={() => setActiveTab(item.name)}
+              onClick={() => handleTabClick(item.name)}
               className={cn(
                 "relative cursor-pointer text-xs sm:text-sm font-semibold px-4 md:px-6 py-2 rounded-full border border-transparent transition-colors duration-200 flex items-center justify-center gap-2 select-none",
                 isActive ? "text-white" : "text-white/70 hover:text-white"
@@ -64,10 +96,11 @@ export function NavBar({ items, className }: NavBarProps) {
                     damping: 30,
                   }}
                 >
-                  {/* Safety Car indicator above active nav tab */}
+                  {/* Porsche indicator above active nav tab */}
                   <img
-                    src="/asset-image/img_safety_car.png"
-                    alt="Safety Car Indicator"
+                    key={porscheSrc}
+                    src={porscheSrc}
+                    alt="Porsche Indicator"
                     className="absolute -top-6 left-1/2 -translate-x-1/2 h-7 sm:h-8 w-auto object-contain pointer-events-none drop-shadow-[0_4px_12px_rgba(255,255,255,0.5)] transform-gpu"
                   />
                 </motion.div>
