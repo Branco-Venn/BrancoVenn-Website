@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { PageTransition } from "@/components/PageTransition";
 import { Check, X, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -453,10 +454,8 @@ export const Pricing: React.FC = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Google Play Store Badge Button */}
-                  <a
-                    href="https://play.google.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    to="/app-under-development"
                     className="flex items-center gap-3 bg-neutral-900 hover:bg-neutral-900/80 border border-white/5 hover:border-primary/20 rounded-xl p-3 transition-all duration-300 group cursor-pointer"
                   >
                     <img src="/asset-image/google_play_logo.svg" alt="Google Play Logo" className="w-6 h-6 shrink-0 object-contain" />
@@ -464,13 +463,11 @@ export const Pricing: React.FC = () => {
                       <div className="text-[8px] text-white/30 uppercase tracking-widest font-mono">Get it on</div>
                       <div className="text-xs font-semibold text-white/80 group-hover:text-white transition-colors">Google Play</div>
                     </div>
-                  </a>
+                  </Link>
 
                   {/* Apple App Store Badge Button */}
-                  <a
-                    href="https://apps.apple.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    to="/app-under-development"
                     className="flex items-center gap-3 bg-neutral-900 hover:bg-neutral-900/80 border border-white/5 hover:border-primary/20 rounded-xl p-3 transition-all duration-300 group cursor-pointer"
                   >
                     <svg className="w-6 h-6 text-neutral-400 group-hover:text-primary transition-colors fill-current" viewBox="0 0 24 24">
@@ -480,7 +477,7 @@ export const Pricing: React.FC = () => {
                       <div className="text-[8px] text-white/30 uppercase tracking-widest font-mono">Download on</div>
                       <div className="text-xs font-semibold text-white/80 group-hover:text-white transition-colors">App Store</div>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </div>
 
