@@ -528,7 +528,7 @@ export const Index: React.FC = () => {
 
             {/* Premium Download Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <a href="#" className="cursor-pointer select-none">
+              <Link to="/app-under-development" className="cursor-pointer select-none">
                 <GlassButton
                   size="lg"
                   glassColor="rgba(255, 255, 255, 0.05)"
@@ -542,9 +542,9 @@ export const Index: React.FC = () => {
                     <span className="text-sm font-semibold mt-1">Google Play</span>
                   </div>
                 </GlassButton>
-              </a>
+              </Link>
 
-              <a href="#" className="cursor-pointer select-none">
+              <Link to="/app-under-development" className="cursor-pointer select-none">
                 <GlassButton
                   size="lg"
                   glassColor="rgba(255, 255, 255, 0.05)"
@@ -558,7 +558,7 @@ export const Index: React.FC = () => {
                     <span className="text-sm font-semibold mt-1">App Store</span>
                   </div>
                 </GlassButton>
-              </a>
+              </Link>
             </div>
           </div>
 
