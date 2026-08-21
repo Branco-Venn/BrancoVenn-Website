@@ -18,6 +18,8 @@ import { Privacy } from "./pages/Privacy";
 import { Terms } from "./pages/Terms";
 import { License } from "./pages/License";
 import { Pricing } from "./pages/Pricing";
+import { Careers } from "./pages/Careers";
+import { AppUnderDevelopment } from "./pages/AppUnderDevelopment";
 import { NotFound } from "./pages/NotFound";
 
 // Scrolls window to top on every route change
@@ -47,11 +49,13 @@ const AnimatedApp: React.FC = () => {
             <Route path="/product/sim-gamepad" element={<SimGamepad />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/mission" element={<Mission />} />
+            <Route path="/careers" element={<Careers />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/license" element={<License />} />
             <Route path="/product/pricing" element={<Pricing />} />
+            <Route path="/app-under-development" element={<AppUnderDevelopment />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AnimatePresence>
