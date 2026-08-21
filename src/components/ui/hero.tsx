@@ -1,153 +1,134 @@
-"use client";
-
-import * as React from "react";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { cn } from "@/lib/utils";
+import * as React from "react"
+import { motion } from "framer-motion"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Link } from "react-router-dom"
 
 export interface HeroAction {
-  label: string;
-  href: string;
-  variant?: "default" | "outline" | "secondary";
-  onClick?: () => void;
+  label: string
+  href: string
+  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"
+  icon?: React.ReactNode
+  isExternal?: boolean
 }
 
 export interface HeroProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
-  gradient?: boolean;
-  blur?: boolean;
-  title: React.ReactNode;
-  subtitle: React.ReactNode;
-  actions?: HeroAction[];
-  titleClassName?: string;
-  subtitleClassName?: string;
-  actionsClassName?: string;
-  videoSrc?: string;
+  gradient?: boolean
+  blur?: boolean
+  badge?: React.ReactNode
+  title: React.ReactNode
+  subtitle?: React.ReactNode
+  actions?: HeroAction[]
+  titleClassName?: string
+  subtitleClassName?: string
+  actionsClassName?: string
 }
 
-export const Hero = React.forwardRef<HTMLElement, HeroProps>(
+const Hero = React.forwardRef<HTMLElement, HeroProps>(
   (
     {
       className,
       gradient = true,
       blur = true,
+      badge,
       title,
       subtitle,
       actions,
       titleClassName,
       subtitleClassName,
       actionsClassName,
-      videoSrc,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <section
         ref={ref}
         className={cn(
-          "relative z-0 flex min-h-[90vh] w-full flex-col items-center justify-center overflow-hidden bg-black py-20",
-          className
+          "relative z-0 flex min-h-[80vh] w-full flex-col items-center justify-center overflow-hidden bg-black text-white selection:bg-white selection:text-black py-20 px-4",
+          className,
         )}
         {...props}
       >
-        {/* Background Video */}
-        {videoSrc && (
-          <div className="absolute inset-0 z-0 overflow-hidden w-full h-full">
-            <video
-              key={videoSrc}
-              src={videoSrc}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              className="w-full h-full object-cover opacity-65"
-            />
-            <div className="absolute inset-0 bg-black/45 z-10" />
-          </div>
-        )}
-
         {gradient && (
-          <div className="absolute top-0 isolate z-10 flex w-screen flex-1 items-start justify-center pointer-events-none">
+          <div className="absolute top-0 isolate z-0 flex w-screen flex-1 items-start justify-center pointer-events-none">
             {blur && (
               <div className="absolute top-0 z-50 h-48 w-screen bg-transparent opacity-10 backdrop-blur-md" />
             )}
 
             {/* Main glow */}
-            <div className="absolute inset-auto z-50 h-44 w-[36rem] -translate-y-[-20%] rounded-full bg-orange-500/15 opacity-70 blur-3xl" />
+            <div className="absolute inset-auto z-50 h-36 w-[28rem] -translate-y-[-30%] rounded-full bg-white/20 opacity-80 blur-3xl" />
 
-            {/* Lamp effect (only without video) */}
-            {!videoSrc && (
-              <>
-                <motion.div
-                  initial={{ width: "10rem" }}
-                  viewport={{ once: true }}
-                  transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
-                  whileInView={{ width: "22rem" }}
-                  className="absolute top-0 z-30 h-44 -translate-y-[20%] rounded-full bg-orange-500/30 blur-3xl"
-                />
+            {/* Lamp effect */}
+            <motion.div
+              initial={{ width: "8rem" }}
+              viewport={{ once: true }}
+              transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
+              whileInView={{ width: "18rem" }}
+              className="absolute top-0 z-30 h-36 -translate-y-[20%] rounded-full bg-white/20 blur-2xl"
+            />
 
-                {/* Top line */}
-                <motion.div
-                  initial={{ width: "20rem" }}
-                  viewport={{ once: true }}
-                  transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
-                  whileInView={{ width: "40rem" }}
-                  className="absolute inset-auto z-50 h-0.5 -translate-y-[-10%] bg-orange-500/40"
-                />
+            {/* Top line */}
+            <motion.div
+              initial={{ width: "15rem" }}
+              viewport={{ once: true }}
+              transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
+              whileInView={{ width: "32rem" }}
+              className="absolute inset-auto z-50 h-0.5 -translate-y-[-10%] bg-white/40 shadow-[0_0_15px_#ffffff]"
+            />
 
-                {/* Left gradient cone */}
-                <motion.div
-                  initial={{ opacity: 0.5, width: "20rem" }}
-                  whileInView={{ opacity: 1, width: "40rem" }}
-                  transition={{
-                    delay: 0.3,
-                    duration: 0.8,
-                    ease: "easeInOut",
-                  }}
-                  style={{
-                    backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
-                  }}
-                  className="absolute inset-auto right-1/2 h-64 overflow-visible w-[40rem] bg-gradient-conic from-orange-500/30 via-transparent to-transparent [--conic-position:from_70deg_at_center_top] [--tw-gradient-from:rgba(249,115,22,0.3)] [--tw-gradient-to:transparent]"
-                >
-                  <div className="absolute w-[100%] left-0 bg-black h-48 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
-                  <div className="absolute w-48 h-[100%] left-0 bg-black bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
-                </motion.div>
+            {/* Left gradient cone */}
+            <motion.div
+              initial={{ opacity: 0.5, width: "15rem" }}
+              whileInView={{ opacity: 1, width: "30rem" }}
+              transition={{
+                delay: 0.3,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              style={{
+                backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
+              }}
+              className="absolute inset-auto right-1/2 h-56 overflow-visible w-[30rem] bg-gradient-conic from-white/20 via-transparent to-transparent [--conic-position:from_70deg_at_center_top]"
+            >
+              <div className="absolute w-[100%] left-0 bg-black h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
+              <div className="absolute w-40 h-[100%] left-0 bg-black bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
+            </motion.div>
 
-                {/* Right gradient cone */}
-                <motion.div
-                  initial={{ opacity: 0.5, width: "20rem" }}
-                  whileInView={{ opacity: 1, width: "40rem" }}
-                  transition={{
-                    delay: 0.3,
-                    duration: 0.8,
-                    ease: "easeInOut",
-                  }}
-                  style={{
-                    backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
-                  }}
-                  className="absolute inset-auto left-1/2 h-64 w-[40rem] bg-gradient-conic from-transparent via-transparent to-orange-500/30 [--conic-position:from_290deg_at_center_top] [--tw-gradient-from:transparent] [--tw-gradient-to:rgba(249,115,22,0.3)]"
-                >
-                  <div className="absolute w-48 h-[100%] right-0 bg-black bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
-                  <div className="absolute w-[100%] right-0 bg-black h-48 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
-                </motion.div>
-              </>
-            )}
+            {/* Right gradient cone */}
+            <motion.div
+              initial={{ opacity: 0.5, width: "15rem" }}
+              whileInView={{ opacity: 1, width: "30rem" }}
+              transition={{
+                delay: 0.3,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              style={{
+                backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
+              }}
+              className="absolute inset-auto left-1/2 h-56 w-[30rem] bg-gradient-conic from-transparent via-transparent to-white/20 [--conic-position:from_290deg_at_center_top]"
+            >
+              <div className="absolute w-40 h-[100%] right-0 bg-black bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]" />
+              <div className="absolute w-[100%] right-0 bg-black h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
+            </motion.div>
           </div>
         )}
 
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ y: 60, opacity: 0 }}
           viewport={{ once: true }}
-          transition={{ ease: "easeInOut", delay: 0.3, duration: 0.8 }}
+          transition={{ ease: "easeInOut", delay: 0.2, duration: 0.8 }}
           whileInView={{ y: 0, opacity: 1 }}
-          className="relative z-30 container mx-auto flex justify-center flex-1 flex-col px-6 md:px-10 gap-6 text-center max-w-4xl"
+          className="relative z-30 container flex justify-center flex-1 flex-col px-5 md:px-10 gap-6 items-center text-center max-w-4xl mx-auto"
         >
-          <div className="flex flex-col items-center space-y-6">
+          {badge && <div className="mb-2">{badge}</div>}
+
+          <div className="flex flex-col items-center text-center space-y-5">
             <h1
               className={cn(
-                "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white leading-tight uppercase font-sans",
-                titleClassName
+                "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white",
+                titleClassName,
               )}
             >
               {title}
@@ -155,39 +136,51 @@ export const Hero = React.forwardRef<HTMLElement, HeroProps>(
             {subtitle && (
               <p
                 className={cn(
-                  "text-base sm:text-lg md:text-xl text-neutral-400 font-light leading-relaxed max-w-2xl mx-auto",
-                  subtitleClassName
+                  "text-base sm:text-lg md:text-xl text-neutral-400 font-light leading-relaxed max-w-2xl",
+                  subtitleClassName,
                 )}
               >
                 {subtitle}
               </p>
             )}
             {actions && actions.length > 0 && (
-              <div className={cn("flex flex-wrap items-center justify-center gap-4 pt-4", actionsClassName)}>
+              <div className={cn("flex flex-wrap items-center justify-center gap-4 mt-6", actionsClassName)}>
                 {actions.map((action, index) => {
-                  const isOutline = action.variant === "outline";
+                  const isExt = action.isExternal || action.href.startsWith("http") || action.href.startsWith("mailto:");
                   return (
-                    <Link
+                    <Button
                       key={index}
-                      to={action.href}
-                      onClick={action.onClick}
-                      className={cn(
-                        "rounded-full px-8 py-3.5 text-sm font-medium transition-all duration-300 active:scale-95 cursor-pointer shadow-lg",
-                        isOutline
-                          ? "border border-white/10 text-white bg-neutral-900/40 hover:bg-neutral-900/80 hover:border-orange-500/20"
-                          : "bg-white text-black hover:bg-neutral-200 shadow-white/5"
-                      )}
+                      variant={action.variant || "default"}
+                      size="lg"
+                      asChild
                     >
-                      {action.label}
-                    </Link>
-                  );
+                      {isExt ? (
+                        <a
+                          href={action.href}
+                          target={action.href.startsWith("mailto:") ? "_self" : "_blank"}
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 font-medium"
+                        >
+                          {action.icon}
+                          <span>{action.label}</span>
+                        </a>
+                      ) : (
+                        <Link to={action.href} className="flex items-center gap-2 font-medium">
+                          {action.icon}
+                          <span>{action.label}</span>
+                        </Link>
+                      )}
+                    </Button>
+                  )
                 })}
               </div>
             )}
           </div>
         </motion.div>
       </section>
-    );
-  }
-);
-Hero.displayName = "Hero";
+    )
+  },
+)
+Hero.displayName = "Hero"
+
+export { Hero }
