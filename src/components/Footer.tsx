@@ -17,6 +17,7 @@ export const Footer: React.FC = () => {
       links: [
         { label: "About Us", href: "/about" },
         { label: "Our Mission", href: "/mission" },
+        { label: "Careers", href: "/careers" },
         { label: "Contact", href: "/contact" },
       ],
     },
