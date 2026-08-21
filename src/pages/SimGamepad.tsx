@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { PageTransition } from "@/components/PageTransition";
 import { FlowArt, FlowSection } from "@/components/ui/story-scroll";
 
@@ -344,14 +345,12 @@ export const SimGamepad: React.FC = () => {
 
           {/* Interactive CTAs */}
           <div className="flex flex-wrap items-center gap-4 py-4 select-none relative z-10">
-            <a 
-              href="https://play.google.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <Link 
+              to="/app-under-development" 
               className="rounded-full bg-white hover:bg-neutral-200 text-black px-8 py-3.5 text-xs sm:text-sm font-semibold tracking-tight active:scale-95 transition-all shadow-lg shrink-0 cursor-pointer"
             >
               Download for Android
-            </a>
+            </Link>
             <a 
               href="https://discord.com" 
               target="_blank" 
