@@ -46,7 +46,7 @@ export const AboutUs: React.FC = () => {
     { icon: FacebookIcon, href: "https://facebook.com/brancovenn" },
     { icon: InstagramIcon, href: "https://instagram.com/brancovenn" },
     { icon: TwitterIcon, href: "https://x.com/brancovenn" },
-    { icon: LinkedinIcon, href: "https://linkedin.com/brancovenn" },
+    { icon: LinkedinIcon, href: "https://www.linkedin.com/company/brancovenn" },
     { icon: GithubIcon, href: "https://github.com/brancovenn" },
   ];
 

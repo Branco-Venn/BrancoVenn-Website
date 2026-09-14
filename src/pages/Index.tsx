@@ -87,7 +87,7 @@ const socialHandles: SocialHandle[] = [
     cat: "Careers",
     handle: "Branco Venn",
     iconImg: "https://cdn.simpleicons.org/linkedin/0A66C2",
-    href: "https://linkedin.com/company/brancovenn",
+    href: "https://www.linkedin.com/company/brancovenn",
     gradient: "from-[#0A66C2]/30 via-neutral-950 to-black",
     brandColor: "#0A66C2",
     icon: (
