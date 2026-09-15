@@ -86,7 +86,7 @@ const socialHandles: SocialHandle[] = [
     title: "LinkedIn",
     cat: "Careers",
     handle: "Branco Venn",
-    iconImg: "https://cdn.simpleicons.org/linkedin/0A66C2",
+    iconImg: "/asset-image/linkedin_logo.svg",
     href: "https://www.linkedin.com/company/brancovenn",
     gradient: "from-[#0A66C2]/30 via-neutral-950 to-black",
     brandColor: "#0A66C2",
@@ -535,7 +535,7 @@ export const Index: React.FC = () => {
                   className="hover:scale-105 transition-transform"
                 >
                   <svg className="w-5 h-5 fill-current text-white/90" viewBox="0 0 24 24">
-                    <path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L13.78 4.7l-1.07 1.063zm-1.07 2.013l1.07 1.063 3.013-3.003-3.259-3.238z" />
+                    <path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z" />
                   </svg>
                   <div className="flex flex-col items-start leading-none text-left">
                     <span className="text-[10px] text-white/50 font-light font-sans uppercase">Get it on</span>
