@@ -55,7 +55,7 @@ export const AppUnderDevelopment: React.FC = () => {
           actions={[
             {
               label: "Download Windows Companion",
-              href: "https://github.com/Branco-Venn/Branco-Venn-website/releases/download/v1.0.0/SimGamepad-Windows-x64-v1.0.0.zip",
+              href: "https://github.com/Branco-Venn/BrancoVenn-Website/releases/download/v1.0.0/SimGamepad-Windows-x64-v1.0.0.zip",
               variant: "default",
               icon: <Download className="w-4 h-4" />,
               isExternal: true,
